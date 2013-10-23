@@ -1,0 +1,134 @@
+3,semsat1,22698520.355672,3:40 PM,2/26/13
+filler unrelated,short,130,SAIL,SAIL -- LEASE,,C,3128,188
+filler related,short,77,FEATHERS,FEATHERS -- BIRD,,M,1329,79
+filler related,long,86,BOULDER,BOULDER -- ROCK,,M,5204,312
+filler related,long,93,LENS,LENS -- GLASSES,,M,2296,137
+filler unrelated,short,111,LOCATION,LOCATION -- LUNCH,,M,4322,259
+filler unrelated,long,127,PENALTY,PENALTY -- GUITAR,,C,2134,128
+filler related,long,96,CONCLUDE,CONCLUDE -- END,,M,2007,121
+dominant unrelated,long,48,PALM,PALM -- HAND,PALM -- DOOR,PALM -- TREE,PALM -- SUIT,,C,2028,122
+subordinate unrelated,short,6,CRUST,CRUST -- PIE,CRUST -- RAT,CRUST -- EARTH,CRUST -- HOTEL,,C,1556,93
+dominant related,short,19,NET,NET -- SOCCER,NET -- EMPIRE,NET -- PROFIT,NET -- RHYTHM,,M,1297,77
+dominant unrelated,long,52,HABIT,HABIT -- CUSTOM,HABIT -- GALAXY,HABIT -- NUN,HABIT -- JAW,,C,2889,173
+filler related,long,76,ASTRONOMY,ASTRONOMY -- STAR,,M,2310,138
+filler related,short,73,JOURNEY,JOURNEY -- TRIP,,M,1371,82
+dominant unrelated,long,46,TIP,TIP -- GRATUITY,TIP -- SINKHOLE,TIP -- POINT,TIP -- PARTY,,C,3142,188
+filler unrelated,long,132,SURPLUS,SURPLUS -- LANDING,,C,2207,132
+subordinate related,long,64,GAS,GAS -- PETROLEUM,GAS -- HOUSEWORK,GAS -- SOLID,GAS -- PURSE,,M,2742,164
+filler related,long,85,MINTS,MINTS -- CANDY,,M,2167,130
+filler related,short,100,ATLAS,ATLAS -- MAP,,M,1593,96
+subordinate unrelated,short,9,SENTENCE,SENTENCE -- PARAGRAPH,SENTENCE -- MUSHROOMS,SENTENCE -- JUDGMENT,SENTENCE -- QUARTERS,,C,3419,205
+subordinate related,long,66,HORN,HORN -- TRUMPET,HORN -- CHIMNEY,HORN -- ANTLER,HORN -- VANDAL,,C,8662,520
+subordinate related,long,67,BANK,BANK -- VAULT,BANK -- BACON,BANK -- RIVER,BANK -- QUEEN,,M,3278,197
+dominant related,long,28,NUT,NUT -- ALMOND,NUT -- STAPLE,NUT -- CRAZY,NUT -- HEART,,M,1784,107
+subordinate unrelated,long,12,BOLT,BOLT -- SCREW,BOLT -- CROWD,BOLT -- LIGHTNING,BOLT -- TESTIMONY,,C,3392,204
+dominant related,short,21,MASS,MASS -- WEIGHT,MASS -- DOLLAR,MASS -- CHURCH,MASS -- PRISON,,M,1627,98
+dominant related,short,24,PUPIL,PUPIL -- STUDENT,PUPIL -- OPINION,PUPIL -- EYE,PUPIL -- BAG,,M,1819,109
+dominant related,short,26,SHOCK,SHOCK -- SURPRISE,SHOCK -- UPSTAIRS,SHOCK -- STATIC,SHOCK -- RIBBON,,M,1260,75
+filler related,long,102,STORY,STORY -- BOOK,,M,3119,187
+subordinate related,short,63,SHOWER,SHOWER -- BATH,SHOWER -- LIPS,SHOWER -- RAIN,SHOWER -- RISK,,M,2307,139
+filler unrelated,long,106,BED,BED -- EGG,,C,2793,168
+dominant related,short,27,CRICKET,CRICKET -- INSECT,CRICKET -- LOTION,CRICKET -- SPORT,CRICKET -- SHORE,,M,970,59
+filler unrelated,short,112,CREST,CREST -- CAT,,C,2085,125
+dominant unrelated,long,53,FAULT,FAULT -- BLAME,FAULT -- PANTS,FAULT -- EARTHQUAKE,FAULT -- LABORATORY,,C,2215,132
+filler unrelated,long,123,MASON,MASON -- KNEE,,C,2136,128
+subordinate related,short,59,BALL,BALL -- BOUNCE,BALL -- RANSOM,BALL -- DANCE,BALL -- SENSE,,C,2443,146
+subordinate unrelated,short,8,CHEST,CHEST -- BREAST,CHEST -- LADDER,CHEST -- TREASURE,CHEST -- HOMEWORK,,C,1371,82
+filler unrelated,long,128,LIME,LIME -- WING,,C,2696,162
+filler related,short,87,ROW,ROW -- BOAT,,M,1603,96
+filler unrelated,long,131,APPLAUSE,APPLAUSE -- RIFLE,,C,2470,148
+filler unrelated,short,124,COIN,COIN -- DETAIL,,M,3963,238
+dominant unrelated,short,40,YARD,YARD -- FENCE,YARD -- BOXES,YARD -- MILE,YARD -- CURE,,C,3731,224
+subordinate unrelated,long,13,DECK,DECK -- HOUSE,DECK -- WORLD,DECK -- CARDS,DECK -- ENEMY,,C,2401,144
+filler related,long,97,CONTACT,CONTACT -- TOUCH,,M,2674,160
+filler related,long,94,SHORE,SHORE -- BEACH,,M,2172,130
+filler related,short,91,GROVE,GROVE -- ORANGE,,C,1694,101
+subordinate unrelated,long,17,DIAMOND,DIAMOND -- GEM,DIAMOND -- RIM,DIAMOND -- BASEBALL,DIAMOND -- UNIVERSE,,C,2864,172
+filler unrelated,long,118,LAWYER,LAWYER -- AIRPLANE,,C,5904,354
+subordinate unrelated,long,11,DIGIT,DIGIT -- NUMBER,DIGIT -- DOCTOR,DIGIT -- FINGER,DIGIT -- MARKET,,C,2540,152
+filler unrelated,long,117,WARRANT,WARRANT -- SICK,,C,1904,114
+dominant unrelated,short,44,POWER,POWER -- STRENGTH,POWER -- STOMACH,POWER -- ELECTRICITY,POWER -- PHOTOGRAPH,,C,5891,353
+subordinate unrelated,short,5,BILL,BILL -- CHECK,BILL -- WOMAN,BILL -- LAW,BILL -- LIE,,C,15036,903
+filler related,short,98,INJURY,INJURY -- HURT,,M,1316,79
+dominant unrelated,short,42,CYCLE,CYCLE -- BIKE,CYCLE -- SOUP,CYCLE -- REPETITION,CYCLE -- RHEUMATISM,,C,1804,109
+dominant related,long,32,GAME,GAME -- FOOTBALL,GAME -- CRIMINAL,GAME -- HUNT,GAME -- WIRE,,M,1592,96
+filler unrelated,short,116,DITCH,DITCH -- SHEETS,,C,1617,97
+dominant related,short,20,KEY,KEY -- LOCK,KEY -- AUNT,KEY -- PIANO,KEY -- PILLS,,M,1469,88
+subordinate related,short,55,FAN,FAN -- AIR,FAN -- WAR,FAN -- SPORTS,FAN -- CLOSET,,M,1172,71
+filler related,short,101,BITTER,BITTER -- SWEET,,M,1458,88
+dominant related,short,25,POKER,POKER -- CHIPS,POKER -- SALAD,POKER -- FIRE,POKER -- DEAR,,M,1756,105
+subordinate unrelated,long,14,DOUGH,DOUGH -- BREAD,DOUGH -- PLANT,DOUGH -- MONEY,DOUGH -- YEARS,,C,1343,80
+filler related,long,95,REFLECT,REFLECT -- MIRROR,,M,2193,131
+filler unrelated,short,108,BASKET,BASKET -- SMART,,C,1740,104
+subordinate unrelated,short,7,PITCH,PITCH -- CATCH,PITCH -- HUMAN,PITCH -- TONE,PITCH -- FUEL,,C,1001,60
+dominant related,long,30,BEAM,BEAM -- LIGHT,BEAM -- ORDER,BEAM -- BALANCE,BEAM -- WHISTLE,,M,2806,168
+filler unrelated,short,122,DEBUT,DEBUT -- STRETCH,,C,3868,232
+dominant related,long,29,CANE,CANE -- ELDERLY,CANE -- GARDENS,CANE -- SUGAR,CANE -- VIDEO,,M,1033,62
+filler related,long,99,ATOM,ATOM -- BOMB,,M,1586,95
+filler related,short,88,BUZZ,BUZZ -- BEE,,M,1435,86
+dominant unrelated,short,38,BULB,BULB -- LAMP,BULB -- PIGS,BULB -- FLOWER,BULB -- SCREEN,,C,1891,114
+filler unrelated,short,110,LAMP,LAMP -- FORTUNE,,C,7825,470
+subordinate related,short,62,MARBLE,MARBLE -- STONE,MARBLE -- GUEST,MARBLE -- ROUND,MARBLE -- BOOKS,,M,1519,91
+subordinate related,short,56,YARN,YARN -- WOOL,YARN -- FERN,YARN -- STORY,YARN -- HANDS,,C,1562,94
+filler unrelated,short,121,GRAPH,GRAPH -- CROSS,,C,6217,373
+filler related,short,80,SOLE,SOLE -- SHOES,,M,1386,83
+dominant related,short,22,IRON,IRON -- METAL,IRON -- DRAMA,IRON -- CLOTHES,IRON -- MISTAKE,,M,1524,91
+filler unrelated,long,129,COSTUME,COSTUME -- EXERCISE,,C,12846,771
+filler unrelated,long,125,MARGIN,MARGIN -- MEDICINE,,C,2249,135
+subordinate related,long,72,DEGREE,DEGREE -- COLLEGE,DEGREE -- WEDDING,DEGREE -- TEMPERATURE,DEGREE -- DESCRIPTION,,M,2006,120
+dominant unrelated,long,51,RULER,RULER -- MEAURE,RULER -- CANDLES,RULER -- KING,RULER -- SIGN,,C,2951,177
+subordinate related,long,68,CLUB,CLUB -- PEOPLE,CLUB -- MINUTE,CLUB -- WOOD,CLUB -- WIRE,,C,2711,163
+dominant related,long,36,TEMPLE,TEMPLE -- CHURCH,TEMPLE -- GROUND,TEMPLE -- FOREHEAD,TEMPLE -- UNIFORM,,M,1760,106
+dominant related,long,31,NAIL,NAIL -- HAMMER,NAIL -- SAILOR,NAIL -- POLISH,NAIL -- KIDNEY,,M,1710,103
+dominant unrelated,long,54,BATTERY,BATTERY -- ACID,BATTERY -- MENU,BATTERY -- ASSAULT,BATTERY -- COOKIES,,C,2431,146
+subordinate related,long,65,CLOG,CLOG -- DRAIN,CLOG -- LASER,CLOG -- SHOE,CLOG -- FARM,,M,2075,125
+subordinate unrelated,short,4,BEEF,BEEF -- STEAK,BEEF -- ALLEY,BEEF -- COMPLAINT,BEEF -- PRIVILEGE,,C,2138,129
+filler related,long,75,CAVITY,CAVITY -- TOOTH,,M,1523,91
+dominant unrelated,long,49,POOL,POOL -- WATER,POOL -- PHONE,POOL -- BILLIARDS,POOL -- PORCUPINE,,C,2168,130
+subordinate related,long,69,SCALE,SCALE -- HEAVY,SCALE -- TEETH,SCALE -- FISH,SCALE -- COPS,,M,2191,132
+dominant unrelated,short,39,PLOT,PLOT -- NOVEL,PLOT -- TAXES,PLOT -- LAND,PLOT -- SONG,,C,2707,163
+dominant unrelated,long,47,CALF,CALF -- COW,CALF -- BAY,CALF -- LEG,CALF -- TEA,,C,1783,107
+filler unrelated,long,115,JURY,JURY -- KISS,,C,1551,93
+dominant related,short,23,NOTE,NOTE -- MEMO,NOTE -- MICE,NOTE -- MUSIC,NOTE -- DREAM,,M,1267,76
+subordinate related,long,70,STAFF,STAFF -- WORK,STAFF -- NAME,STAFF -- STICK,STAFF -- FLOOR,,M,2310,138
+subordinate unrelated,short,3,LIMB,LIMB -- ARM,LIMB -- CAT,LIMB -- BRANCH,LIMB -- PISTOL,,C,1510,90
+subordinate unrelated,short,1,LOG,LOG -- CABIN,LOG -- RADAR,LOG -- JOURNAL,LOG -- CORONER,,C,2428,146
+dominant related,long,34,CABLE,CABLE -- TELEVISION,CABLE -- RESTAURANT,CABLE -- CORD,CABLE -- MULE,,M,7520,451
+filler related,short,90,PASTURE,PASTURE -- GRAZE,,M,2122,127
+filler related,long,83,UNHAPPY,UNHAPPY -- SAD,,M,1777,107
+subordinate related,long,71,RACKET,RACKET -- TENNIS,RACKET -- RUBBER,RACKET -- NOISE,RACKET -- MODEL,,M,4640,278
+filler unrelated,long,120,STRAIN,STRAIN -- SONG,,C,2118,128
+dominant unrelated,short,41,ARMS,ARMS -- BODY,ARMS -- WISH,ARMS -- WEAPONS,ARMS -- NUMBERS,,C,2318,139
+subordinate unrelated,long,16,LETTER,LETTER -- MAIL,LETTER -- LAKE,LETTER -- ALPHABET,LETTER -- SEDATIVE,,C,2000,120
+dominant unrelated,short,45,CABINET,CABINET -- KITCHEN,CABINET -- TEACHER,CABINET -- MINISTRY,CABINET -- DISEASES,,C,2492,149
+subordinate related,short,60,STRAW,STRAW -- HAY,STRAW -- DOT,STRAW -- DRINK,STRAW -- DEATH,,M,1217,73
+filler unrelated,short,109,ARMY,ARMY -- QUESTION,,C,1641,98
+filler related,long,84,DISLIKE,DISLIKE -- HATE,,M,1758,105
+filler unrelated,short,119,MORTAL,MORTAL -- FLAG,,C,1735,104
+subordinate unrelated,long,10,BAR,BAR -- ALCOHOL,BAR -- NETWORK,BAR -- JAIL,BAR -- FILM,,C,2751,165
+filler unrelated,short,103,STEEL,STEEL -- FAST,,C,2709,163
+dominant unrelated,long,50,FOOT,FOOT -- TOE,FOOT -- NAP,FOOT -- INCH,FOOT -- CLAY,,C,2839,171
+subordinate related,short,58,COAT,COAT -- JACKET,COAT -- ENERGY,COAT -- PAINT,COAT -- GHOST,,M,1581,95
+subordinate unrelated,short,2,PIT,PIT -- HOLE,PIT -- WINE,PIT -- CHERRY,PIT -- PUPPY,,C,1738,104
+dominant unrelated,short,43,TRUNK,TRUNK -- CAR,TRUNK -- DAD,TRUNK -- ELEPHANT,TRUNK -- ROOMMATE,,C,2963,178
+dominant related,long,35,GREEN,GREEN -- GRASS,GREEN -- FAIRY,GREEN -- GOLF,GREEN -- DATA,,M,1687,101
+subordinate related,short,61,JOINT,JOINT -- ELBOW,JOINT -- MINES,JOINT -- MARIJUANA,JOINT -- ORCHESTRA,,M,1508,91
+filler related,short,81,FLESH,FLESH -- SKIN,,M,1115,67
+dominant related,long,33,GRAIN,GRAIN -- WHEAT,GRAIN -- DISCO,GRAIN -- SAND,GRAIN -- PUNK,,M,1567,94
+dominant unrelated,short,37,PEN,PEN -- PENCIL,PEN -- SPIDER,PEN -- CAGE,PEN -- LOAN,,C,2188,131
+subordinate unrelated,long,18,KID,KID -- CHILD,KID -- STATE,KID -- GOAT,KID -- DICE,,C,1430,86
+filler related,short,82,WEARY,WEARY -- TIRED,,M,2524,152
+filler unrelated,short,114,UNCLE,UNCLE -- GIRAFFE,,C,2241,135
+subordinate related,short,57,SEAL,SEAL -- ANIMAL,SEAL -- BRIDGE,SEAL -- ENVELOPE,SEAL -- DYNAMITE,,M,1788,107
+subordinate unrelated,long,15,GRADE,GRADE -- EVALUATION,GRADE -- MICROPHONE,GRADE -- INCLINE,GRADE -- ICICLES,,C,2969,178
+filler unrelated,short,107,RAIN,RAIN -- MONEY,,C,1980,118
+filler related,short,79,FOREST,FOREST -- TREE,,M,1243,74
+filler unrelated,long,105,FELLOW,FELLOW -- RUB,,C,2694,162
+filler related,long,74,FORGIVE,FORGIVE -- FORGET,,M,2806,168
+filler related,short,89,LOAF,LOAF -- BREAD,,M,2829,170
+filler related,short,78,EASY,EASY -- HARD,,M,3723,223
+filler unrelated,short,113,FRAME,FRAME -- SHORT,,C,6661,400
+filler related,long,92,SPARE,SPARE -- TIRE,,M,1901,114
+filler unrelated,long,104,TREND,TREND -- OCEAN,,C,1655,99
+filler unrelated,long,126,SPONSOR,SPONSOR -- POET,,C,2273,137
+,
