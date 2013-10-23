@@ -3,7 +3,7 @@
     header("Content-type: text/csv");
     
     //This is messy and an overall mediocre solution; however, if you throw this up onto a
-    //PHP server, it'll take and parse a CSV file containing the raw data from Experiment 1.
+    //PHP server, it'll take and parse a CSV file containing the raw data from Experiment 3.
     //I'd recommend first navigating to the directory where all of the raw data files are stored
     //and concatenating them into one csv file via:
     //

@@ -3,7 +3,7 @@
     header("Content-type: text/csv");
 
     //This is messy and an overall mediocre solution; however, if you throw this up onto a
-    //PHP server, it'll take and parse a CSV file containing the raw data from Experiment 1.
+    //PHP server, it'll take and parse a CSV file containing the raw data from Experiment 2.
     //I'd recommend first navigating to the directory where all of the raw data files are stored
     //and concatenating them into one csv file via:
     //
@@ -25,7 +25,7 @@
     // as long as there was actually a file uploaded...
     if (($handle = fopen($_FILES['file']['tmp_name'], "r")) !== FALSE) {
 
-	$header = array(1,2,3,4,5,6,7,8,9,10,11,12);
+	$header = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17);
 	// this will contain all of the actual data uploaded
 	$data = array();
 	
@@ -54,16 +54,17 @@
 	$PID = 0;
 	
 	foreach($data as &$event) {
-	    if(is_numeric($event[1])) {
-		 $PID = $event[1];
-	    } elseif($event[1]=="filler related" || $event[1]=="filler unrelated") {
-		$temp = array($PID,$event[1],$event[2],$event[3],$event[4],
-		    $event[5],"","","","",$event[7],$event[8],$event[9]);
+	    if(is_numeric($event[0])) {
+		 $PID = $event[0];
+	    } elseif($event[0]=="RELATED FILLER" || $event[0]=="UNRELATED FILLER") {
+		$temp = array($PID,$event[0],$event[1],$event[2],$event[3],$event[4],
+			      "",$event[5],"","","","","",$event[6],$event[7],$event[8]);
 		array_push($cleanedData, $temp);
 	    } else {
-		$temp = array($PID,$event[1],$event[2],$event[3],$event[4],
-		    $event[5],$event[6],$event[7],$event[8],$event[9],
-		    $event[10],$event[11],$event[12]);
+		$temp = array($PID,$event[0],$event[1],$event[2],$event[3],
+		    $event[4],$event[5],$event[6],$event[7],$event[8],
+		    $event[11],$event[12],$event[13],$event[15],$event[16],
+		    $event[17]);
 		array_push($cleanedData, $temp);
 	    }
 	}
