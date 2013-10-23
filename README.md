@@ -3,6 +3,8 @@ semsat
 
 Datasets, test programs, and documentation for my research of semantic satiation.
 
+======
+
 Semantic satiation refers to the increase in response time in relatedness judgments following the repeated and frequentitive access of a word and its meaning. (E.g., if you see the word GIRAFFE repeated 30 times, this theory predicts that you'll probably take longer to figure out whether GIRAFFE and EVEN-TOED UNGULATE are related than if you've only seen GIRAFFE 3 times. Although how familiar you are with even-toed ungulates is a totally different matter...)
 
 The only little issue is that we don't know if the effect really exists: some experiments have found it; others haven't. See Esposito & Pelton's review of the literature up through the early 70s for a great laugh at all the fun methodologies used historically if you have the time and interest. Even still, however, methodologies vary considerably, effect sizes are small, how satiation is actually defined is up in the air (is it the difference in response times between short and long repetitions; is it the rate of change as a function of repetition; is it the change in response time at a given repetition relative to the response times for an unrelated pairmate; etc.).
