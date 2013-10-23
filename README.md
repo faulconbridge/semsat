@@ -2,7 +2,6 @@ semsat
 ======
 
 Datasets, test programs, and documentation for my research of semantic satiation.
-
 ======
 
 Semantic satiation refers to the increase in response time in relatedness judgments following the repeated and frequentitive access of a word and its meaning. (E.g., if you see the word GIRAFFE repeated 30 times, this theory predicts that you'll probably take longer to figure out whether GIRAFFE and EVEN-TOED UNGULATE are related than if you've only seen GIRAFFE 3 times. Although how familiar you are with even-toed ungulates is a totally different matter...)
@@ -18,5 +17,4 @@ To point 1, I'm curious whether there's a difference in satiation for the domina
 To the second point, we've got a meta-analysis to conduct! All prior attempts to assess whether the effect, oh, actually exists or not have been narrative reviews of the literature. That's insufficient, in my mind. That's not rigorous or empirical. So I'm conducting a formal statistical evaluation of the body of semantic satiation literature from the late 1970s through the present.
 
 ======
-
 All data, test programs, analyses, data clean-up procedures, etc. will be included for all experiments. Because reproducability is a really dandy thing that researchers don't typically pay enough attention to. So please, download the data if you're researching semantic satiation. Play with them; analyze them; critique my own methods; confirm or refute my results.
