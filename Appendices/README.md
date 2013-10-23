@@ -5,7 +5,7 @@ These files contain all of the wordlists used in each experiment. For experiment
 
 CUE | DOMINANT TARGET | SUBORDINATE TARGET | UNRELATED TARGET
 
-In experiment 1, there is an unrelated target matched along length and word frequency to the dominant and subordinate target, respectively. This was discontinued in experiments 2 and 3 as there was no significant difference between the two unrelated targets for a given cue.
+In experiment 1, there is an unrelated target matched along length and word frequency to the dominant and subordinate target, respectively. This was discontinued in experiments 2 and 3 as there was no significant difference between the two unrelated targets for a given cue. Experiments 2 and 3 generated unrelated words that matched the averaged length and word frequency of the dominant and subordinate targets for each cue. For all three experiments, word frequency refers to the log base 10 of SUBTLWF (subtitle frequency: word form frequency; http://expsy.ugent.be/subtlexus/).
 
 For Experiment 2, the file takes the form:
 
