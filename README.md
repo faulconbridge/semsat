@@ -1,4 +1,4 @@
-semsat
+Semantic Satiation
 ======
 
 Datasets, test programs, and documentation for my research of semantic satiation.
