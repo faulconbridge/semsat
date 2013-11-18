@@ -1,9 +1,11 @@
 Semantic Satiation
 ======
 
+----
+
 Datasets, test programs, and documentation for ongoing research of semantic satiation. This research is a collaboration between Christopher Wetherill and Angela C. Jones, John Carroll University.
 
-======
+----
 
 Semantic satiation refers to the increase in response time in relatedness judgments following the repeated and frequentitive access of a word and its meaning. E.g., if you see the word GIRAFFE repeated 30 times, this theory predicts that you'll probably take longer to figure out whether GIRAFFE and EVEN-TOED UNGULATE are related than if you've only seen GIRAFFE 3 times. Although how familiar you are with even-toed ungulates is a totally different matter... (Or, a less-silly explanation: with a few number of repetitions, priming is facilitatory; with increased repetitions, fatigue onsets and the prime becomes inhibitory.)
 
@@ -19,10 +21,10 @@ We also seek to determine the duration for the inhibitory effect previously desc
 
 To the second point, we've got a meta-analysis to conduct! All prior attempts to assess whether the effect actually exists or not have been narrative reviews of the literature. Although good overviews of an entire field of literature, this type of review does not provide rigorous and empirical methodologies for assessing the evidence for and against a particular effect with, perhaps, a small effect size and small to moderate sample sizes
 
-======
+----
 All data, test programs, analyses, data clean-up procedures, etc. will be included for all experiments. Because reproducability is a really dandy thing that researchers don't typically pay enough attention to. So please, download the data if you're researching semantic satiation. Play with them; analyze them; critique my own methods; confirm or refute my results.
 
-======
+-----
 
 License
 ======
@@ -78,11 +80,11 @@ BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE TO BE B
 
     e. For the avoidance of doubt:
 
-        i. **Non-waivable Compulsory License Schemes.** In those jurisdictions in which the right to collect royalties through any statutory or compulsory licensing scheme cannot be waived, the Licensor reserves the exclusive right to collect such royalties for any exercise by You of the rights granted under this License;
+       i. **Non-waivable Compulsory License Schemes.** In those jurisdictions in which the right to collect royalties through any statutory or compulsory licensing scheme cannot be waived, the Licensor reserves the exclusive right to collect such royalties for any exercise by You of the rights granted under this License;
 
-        ii. **Waivable Compulsory License Schemes.** In those jurisdictions in which the right to collect royalties through any statutory or compulsory licensing scheme can be waived, the Licensor reserves the exclusive right to collect such royalties for any exercise by You of the rights granted under this License if Your exercise of such rights is for a purpose or use which is otherwise than noncommercial as permitted under Section 4(c) and otherwise waives the right to collect royalties through any statutory or compulsory licensing scheme; and,
+       ii. **Waivable Compulsory License Schemes.** In those jurisdictions in which the right to collect royalties through any statutory or compulsory licensing scheme can be waived, the Licensor reserves the exclusive right to collect such royalties for any exercise by You of the rights granted under this License if Your exercise of such rights is for a purpose or use which is otherwise than noncommercial as permitted under Section 4(c) and otherwise waives the right to collect royalties through any statutory or compulsory licensing scheme; and,
 
-        iii. **Voluntary License Schemes.** The Licensor reserves the right to collect royalties, whether individually or, in the event that the Licensor is a member of a collecting society that administers voluntary licensing schemes, via that society, from any exercise by You of the rights granted under this License that is for a purpose or use which is otherwise than noncommercial as permitted under Section 4(c).
+       iii. **Voluntary License Schemes.** The Licensor reserves the right to collect royalties, whether individually or, in the event that the Licensor is a member of a collecting society that administers voluntary licensing schemes, via that society, from any exercise by You of the rights granted under this License that is for a purpose or use which is otherwise than noncommercial as permitted under Section 4(c).
 
     f. Except as otherwise agreed in writing by the Licensor or as may be otherwise permitted by applicable law, if You Reproduce, Distribute or Publicly Perform the Work either by itself or as part of any Adaptations or Collections, You must not distort, mutilate, modify or take other derogatory action in relation to the Work which would be prejudicial to the Original Author's honor or reputation. Licensor agrees that in those jurisdictions (e.g. Japan), in which any exercise of the right granted in Section 3(b) of this License (the right to make Adaptations) would be deemed to be a distortion, mutilation, modification or other derogatory action prejudicial to the Original Author's honor and reputation, the Licensor will waive or not assert, as appropriate, this Section, to the fullest extent permitted by the applicable national law, to enable You to reasonably exercise Your right under Section 3(b) of this License (right to make Adaptations) but not otherwise.
 
