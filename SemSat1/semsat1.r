@@ -1,5 +1,5 @@
 # Makes a copy of our data
-raw <- Semsat1_compiled_csv
+raw <- SemSat1_compiled_csv
 
 # treats our within subjects variables as factors
 # renames a couple of ugly variables
@@ -47,6 +47,22 @@ unambig.stdev <- subset(unambig,select=c(PID,BIAS,RELATEDNESS,
                                  REPS,ANSWER,STDEV))
 unambig.stdev <- na.omit(unambig.stdev)
 
+############################################################
+
+ambig.aov <- with(raw.stdev, aov(STDEV~BIAS*RELATEDNESS*REPS+
+                             Error(PID/(BIAS*RELATEDNESS*REPS)
+                                   )))
+summary(ambig.aov)
+
+filler.aov <- with(unambig, aov(STDEV~RELATEDNESS*REPS+
+                                  Error(PID/(RELATEDNESS*REPS)
+                                        )))
+summary(filler.aov)
+
+############################################################
+
+
+
 # and now for the interquartile range trimming
 raw.IQR <- subset(raw,select=c(PID,BIAS,RELATEDNESS,
                                REPS,ANSWER,IQR))
@@ -67,8 +83,7 @@ raw.IQR <- na.omit(raw.IQR)
 #    ylab="Mean RT, STDEV",xlab="REPS",trace.label="RELATEDNESS"))
 
 # the analyses of variance...
-raw.aov <- aov(MS ~ (BIAS*RELATEDNESS*REPS)+
-                 Error(PID/(BIAS*REPS*RELATEDNESS)),
+raw.aov <- aov(MS ~ BIAS*RELATEDNESS*REPS+Error(PID),
                data=raw)
 summary(raw.aov)
 

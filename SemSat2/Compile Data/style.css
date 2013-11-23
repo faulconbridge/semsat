@@ -37,6 +37,10 @@ hr {
     color: #333333;
 }
 
+code {
+    background-color: #eeeeee;
+}
+
 /* sets the appearance of the div that
  * contains all of the page's content */
 div.container {

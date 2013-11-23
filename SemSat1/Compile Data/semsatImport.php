@@ -52,19 +52,23 @@
 	// constructs an array for the cleaned-up data
 	$cleanedData = array();
 	$PID = 0;
+	$ITEM = 1;
 	
 	foreach($data as &$event) {
 	    if(is_numeric($event[1])) {
 		 $PID = $event[1];
+		 $ITEM = 1;
 	    } elseif($event[1]=="filler related" || $event[1]=="filler unrelated") {
-		$temp = array($PID,$event[1],$event[2],$event[3],$event[4],
+		$temp = array($PID,$event[1],$event[2],$ITEM,$event[4],
 		    $event[5],"","","","",$event[7],$event[8],$event[9]);
 		array_push($cleanedData, $temp);
+        $ITEM++;
 	    } else {
-		$temp = array($PID,$event[1],$event[2],$event[3],$event[4],
+		$temp = array($PID,$event[1],$event[2],$ITEM,$event[4],
 		    $event[5],$event[6],$event[7],$event[8],$event[9],
 		    $event[10],$event[11],$event[12]);
 		array_push($cleanedData, $temp);
+        $ITEM++;
 	    }
 	}
 	$out = fopen('php://output', 'w');
