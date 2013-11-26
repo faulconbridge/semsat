@@ -1,4 +1,4 @@
-raw <- semsat2_compiled_csv
+raw <- Semsat3_compiled
 raw <- within(raw, {
   BIAS <- factor(BIAS)
   HomType <- factor(HomType)
@@ -28,16 +28,16 @@ raw.IQR <- subset(raw,select=c(PID,BIAS,HomType,
                                REPS,ANSWER,IQR))
 raw.IQR <- na.omit(raw.IQR)
 
-raw.aov <- aov(MS ~ BIAS*HomType*REPS+Error(PID/(BIAS*HomType*REPS)),data=raw)
+raw.aov <- aov(MS~BIAS*HomType*REPS+Error(PID),data=raw)
 summary(raw.aov)
 
-raw.stdev.aov <- aov(STDEV ~ BIAS*HomType*REPS+Error(PID/BIAS*HomType*REPS),
+stdev.aov <- aov(STDEV ~ BIAS*HomType*REPS+Error(PID),
                      data=raw.stdev)
-summary(raw.stdev.aov)
+summary(stdev.aov)
 
-raw.IQR.aov <- aov(IQR ~ BIAS*HomType*REPS+Error(PID),
+iqr.aov <- aov(IQR ~ BIAS*HomType*REPS+Error(PID),
                      data=raw.IQR)
-summary(raw.IQR.aov)
+summary(iqr.aov)
 
 with(raw,interaction.plot(REPS,HomType,MS))
 with(raw.stdev,interaction.plot(REPS,BIAS,STDEV))

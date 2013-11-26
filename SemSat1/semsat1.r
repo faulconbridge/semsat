@@ -1,5 +1,5 @@
 # Makes a copy of our data
-raw <- SemSat1_compiled
+raw <- Semsat1_compiled
 
 # treats our within subjects variables as factors
 # renames a couple of ugly variables
@@ -33,19 +33,18 @@ raw.iqr <- na.omit(raw.iqr)
 ############################################################
 
 raw.aov <- with(raw, aov(MS~BIAS*RELATEDNESS*REPS+
-                             Error(PID/(BIAS*RELATEDNESS*REPS)
-                                   )))
+                             Error(PID/(BIAS*RELATEDNESS*REPS))))
 summary(raw.aov)
 
 stdev.aov <- with(raw.stdev, aov(STDEV~BIAS*RELATEDNESS*REPS+
-                                   Error(PID/(BIAS*RELATEDNESS*REPS)
-                                         )))
+                                   Error(PID/(BIAS*RELATEDNESS*REPS))))
 summary(stdev.aov)
 
 iqr.aov <- with(raw.iqr, aov(IQR~BIAS*RELATEDNESS*REPS+
-                               Error(PID/(BIAS*RELATEDNESS*REPS)
-                                     )))
+                               Error(PID/(BIAS*RELATEDNESS*REPS))))
 summary(iqr.aov)
+
+############################################################
 
 with(raw.stdev, interaction.plot(REPS,RELATEDNESS,STDEV,
                                  trace.label=deparse(substitute(trace.factor))))
@@ -53,3 +52,19 @@ with(raw.stdev, interaction.plot(REPS,BIAS,STDEV,
                                  trace.label=deparse(substitute(trace.factor))))
 with(raw.stdev, interaction.plot(RELATEDNESS,BIAS,STDEV,
                                  trace.label=deparse(substitute(trace.factor))))
+
+############################################################
+
+domrel <- subset(raw.stdev, RELATEDNESS=="related" & BIAS=="dominant",
+                          select=c(STDEV))
+domunrel <- subset(raw.stdev, RELATEDNESS=="unrelated" & BIAS=="dominant",
+                 select=c(STDEV))
+subrel <- subset(raw.stdev, RELATEDNESS=="related" & BIAS=="subordinate",
+                 select=c(STDEV))
+subunrel <- subset(raw.stdev, RELATEDNESS=="unrelated" & BIAS=="subordinate",
+                   select=c(STDEV))
+
+t.test(domrel,domunrel)
+t.test(domrel,subrel)
+t.test(subrel,subunrel)
+t.test(domunrel,subunrel)

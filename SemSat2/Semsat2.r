@@ -6,9 +6,6 @@ raw <- within(raw, {
   BIAS <- factor(BIAS)
   REPS <- factor(REPS)
   PID <- factor(PID)
-  #MS <- numeric(MS)
-  #STDEV <- numeric(STDEV)
-  #IQR <- numeric(IQR)
 })
 
 install.packages("car")
