@@ -1,4 +1,4 @@
-SemSat3
+SemSat2
 ======
 
 ###Raw Data
@@ -19,7 +19,7 @@ You can then upload the data via this page and have returned to you a second CSV
 The only issue is that this is a memory hog and there's a ton of data to sift through. I cobbled this script together quickly, not really caring about memory constraints, so my bad there. You'll probably want to take your full CSV file and split it up about ever 35 participants. That'll just make life a bit easier passing things through the PHP script.
 
 ###Analyses
-semsat3.R contains a simple script to perform a repeated measures ANOVA on the data contained in SemSat3\_compiled.csv. SemSat3\_compiled\_data.xlsx is much the same data, including participant condition means if you prefer to analyze the data in SPSS.
+semsat2.R contains a simple script to perform a repeated measures ANOVA on the data contained in SemSat2\_compiled.csv. SemSat2\_compiled\_data.xlsx is much the same data, including participant condition means if you prefer to analyze the data in SPSS.
 
 This Excel file contains 4 tabs: the raw data; accuracy information for each participant per condition; the participant condition means with no values dropped on the basis of overall accuracy; and participant condition means with participant data dropped if they had lower than 33% accuracy in 4 of the 8 conditions.
 
