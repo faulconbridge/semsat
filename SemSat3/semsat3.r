@@ -1,42 +1,43 @@
-<<<<<<< HEAD
-raw <- subset(semsat3_data_compiled, ((BIAS=="dominant" | BIAS=="subordinate")
-              & ANSWER=="M") | (BIAS=="unrelated" & ANSWER=="C"),select=c(
-                PID,BIAS,REPS,Elapsed,MS,STDEV,IQR))
+raw <- semsat2_compiled_csv
 raw <- within(raw, {
   BIAS <- factor(BIAS)
+  HomType <- factor(HomType)
   REPS <- factor(REPS)
   PID <- factor(PID)
+  STDEV <- MS.3.STDEV
+  IQR <- MS.IQR
 })
 
-install.packages("car")
-library(car)
+raw <- subset(raw, (BIAS=="dominant" & ANSWER=="M") |
+                (BIAS=="subordinate" & ANSWER=="M") |
+                (BIAS=="unrelated" & (HomType=="NV" | HomType=="NN")
+                 & ANSWER=="C"),
+              select=c(PID,BIAS,HomType,REPS,
+                       ANSWER,MS,STDEV,IQR))
 
-raw$Elapsed <- with(raw,recode(Elapsed, "NA=0"))
+raw <- subset(raw, PID!=57 | PID!=42 | PID!=14,
+              select=c(PID,BIAS,HomType,REPS,
+                       ANSWER,MS,STDEV,IQR))
 View(raw)
 
-fit <- with(raw, lm(MS~BIAS*REPS*Elapsed))
-summary(fit)
+raw.stdev <- subset(raw,select=c(PID,BIAS,HomType,
+                                 REPS,ANSWER,STDEV))
+raw.stdev <- na.omit(raw.stdev)
 
-fit.aov <- with(raw, aov(MS~BIAS*REPS*Elapsed+Error(PID)))
-=======
-raw <- subset(semsat3_data_compiled, ((BIAS=="dominant" | BIAS=="subordinate")
-              & ANSWER=="M") | (BIAS=="unrelated" & ANSWER=="C"),select=c(
-                PID,BIAS,REPS,Elapsed,MS,STDEV,IQR))
-raw <- within(raw, {
-  BIAS <- factor(BIAS)
-  REPS <- factor(REPS)
-  PID <- factor(PID)
-})
+raw.IQR <- subset(raw,select=c(PID,BIAS,HomType,
+                               REPS,ANSWER,IQR))
+raw.IQR <- na.omit(raw.IQR)
 
-install.packages("car")
-library(car)
+raw.aov <- aov(MS ~ BIAS*HomType*REPS+Error(PID/(BIAS*HomType*REPS)),data=raw)
+summary(raw.aov)
 
-raw$Elapsed <- with(raw,recode(Elapsed, "NA=0"))
-View(raw)
+raw.stdev.aov <- aov(STDEV ~ BIAS*HomType*REPS+Error(PID/BIAS*HomType*REPS),
+                     data=raw.stdev)
+summary(raw.stdev.aov)
 
-fit <- with(raw, lm(MS~BIAS*REPS*Elapsed))
-summary(fit)
+raw.IQR.aov <- aov(IQR ~ BIAS*HomType*REPS+Error(PID),
+                     data=raw.IQR)
+summary(raw.IQR.aov)
 
-fit.aov <- with(raw, aov(MS~BIAS*REPS*Elapsed+Error(PID)))
->>>>>>> 0b11987ac2d7bc3424907f4d5fc90a3ae48e33b5
-summary(fit.aov)
+with(raw,interaction.plot(REPS,HomType,MS))
+with(raw.stdev,interaction.plot(REPS,BIAS,STDEV))
