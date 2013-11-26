@@ -1,5 +1,5 @@
 <?php
-    header('Content-Disposition: attachment; filename="semsat1_out.csv"');
+    header('Content-Disposition: attachment; filename="semsat2_out.csv"');
     header("Content-type: text/csv");
 
     //This is messy and an overall mediocre solution; however, if you throw this up onto a
@@ -52,20 +52,24 @@
 	// constructs an array for the cleaned-up data
 	$cleanedData = array();
 	$PID = 0;
+	$ITEM = 1;
 	
 	foreach($data as &$event) {
 	    if(is_numeric($event[0])) {
 		 $PID = $event[0];
+		 $ITEM = 1;
 	    } elseif($event[0]=="RELATED FILLER" || $event[0]=="UNRELATED FILLER") {
-		$temp = array($PID,$event[0],$event[1],$event[2],$event[3],$event[4],
-			      "",$event[5],"","","","","",$event[6],$event[7],$event[8]);
+		$temp = array($PID,$event[0],$event[1],$event[2],$ITEM,$event[4],
+			      "",$event[5],"","","","",$event[6],$event[7],$event[8],$event[9]);
 		array_push($cleanedData, $temp);
+		$ITEM++;
 	    } else {
-		$temp = array($PID,$event[0],$event[1],$event[2],$event[3],
+		$temp = array($PID,$event[0],$event[1],$event[2],$ITEM,
 		    $event[4],$event[5],$event[6],$event[7],$event[8],
 		    $event[11],$event[12],$event[13],$event[15],$event[16],
 		    $event[17]);
 		array_push($cleanedData, $temp);
+		$ITEM++;
 	    }
 	}
 	$out = fopen('php://output', 'w');
