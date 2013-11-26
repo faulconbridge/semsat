@@ -36,6 +36,8 @@ with(raw.stdev, plot(Elapsed,STDEV))
 fit <- with(raw.stdev, lm(STDEV~BIAS*REPS*Elapsed))
 summary(fit)
 
+layout(matrix(c(1,2),2,1))
+
 domlong <- subset(raw.stdev, BIAS=="dominant" & REPS=="30", select=c(Elapsed,STDEV,REPS))
 with(domlong, interaction.plot(Elapsed,REPS,STDEV))
 
@@ -47,3 +49,9 @@ with(domshort, interaction.plot(Elapsed,REPS,STDEV))
 
 subshort <- subset(raw.stdev, BIAS=="subordinate" & REPS=="3", select=c(Elapsed,STDEV,REPS))
 with(subshort, interaction.plot(Elapsed,REPS,STDEV))
+
+unlong <- subset(raw.stdev, BIAS=="unrelated" & REPS=="30", select=c(Elapsed,STDEV,REPS))
+with(unlong, interaction.plot(Elapsed,REPS,STDEV))
+
+unshort <- subset(raw.stdev, BIAS=="unrelated" & REPS=="3", select=c(Elapsed,STDEV,REPS))
+with(unshort, interaction.plot(Elapsed,REPS,STDEV))
