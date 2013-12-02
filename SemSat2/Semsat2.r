@@ -29,26 +29,10 @@ summary(stdev.aov)
 iqr.aov <- with(raw.iqr, aov(IQR~BIAS*REPS*Elapsed+Error(PID/(BIAS*REPS))+Elapsed))
 summary(iqr.aov)
 
-with(raw.stdev, plot(Elapsed,STDEV))
-fit <- with(raw.stdev, lm(STDEV~BIAS*REPS*Elapsed))
-summary(fit)
+dominant <- subset(raw.stdev, BIAS=="dominant", select=c(STDEV))
+subordinate <- subset(raw.stdev, BIAS=="subordinate", select=c(STDEV))
+unrelated <- subset(raw.stdev, BIAS=="unrelated", select=c(STDEV))
 
-layout(matrix(c(1,2),2,1))
-
-domlong <- subset(raw.stdev, BIAS=="dominant" & REPS=="30", select=c(Elapsed,STDEV,REPS))
-with(domlong, interaction.plot(Elapsed,REPS,STDEV))
-
-sublong <- subset(raw.stdev, BIAS=="subordinate" & REPS=="30", select=c(Elapsed,STDEV,REPS))
-with(sublong, interaction.plot(Elapsed,REPS,STDEV))
-
-domshort <- subset(raw.stdev, BIAS=="dominant" & REPS=="3", select=c(Elapsed,STDEV,REPS))
-with(domshort, interaction.plot(Elapsed,REPS,STDEV))
-
-subshort <- subset(raw.stdev, BIAS=="subordinate" & REPS=="3", select=c(Elapsed,STDEV,REPS))
-with(subshort, interaction.plot(Elapsed,REPS,STDEV))
-
-unlong <- subset(raw.stdev, BIAS=="unrelated" & REPS=="30", select=c(Elapsed,STDEV,REPS))
-with(unlong, interaction.plot(Elapsed,REPS,STDEV))
-
-unshort <- subset(raw.stdev, BIAS=="unrelated" & REPS=="3", select=c(Elapsed,STDEV,REPS))
-with(unshort, interaction.plot(Elapsed,REPS,STDEV))
+t.test(dominant,subordinate)
+t.test(dominant,unrelated)
+t.test(subordinate,unrelated)

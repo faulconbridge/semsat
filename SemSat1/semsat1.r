@@ -68,3 +68,19 @@ t.test(domrel,domunrel)
 t.test(domrel,subrel)
 t.test(subrel,subunrel)
 t.test(domunrel,subunrel)
+
+############################################################
+
+relshort <- subset(raw.stdev, RELATEDNESS=="related" & REPS=="short",
+                   select=c(STDEV))
+rellong <- subset(raw.stdev, RELATEDNESS=="related" & REPS=="long",
+                   select=c(STDEV))
+unrelshort <- subset(raw.stdev, RELATEDNESS=="unrelated" & REPS=="short",
+                   select=c(STDEV))
+unrellong <- subset(raw.stdev, RELATEDNESS=="unrelated" & REPS=="long",
+                  select=c(STDEV))
+
+t.test(relshort,rellong)
+t.test(relshort,unrelshort)
+t.test(rellong,unrellong)
+t.test(unrelshort,unrellong)
