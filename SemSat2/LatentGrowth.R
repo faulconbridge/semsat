@@ -3,26 +3,99 @@ require(OpenMx)
 
 ############################################################################
 
+# IMPORTANT!
+# If you want to test the fit of your model,
+# include the flag "cov" as the final argument
+# given to the makeGrowthModel function.
+# OpenMx will not compute the saturated model (and
+# thus will not return fit statistics) if you input
+# raw data. This flag lets the function automatically
+# extract a covariance matrix and column means from
+# your data, allows OpenMx to automatically
+# create the saturated model, and returns fit
+# statistics.
+
+# The relevant statistics are: 
+#   -chi-square
+#   -CFI
+#   -TLI
+#   -RMSEA
+
+# You want to see a chi-square with a small magnitude
+# (closer to 0 is better!; note: this statistic is
+# heavily influenced by sample size.). You can normalize
+# this statistic by dividing it by the degrees of freedom
+# to produce a normed chi-square. This value should
+# be generally below 5 for a well-fitted model.
+# 
+# Comparative Fit Index (CFI) compares performance
+# on your model to performance on baseline ("null"
+# or "independence") model; baseline model assumes
+# zero correlation between all observed variables.
+# Again, values closer to 0 are preferred.
+# 
+# Tucker-Lewis Index (TLI), also non-normed fit
+# index, is similar to the CFI: compares specified
+# model to a theoretical baseline, but adjusts for
+# degrees of freedom.
+# 
+# Both CFI and TFI can have values not contained in
+# the 0-1 range; however, that should be considered
+# suspect.
+# 
+# Root mean square error of approximation (RMSEA)
+# gives lack of fit of our model to population data
+# when parameters are optimally chosen. A value less
+# than 0.5 is optimal; anything above 0.10
+# constitutes a poorly-fitted model.
+
+############################################################################
+
 # User-defined function to create a growth curve model
 # given an arbitrary dataset
-makeGrowthModel <- function(name, dataset,slope) {
+
+getMxData <- function(dataset, type=NULL) {
+  if(missing(type)) {
+    temp <- mxData(
+      dataset,
+      type = "raw"
+      )
+  } else if(type=="cov") {
+    temp <- mxData(
+      cov(dataset),
+      type = "cov",
+      numObs = length(dataset[,1]),
+      means = colMeans(dataset)
+      )
+  } else {
+    temp <- mxData (
+      dataset,
+      type = "raw"
+      )
+  }
+  return(temp)
+}
+
+makeGrowthModel <- function(name = NULL, dataset = NULL, slope = NULL, type = NULL) {
+  if(missing(name)) {
+    stop(sprintf("You forgot to specify a model name! Do so with name = \"myModel\""))
+  } else if(missing(dataset)) {
+    stop(sprintf("You forgot to specify a dataset! Do so with dataset = myData"))
+  }
+  
+  if(missing(slope)) {
+    slope <- c(seq(from = 0, to = length(dataset[1,])-1))
+    print("You didn\'t specify a slope. Was this intentional? We defaulted")
+    print("to fixed-interval constants. If your data were not collected")
+    print("at even intervals, this may impact the results of your analysis.")
+  }
+  
   temp <- mxModel(name,
                   # Defines type of model: Path or RAM
                   # Path models are specified with explicit
                   # matrices; here, we use RAM
                   type="RAM",
-                  mxData(
-                    # Specify the dataset that will be used.
-                    # Defaults to myData, loaded previously
-                    
-                    dataset,
-                    type="raw"
-                    
-                    #cov(dataset),
-                    #type="cov",
-                    #numObs=length(dataset[,1]),
-                    #means=
-                  ),
+                  getMxData(dataset, type),
                   # Manifest variables are the dependent measures
                   # Here, they are daily measurements of rat weight
                   manifestVars=colnames(dataset),
@@ -135,7 +208,7 @@ makeGrowthModel <- function(name, dataset,slope) {
 
 ############################################################################
 
-# This function will plout out time series data for each of
+# This function will plot out time series data for each of
 # the experimental conditions in the sample dataset
 
 plotTimeSeries <- function(plotTitle,ylabel,xlabel,dataset) {
@@ -202,9 +275,9 @@ plotTimeSeries("Participant Response Time by Study--Test Interval, Unrelated, 30
 
 # Generate growth curve models for each experimental condition
 
-Dom3Growth <- makeGrowthModel("Dom3Growth",Dom3,
-                              c(0,1.823618,2.566402,3.121861,3.619235,4.116609,
-                                4.672067,5.414852,6.543333))
+Dom3Growth <- makeGrowthModel(name = "Dom3Growth", dataset = Dom3,
+                              slope = c(0,1.823618,2.566402,3.121861,3.619235,4.116609,
+                                        4.672067,5.414852,6.543333), type = "cov")
 Dom30Growth <- makeGrowthModel("Dom30Growth",Dom30,
                                c(0,2.004083,2.729832,3.27255,3.758517,4.244484,
                                  4.787203,5.512951,6.450278))
