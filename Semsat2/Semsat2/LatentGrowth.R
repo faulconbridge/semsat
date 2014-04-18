@@ -46,7 +46,7 @@ require(OpenMx)
 # Root mean square error of approximation (RMSEA)
 # gives lack of fit of our model to population data
 # when parameters are optimally chosen. A value less
-# than 0.5 is optimal; anything above 0.10
+# than 0.05 is optimal; anything above 0.10
 # constitutes a poorly-fitted model.
 
 ############################################################################
@@ -227,6 +227,10 @@ plotTimeSeries <- function(plotTitle,ylabel,xlabel,dataset) {
     }
   }
   
+  participant["Time"] <- c(seq(from=0, to=7,length.out=9))
+  participant["MS"] <- colMeans(dataset)
+  #lines(participant$Time, participant$MS, type="o", lwd=2, col="blue")
+  
   title(plotTitle)
 }
 
@@ -256,7 +260,7 @@ Unrel30 <- subset(LatentGrowth, BIAS=="unrelated"
 
 # Construct time series plots for each experimental condition
 
-layout(matrix(c(1:6),3,2))
+layout(matrix(c(1:4),2,2))
 
 plotTimeSeries("Participant Response Time by Study--Test Interval, Dominant, 3 Reps",
                "Response Time (MS)","Approx Time Between Study and Test (mins)",Dom3)
@@ -280,19 +284,19 @@ Dom3Growth <- makeGrowthModel(name = "Dom3Growth", dataset = Dom3,
                                         4.672067,5.414852,6.543333), type = "cov")
 Dom30Growth <- makeGrowthModel("Dom30Growth",Dom30,
                                c(0,2.004083,2.729832,3.27255,3.758517,4.244484,
-                                 4.787203,5.512951,6.450278))
+                                 4.787203,5.512951,6.450278), type="cov")
 Sub3Growth <- makeGrowthModel("Sub3Growth",Sub3,
                               c(0,1.870324,2.614923,3.171738,3.670328,4.168918,
-                                4.725733,5.470332,6.453611))
+                                4.725733,5.470332,6.453611), type="cov")
 Sub30Growth <- makeGrowthModel("Sub30Growth",Sub30,
                                c(0,2.167211,2.854884,3.369129,3.8296,4.290071,
-                                 4.804316,5.491988,6.391944))
+                                 4.804316,5.491988,6.391944), type="cov")
 Unrel3Growth <- makeGrowthModel("Unrel3Growth",Unrel3,
                                 c(0,1.727652,2.494975,3.068783,3.582588,4.096393,
-                                  4.670201,5.437524,6.525))
+                                  4.670201,5.437524,6.525), type="cov")
 Unrel30Growth <- makeGrowthModel("Unrel30Growth",Unrel30,
                                  c(0,2.062077,2.768994,3.29763,3.770987,4.244344,
-                                   4.772981,5.479897,6.481111))
+                                   4.772981,5.479897,6.481111), type="cov")
 
 ############################################################################
 
@@ -315,6 +319,14 @@ summary(Sub3Fit)
 summary(Sub30Fit)
 summary(Unrel3Fit)
 summary(Unrel30Fit)
+
+bivHetModel <- mxModel("bivHet",
+                       Dom3Fit, Dom30Fit,
+                       mxAlgebra(Dom3Fit.objective + Dom30Fit.objective, name="h12"),
+                       mxAlgebraObjective("h12")
+)
+
+bivHetFit <- mxRun(bivHetModel)
 
 ############################################################################
 
