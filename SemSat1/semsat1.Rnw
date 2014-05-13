@@ -1,0 +1,45 @@
+\documentclass[11pt,final] {article}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\section{Formatting the data for analysis}
+
+We will start by specifying which variables should be treated as factors and subsetting our data to remove any null values along various criteria. Specifically, we create three new subsets of the data: one using the raw MS response times of participants and two that trim out any outlying MS response times. Specifically, for one subset, individual response times that are beyond 3 standard deviations above or below the mean response time for that participant are dropped. For the second, individual response times that are greater than the third quartile RT plus 1.5 times the IQR or less than the first quartile minus 1.5 times the IQR are dropped.
+
+<<formatting, echo=-(1:3)>>=
+# Makes a copy of our data
+SemSat1_compiled <- read.csv("~/Documents/semsat/SemSat1/SemSat1_compiled.csv")
+raw <- SemSat1_compiled
+
+# treats our within subjects variables as factors
+# renames a couple of ugly variables
+raw <- within(raw, {
+  BIAS <- factor(BIAS)
+  RELATEDNESS <- factor(RELATEDNESS)
+  REPS <- factor(REPS)
+  PID <- factor(PID)
+  STDEV <- MS.3.STDEV
+})
+
+# strips out all filler items and incorrect responses
+raw <- subset(raw, (BIAS=="dominant" | BIAS=="subordinate") & 
+                ((RELATEDNESS=="related" & ANSWER=="M") |
+                (RELATEDNESS=="unrelated" & ANSWER=="C")),
+              select=c(PID,BIAS,RELATEDNESS,REPS,
+                       ANSWER,MS,STDEV,IQR))
+View(raw)
+
+# subsets the data to remove any null values
+# in the RTs trimmed to 3 standard deviations
+raw.stdev <- subset(raw,select=c(PID,BIAS,RELATEDNESS,
+                                 REPS,ANSWER,STDEV))
+raw.stdev <- na.omit(raw.stdev)
+
+# same thing trimming at +- 1.5 times the IQR
+raw.iqr <- subset(raw,select=c(PID,BIAS,RELATEDNESS,
+                                 REPS,ANSWER,IQR))
+raw.iqr <- na.omit(raw.iqr)
+@
+
+\end{document}

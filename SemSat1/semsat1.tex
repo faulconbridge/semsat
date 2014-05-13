@@ -1,0 +1,92 @@
+\documentclass[11pt,final] {article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[margin=1in]{geometry}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
+\begin{document}
+
+\section{Formatting the data for analysis}
+
+We will start by specifying which variables should be treated as factors and subsetting our data to remove any null values along various criteria. Specifically, we create three new subsets of the data: one using the raw MS response times of participants and two that trim out any outlying MS response times. Specifically, for one subset, individual response times that are beyond 3 standard deviations above or below the mean response time for that participant are dropped. For the second, individual response times that are greater than the third quartile RT plus 1.5 times the IQR or less than the first quartile minus 1.5 times the IQR are dropped.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# treats our within subjects variables as factors renames a couple of ugly}
+\hlcom{# variables}
+\hlstd{raw} \hlkwb{<-} \hlkwd{within}\hlstd{(raw, \{}
+    \hlstd{BIAS} \hlkwb{<-} \hlkwd{factor}\hlstd{(BIAS)}
+    \hlstd{RELATEDNESS} \hlkwb{<-} \hlkwd{factor}\hlstd{(RELATEDNESS)}
+    \hlstd{REPS} \hlkwb{<-} \hlkwd{factor}\hlstd{(REPS)}
+    \hlstd{PID} \hlkwb{<-} \hlkwd{factor}\hlstd{(PID)}
+    \hlstd{STDEV} \hlkwb{<-} \hlstd{MS.3.STDEV}
+\hlstd{\})}
+
+\hlcom{# strips out all filler items and incorrect responses}
+\hlstd{raw} \hlkwb{<-} \hlkwd{subset}\hlstd{(raw, (BIAS} \hlopt{==} \hlstr{"dominant"} \hlopt{|} \hlstd{BIAS} \hlopt{==} \hlstr{"subordinate"}\hlstd{)} \hlopt{&} \hlstd{((RELATEDNESS} \hlopt{==}
+    \hlstr{"related"} \hlopt{&} \hlstd{ANSWER} \hlopt{==} \hlstr{"M"}\hlstd{)} \hlopt{|} \hlstd{(RELATEDNESS} \hlopt{==} \hlstr{"unrelated"} \hlopt{&} \hlstd{ANSWER} \hlopt{==} \hlstr{"C"}\hlstd{)),}
+    \hlkwc{select} \hlstd{=} \hlkwd{c}\hlstd{(PID, BIAS, RELATEDNESS, REPS, ANSWER, MS, STDEV, IQR))}
+\hlkwd{View}\hlstd{(raw)}
+
+\hlcom{# subsets the data to remove any null values in the RTs trimmed to 3}
+\hlcom{# standard deviations}
+\hlstd{raw.stdev} \hlkwb{<-} \hlkwd{subset}\hlstd{(raw,} \hlkwc{select} \hlstd{=} \hlkwd{c}\hlstd{(PID, BIAS, RELATEDNESS, REPS, ANSWER, STDEV))}
+\hlstd{raw.stdev} \hlkwb{<-} \hlkwd{na.omit}\hlstd{(raw.stdev)}
+
+\hlcom{# same thing trimming at +- 1.5 times the IQR}
+\hlstd{raw.iqr} \hlkwb{<-} \hlkwd{subset}\hlstd{(raw,} \hlkwc{select} \hlstd{=} \hlkwd{c}\hlstd{(PID, BIAS, RELATEDNESS, REPS, ANSWER, IQR))}
+\hlstd{raw.iqr} \hlkwb{<-} \hlkwd{na.omit}\hlstd{(raw.iqr)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+
+\end{document}
