@@ -77,6 +77,8 @@ First we can look at the untrimmed data:
 raw.aov <- aov(MS ~ BIAS*HomType*REPS+Error(PID),
                data=raw.mean.MS)
 library(xtable)
+library(nlme)
+library(multcomp)
 print(xtable(summary(raw.aov)),type="html")
 ```
 
@@ -93,3 +95,19 @@ iqr.aov <- aov(IQR ~ BIAS*HomType*REPS+Error(PID),
                      data=raw.mean.IQR)
 print(xtable(summary(iqr.aov)),type="html")
 ```
+
+Now we will perform a test on the three-way BIAS x HomType x REPS interaction:
+```{r}
+raw.mean.stdev$BHR <- with(raw.mean.stdev,interaction(BIAS,HomType,REPS,sep="x"))
+
+raw.mean.stdev$BHR <- factor(raw.mean.stdev$BHR)
+
+stdev.lme <- lme(STDEV~BHR, random=~1|PID, data=raw.mean.stdev)
+
+l2 <- glht(stdev.lme,linfct = mcp(BHR = "Tukey"))
+summary(l2)
+```
+
+Or, more compactly:
+
+<img src="figure/Tukey.png" />
