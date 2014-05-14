@@ -1,5 +1,5 @@
-Semantic Satiation among Lexically Ambiguous Words: Experiment 1
-================================================================
+Semantic Satiation among Lexically Ambiguous Words: Experiment 1a
+=================================================================
 
 Acquiring the Data
 ------------------

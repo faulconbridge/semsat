@@ -1,10 +1,10 @@
-Semantic Satiation among Lexically Ambiguous Words: Experiment 1
-================================================================
+Semantic Satiation among Lexically Ambiguous Words: Experiment 1b
+=================================================================
 
 Acquiring the Data
 ------------------
 
-We will first (1) download the raw CSV from github
+We will first download the raw CSV from github and do a bit of preprossing on it:
 
 ```{r}
 download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1b/Semsat1b_compiled.csv", "semsat1b.csv", "wget", extra="--no-check-certificate")

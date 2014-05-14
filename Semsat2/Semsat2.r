@@ -1,4 +1,4 @@
-raw <- Semsat3_compiled
+raw <- Semsat2_compiled
 raw <- within(raw, {
   BIAS <- factor(BIAS)
   HomType <- factor(HomType)

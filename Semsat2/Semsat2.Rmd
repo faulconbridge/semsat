@@ -1,0 +1,7 @@
+Semantic Satiation among Lexically Ambiguous Words: Experiment 2
+================================================================
+
+Acquiring the Data
+------------------
+
+We will first download the raw CSV from github and do a bit of preprossing on it:
