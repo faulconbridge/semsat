@@ -4,7 +4,7 @@ Semantic Satiation among Lexically Ambiguous Words: Experiment 1b
 Acquiring the Data
 ------------------
 
-We will first download the raw CSV from github and do a bit of preprossing on it:
+We will first download the raw CSV from github and do a bit of preprocessing on it:
 
 
 ```r
@@ -120,7 +120,7 @@ This model gives:
 ```
 
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 10:45:20 2014 -->
+<!-- Wed May 14 13:26:47 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> numDF </TH> <TH> denDF </TH> <TH> F-value </TH> <TH> p-value </TH>  </TR>
   <TR> <TD align="right"> (Intercept) </TD> <TD align="right">   1 </TD> <TD align="right"> 2329.00 </TD> <TD align="right"> 845.45 </TD> <TD align="right"> 0.00 </TD> </TR>

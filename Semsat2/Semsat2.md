@@ -4,7 +4,7 @@ Semantic Satiation among Lexically Ambiguous Words: Experiment 2
 Acquiring the Data
 ------------------
 
-We will first download the raw CSV from github and do a bit of preprossing on it:
+We will first download the raw CSV from github and do a bit of preprocessing on it:
 
 
 ```r
@@ -80,7 +80,7 @@ raw.aov <- aov(MS ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.MS)
 ```
 
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 13:25:22 2014 -->
+<!-- Wed May 14 13:26:57 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 4853496.45 </TD> <TD align="right"> 4853496.45 </TD> <TD align="right"> 0.19 </TD> <TD align="right"> 0.6614 </TD> </TR>
@@ -105,7 +105,7 @@ stdev.aov <- aov(STDEV ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.std
 ```
 
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 13:25:22 2014 -->
+<!-- Wed May 14 13:26:57 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 7873612.05 </TD> <TD align="right"> 7873612.05 </TD> <TD align="right"> 0.38 </TD> <TD align="right"> 0.5374 </TD> </TR>
@@ -130,7 +130,7 @@ iqr.aov <- aov(IQR ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.IQR)
 ```
 
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 13:25:22 2014 -->
+<!-- Wed May 14 13:26:57 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> BIAS      </TD> <TD align="right"> 2 </TD> <TD align="right"> 45028697.46 </TD> <TD align="right"> 22514348.73 </TD> <TD align="right"> 2.12 </TD> <TD align="right"> 0.1265 </TD> </TR>
@@ -240,22 +240,22 @@ summary(l2)
 ## unrelatedxNVxshort - dominantxNVxshort == 0        572.75     116.61
 ## unrelatedxNVxshort - subordinatexNVxshort == 0     147.36     117.30
 ##                                                  z value Pr(>|z|)    
-## subordinatexNNxlong - dominantxNNxlong == 0         2.91    0.138    
+## subordinatexNNxlong - dominantxNNxlong == 0         2.91    0.136    
 ## unrelatedxNNxlong - dominantxNNxlong == 0           3.96    <0.01 ** 
 ## dominantxNVxlong - dominantxNNxlong == 0            2.27    0.502    
 ## subordinatexNVxlong - dominantxNNxlong == 0         4.05    <0.01 ** 
-## unrelatedxNVxlong - dominantxNNxlong == 0           3.74    0.010 *  
+## unrelatedxNVxlong - dominantxNNxlong == 0           3.74    <0.01 ** 
 ## dominantxNNxshort - dominantxNNxlong == 0           0.79    1.000    
-## subordinatexNNxshort - dominantxNNxlong == 0        1.87    0.776    
-## unrelatedxNNxshort - dominantxNNxlong == 0          3.34    0.040 *  
+## subordinatexNNxshort - dominantxNNxlong == 0        1.87    0.775    
+## unrelatedxNNxshort - dominantxNNxlong == 0          3.34    0.041 *  
 ## dominantxNVxshort - dominantxNNxlong == 0          -0.78    1.000    
-## subordinatexNVxshort - dominantxNNxlong == 0        2.86    0.157    
+## subordinatexNVxshort - dominantxNNxlong == 0        2.86    0.156    
 ## unrelatedxNVxshort - dominantxNNxlong == 0          4.13    <0.01 ** 
 ## unrelatedxNNxlong - subordinatexNNxlong == 0        1.05    0.997    
 ## dominantxNVxlong - subordinatexNNxlong == 0        -0.65    1.000    
 ## subordinatexNVxlong - subordinatexNNxlong == 0      1.14    0.993    
 ## unrelatedxNVxlong - subordinatexNNxlong == 0        0.83    1.000    
-## dominantxNNxshort - subordinatexNNxlong == 0       -2.11    0.613    
+## dominantxNNxshort - subordinatexNNxlong == 0       -2.11    0.612    
 ## subordinatexNNxshort - subordinatexNNxlong == 0    -1.03    0.997    
 ## unrelatedxNNxshort - subordinatexNNxlong == 0       0.43    1.000    
 ## dominantxNVxshort - subordinatexNNxlong == 0       -3.69    0.012 *  
@@ -271,21 +271,21 @@ summary(l2)
 ## subordinatexNVxshort - unrelatedxNNxlong == 0      -1.07    0.996    
 ## unrelatedxNVxshort - unrelatedxNNxlong == 0         0.19    1.000    
 ## subordinatexNVxlong - dominantxNVxlong == 0         1.78    0.829    
-## unrelatedxNVxlong - dominantxNVxlong == 0           1.47    0.949    
+## unrelatedxNVxlong - dominantxNVxlong == 0           1.47    0.948    
 ## dominantxNNxshort - dominantxNVxlong == 0          -1.47    0.949    
 ## subordinatexNNxshort - dominantxNVxlong == 0       -0.38    1.000    
 ## unrelatedxNNxshort - dominantxNVxlong == 0          1.07    0.996    
-## dominantxNVxshort - dominantxNVxlong == 0          -3.05    0.095 .  
+## dominantxNVxshort - dominantxNVxlong == 0          -3.05    0.096 .  
 ## subordinatexNVxshort - dominantxNVxlong == 0        0.61    1.000    
-## unrelatedxNVxshort - dominantxNVxlong == 0          1.87    0.775    
+## unrelatedxNVxshort - dominantxNVxlong == 0          1.87    0.776    
 ## unrelatedxNVxlong - subordinatexNVxlong == 0       -0.31    1.000    
 ## dominantxNNxshort - subordinatexNVxlong == 0       -3.24    0.054 .  
-## subordinatexNNxshort - subordinatexNVxlong == 0    -2.16    0.581    
+## subordinatexNNxshort - subordinatexNVxlong == 0    -2.16    0.580    
 ## unrelatedxNNxshort - subordinatexNVxlong == 0      -0.71    1.000    
 ## dominantxNVxshort - subordinatexNVxlong == 0       -4.83    <0.01 ***
 ## subordinatexNVxshort - subordinatexNVxlong == 0    -1.16    0.992    
 ## unrelatedxNVxshort - subordinatexNVxlong == 0       0.10    1.000    
-## dominantxNNxshort - unrelatedxNVxlong == 0         -2.94    0.129    
+## dominantxNNxshort - unrelatedxNVxlong == 0         -2.94    0.128    
 ## subordinatexNNxshort - unrelatedxNVxlong == 0      -1.85    0.790    
 ## unrelatedxNNxshort - unrelatedxNVxlong == 0        -0.40    1.000    
 ## dominantxNVxshort - unrelatedxNVxlong == 0         -4.52    <0.01 ***
@@ -294,12 +294,12 @@ summary(l2)
 ## subordinatexNNxshort - dominantxNNxshort == 0       1.08    0.995    
 ## unrelatedxNNxshort - dominantxNNxshort == 0         2.54    0.315    
 ## dominantxNVxshort - dominantxNNxshort == 0         -1.57    0.921    
-## subordinatexNVxshort - dominantxNNxshort == 0       2.07    0.645    
-## unrelatedxNVxshort - dominantxNNxshort == 0         3.34    0.040 *  
+## subordinatexNVxshort - dominantxNNxshort == 0       2.07    0.646    
+## unrelatedxNVxshort - dominantxNNxshort == 0         3.34    0.041 *  
 ## unrelatedxNNxshort - subordinatexNNxshort == 0      1.45    0.953    
-## dominantxNVxshort - subordinatexNNxshort == 0      -2.65    0.251    
+## dominantxNVxshort - subordinatexNNxshort == 0      -2.65    0.250    
 ## subordinatexNVxshort - subordinatexNNxshort == 0    0.99    0.998    
-## unrelatedxNVxshort - subordinatexNNxshort == 0      2.25    0.512    
+## unrelatedxNVxshort - subordinatexNNxshort == 0      2.25    0.511    
 ## dominantxNVxshort - unrelatedxNNxshort == 0        -4.12    <0.01 ** 
 ## subordinatexNVxshort - unrelatedxNNxshort == 0     -0.46    1.000    
 ## unrelatedxNVxshort - unrelatedxNNxshort == 0        0.81    1.000    
