@@ -80,7 +80,7 @@ raw.aov <- aov(MS ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.MS)
 ```
 
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 13:23:12 2014 -->
+<!-- Wed May 14 13:25:22 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 4853496.45 </TD> <TD align="right"> 4853496.45 </TD> <TD align="right"> 0.19 </TD> <TD align="right"> 0.6614 </TD> </TR>
@@ -105,7 +105,7 @@ stdev.aov <- aov(STDEV ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.std
 ```
 
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 13:23:12 2014 -->
+<!-- Wed May 14 13:25:22 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 7873612.05 </TD> <TD align="right"> 7873612.05 </TD> <TD align="right"> 0.38 </TD> <TD align="right"> 0.5374 </TD> </TR>
@@ -130,7 +130,7 @@ iqr.aov <- aov(IQR ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.IQR)
 ```
 
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 13:23:12 2014 -->
+<!-- Wed May 14 13:25:22 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> BIAS      </TD> <TD align="right"> 2 </TD> <TD align="right"> 45028697.46 </TD> <TD align="right"> 22514348.73 </TD> <TD align="right"> 2.12 </TD> <TD align="right"> 0.1265 </TD> </TR>
@@ -240,22 +240,22 @@ summary(l2)
 ## unrelatedxNVxshort - dominantxNVxshort == 0        572.75     116.61
 ## unrelatedxNVxshort - subordinatexNVxshort == 0     147.36     117.30
 ##                                                  z value Pr(>|z|)    
-## subordinatexNNxlong - dominantxNNxlong == 0         2.91    0.137    
+## subordinatexNNxlong - dominantxNNxlong == 0         2.91    0.138    
 ## unrelatedxNNxlong - dominantxNNxlong == 0           3.96    <0.01 ** 
 ## dominantxNVxlong - dominantxNNxlong == 0            2.27    0.502    
 ## subordinatexNVxlong - dominantxNNxlong == 0         4.05    <0.01 ** 
-## unrelatedxNVxlong - dominantxNNxlong == 0           3.74    <0.01 ** 
+## unrelatedxNVxlong - dominantxNNxlong == 0           3.74    0.010 *  
 ## dominantxNNxshort - dominantxNNxlong == 0           0.79    1.000    
-## subordinatexNNxshort - dominantxNNxlong == 0        1.87    0.775    
+## subordinatexNNxshort - dominantxNNxlong == 0        1.87    0.776    
 ## unrelatedxNNxshort - dominantxNNxlong == 0          3.34    0.040 *  
 ## dominantxNVxshort - dominantxNNxlong == 0          -0.78    1.000    
-## subordinatexNVxshort - dominantxNNxlong == 0        2.86    0.155    
+## subordinatexNVxshort - dominantxNNxlong == 0        2.86    0.157    
 ## unrelatedxNVxshort - dominantxNNxlong == 0          4.13    <0.01 ** 
 ## unrelatedxNNxlong - subordinatexNNxlong == 0        1.05    0.997    
 ## dominantxNVxlong - subordinatexNNxlong == 0        -0.65    1.000    
 ## subordinatexNVxlong - subordinatexNNxlong == 0      1.14    0.993    
 ## unrelatedxNVxlong - subordinatexNNxlong == 0        0.83    1.000    
-## dominantxNNxshort - subordinatexNNxlong == 0       -2.11    0.614    
+## dominantxNNxshort - subordinatexNNxlong == 0       -2.11    0.613    
 ## subordinatexNNxshort - subordinatexNNxlong == 0    -1.03    0.997    
 ## unrelatedxNNxshort - subordinatexNNxlong == 0       0.43    1.000    
 ## dominantxNVxshort - subordinatexNNxlong == 0       -3.69    0.012 *  
@@ -265,7 +265,7 @@ summary(l2)
 ## subordinatexNVxlong - unrelatedxNNxlong == 0        0.09    1.000    
 ## unrelatedxNVxlong - unrelatedxNNxlong == 0         -0.22    1.000    
 ## dominantxNNxshort - unrelatedxNNxlong == 0         -3.16    0.070 .  
-## subordinatexNNxshort - unrelatedxNNxlong == 0      -2.07    0.644    
+## subordinatexNNxshort - unrelatedxNNxlong == 0      -2.07    0.643    
 ## unrelatedxNNxshort - unrelatedxNNxlong == 0        -0.62    1.000    
 ## dominantxNVxshort - unrelatedxNNxlong == 0         -4.74    <0.01 ***
 ## subordinatexNVxshort - unrelatedxNNxlong == 0      -1.07    0.996    
@@ -285,19 +285,19 @@ summary(l2)
 ## dominantxNVxshort - subordinatexNVxlong == 0       -4.83    <0.01 ***
 ## subordinatexNVxshort - subordinatexNVxlong == 0    -1.16    0.992    
 ## unrelatedxNVxshort - subordinatexNVxlong == 0       0.10    1.000    
-## dominantxNNxshort - unrelatedxNVxlong == 0         -2.94    0.128    
+## dominantxNNxshort - unrelatedxNVxlong == 0         -2.94    0.129    
 ## subordinatexNNxshort - unrelatedxNVxlong == 0      -1.85    0.790    
 ## unrelatedxNNxshort - unrelatedxNVxlong == 0        -0.40    1.000    
 ## dominantxNVxshort - unrelatedxNVxlong == 0         -4.52    <0.01 ***
 ## subordinatexNVxshort - unrelatedxNVxlong == 0      -0.85    0.999    
 ## unrelatedxNVxshort - unrelatedxNVxlong == 0         0.41    1.000    
 ## subordinatexNNxshort - dominantxNNxshort == 0       1.08    0.995    
-## unrelatedxNNxshort - dominantxNNxshort == 0         2.54    0.316    
+## unrelatedxNNxshort - dominantxNNxshort == 0         2.54    0.315    
 ## dominantxNVxshort - dominantxNNxshort == 0         -1.57    0.921    
 ## subordinatexNVxshort - dominantxNNxshort == 0       2.07    0.645    
-## unrelatedxNVxshort - dominantxNNxshort == 0         3.34    0.041 *  
+## unrelatedxNVxshort - dominantxNNxshort == 0         3.34    0.040 *  
 ## unrelatedxNNxshort - subordinatexNNxshort == 0      1.45    0.953    
-## dominantxNVxshort - subordinatexNNxshort == 0      -2.65    0.250    
+## dominantxNVxshort - subordinatexNNxshort == 0      -2.65    0.251    
 ## subordinatexNVxshort - subordinatexNNxshort == 0    0.99    0.998    
 ## unrelatedxNVxshort - subordinatexNNxshort == 0      2.25    0.512    
 ## dominantxNVxshort - unrelatedxNNxshort == 0        -4.12    <0.01 ** 
@@ -314,4 +314,4 @@ summary(l2)
 
 Or, more compactly:
 
-<img src="figure/Tukey.png" />
+<img src="https://raw.githubusercontent.com/faulconbridge/semsat/master/Semsat2/figure/Tukey.png" />
