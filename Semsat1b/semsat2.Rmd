@@ -1,0 +1,66 @@
+Semantic Satiation among Lexically Ambiguous Words: Experiment 1
+================================================================
+
+Acquiring the Data
+------------------
+
+We will first (1) download the raw CSV from github
+
+```{r}
+download.file("https://raw.githubusercontent.com/faulconbridge/semsat/master/Semsat2/Semsat2_compiled.csv", "semsat2.csv", "wget", extra="--no-check-certificate")
+  semsat2 <- read.csv("semsat2.csv",header=TRUE,sep=",")
+
+raw <- subset(semsat2, ((BIAS=="dominant" | BIAS=="subordinate")
+              & ANSWER=="M") | (BIAS=="unrelated" & ANSWER=="C"),select=c(
+                PID,BIAS,REPS,Elapsed,MS,STDEV,IQR))
+
+raw <- within(raw, {
+  BIAS <- factor(BIAS)
+  REPS <- factor(REPS)
+  PID <- factor(PID)
+})
+
+raw.MS <- subset(raw, select=c(PID:MS))
+raw.MS <- na.omit(raw.MS)
+
+raw.stdev <- subset(raw, select=c(PID:Elapsed,STDEV))
+raw.stdev <- na.omit(raw.stdev)
+View(raw.stdev)
+# raw[is.na(raw)] <- 0
+
+library(lattice)
+
+xyplot(MS ~ Elapsed | REPS+BIAS, data = raw, groups = PID,
+  type = "o", panel = panel.superpose)
+
+library(nlme)
+
+time.linear <- lme(STDEV ~ BIAS * REPS * Elapsed,
+  random = list(PID = pdDiag(~ Elapsed)), na.action=na.omit, data = raw.stdev)
+summary(time.linear)
+anova(time.linear)
+
+fitted <- fitted(time.linear, level=0)
+
+with(raw.stdev, plot(Elapsed[BIAS=="dominant"], fitted[BIAS=="dominant"], ylim = c(500, 2000),
+  xlab = "time", ylab = "predicted", type = "b", col = "green"))
+with(raw.stdev, points(Elapsed[BIAS=="subordinate"], fitted[BIAS=="subordinate"],
+  pch = 4, type = "b", col = "red"))
+with(raw.stdev, points(Elapsed[BIAS=="unrelated"], fitted[BIAS=="unrelated"],
+  pch = 16, type = "b", col = "blue"))
+
+with(raw, plot(Elapsed[BIAS=="dominant" & REPS==3], fitted[BIAS=="dominant" & REPS==3], ylim = c(500, 2000),
+  xlab = "time", ylab = "predicted", type = "b", col = "green"))
+with(raw, points(Elapsed[BIAS=="dominant" & REPS==30], fitted[BIAS=="dominant" & REPS==30],
+  pch = 4, type = "b", col = "red"))
+
+with(raw, plot(Elapsed[BIAS=="subordinate" & REPS==3], fitted[BIAS=="subordinate" & REPS==3], ylim = c(500, 2000),
+  xlab = "time", ylab = "predicted", type = "b", col = "green"))
+with(raw, points(Elapsed[BIAS=="subordinate" & REPS==30], fitted[BIAS=="subordinate" & REPS==30],
+  pch = 4, type = "b", col = "red"))
+
+with(raw, plot(Elapsed[BIAS=="unrelated" & REPS==3], fitted[BIAS=="unrelated" & REPS==3], ylim = c(500, 2000),
+  xlab = "time", ylab = "predicted", type = "b", col = "green"))
+with(raw, points(Elapsed[BIAS=="unrelated" & REPS==30], fitted[BIAS=="unrelated" & REPS==30],
+  pch = 4, type = "b", col = "red"))
+```
