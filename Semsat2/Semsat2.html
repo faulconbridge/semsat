@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Semantic Satiation among Lexically Ambiguous Words: Experiment 2</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>Semantic Satiation among Lexically Ambiguous Words: Experiment 2</h1>
+
+<h2>Acquiring the Data</h2>
+
+<p>We will first download the raw CSV from github and do a bit of preprossing on it:</p>
+
+<pre><code class="r">download.file(&quot;https://github.com/faulconbridge/semsat/raw/master/Semsat2/Semsat2_compiled.csv&quot;, 
+    &quot;semsat2.csv&quot;, &quot;wget&quot;, extra = &quot;--no-check-certificate&quot;)
+semsat2 &lt;- read.csv(&quot;semsat2.csv&quot;, header = TRUE, sep = &quot;,&quot;)
+
+raw &lt;- semsat2
+
+# Specify which variables should be treated as factors
+raw &lt;- within(raw, {
+    BIAS &lt;- factor(BIAS)
+    HomType &lt;- factor(HomType)
+    REPS &lt;- factor(REPS)
+    PID &lt;- factor(PID)
+    STDEV &lt;- MS.3.STDEV
+    IQR &lt;- MS.IQR
+})
+
+# Strip out all filler and incorrectly-answered items
+raw &lt;- subset(raw, (BIAS == &quot;dominant&quot; &amp; ANSWER == &quot;M&quot;) | (BIAS == &quot;subordinate&quot; &amp; 
+    ANSWER == &quot;M&quot;) | (BIAS == &quot;unrelated&quot; &amp; (HomType == &quot;NV&quot; | HomType == &quot;NN&quot;) &amp; 
+    ANSWER == &quot;C&quot;), select = c(PID, BIAS, HomType, REPS, ANSWER, MS, STDEV, 
+    IQR))
+
+# Strip out participants who encountered bugs during the experiment
+raw &lt;- subset(raw, PID != 57 | PID != 42 | PID != 14, select = c(PID, BIAS, 
+    HomType, REPS, ANSWER, MS, STDEV, IQR))
+
+# Subset data to include untrimmed MS response times
+raw.MS &lt;- subset(raw, select = c(PID:MS))
+raw.MS &lt;- na.omit(raw.MS)
+
+# Take the participant average RTs for each condition
+raw.mean.MS &lt;- aggregate(raw.MS$MS, by = list(raw.MS$PID, raw.MS$BIAS, raw.MS$HomType, 
+    raw.MS$REPS), FUN = &quot;mean&quot;)
+colnames(raw.mean.MS) &lt;- c(&quot;PID&quot;, &quot;BIAS&quot;, &quot;HomType&quot;, &quot;REPS&quot;, &quot;MS&quot;)
+
+# Subset the data to remove outliers beyond +-3 sd
+raw.stdev &lt;- subset(raw, select = c(PID, BIAS, HomType, REPS, STDEV))
+raw.stdev &lt;- na.omit(raw.stdev)
+
+# Take the participant average RTs for each condition
+
+raw.mean.stdev &lt;- aggregate(raw.stdev$STDEV, by = list(raw.stdev$PID, raw.stdev$BIAS, 
+    raw.stdev$HomType, raw.stdev$REPS), FUN = &quot;mean&quot;)
+colnames(raw.mean.stdev) &lt;- c(&quot;PID&quot;, &quot;BIAS&quot;, &quot;HomType&quot;, &quot;REPS&quot;, &quot;STDEV&quot;)
+
+# Subset the data to remove outliers 1.5x IQR beyond Q1 or Q3
+raw.IQR &lt;- subset(raw, select = c(PID, BIAS, HomType, REPS, IQR))
+raw.IQR &lt;- na.omit(raw.IQR)
+
+# Take the participant average RTs for each condition
+raw.mean.IQR &lt;- aggregate(raw.IQR$IQR, by = list(raw.IQR$PID, raw.IQR$BIAS, 
+    raw.IQR$HomType, raw.IQR$REPS), FUN = &quot;mean&quot;)
+colnames(raw.mean.IQR) &lt;- c(&quot;PID&quot;, &quot;BIAS&quot;, &quot;HomType&quot;, &quot;REPS&quot;, &quot;IQR&quot;)
+</code></pre>
+
+<h2>Performing the Analyses</h2>
+
+<p>First we can look at the untrimmed data:</p>
+
+<pre><code class="r">raw.aov &lt;- aov(MS ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.MS)
+</code></pre>
+
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+
+<!-- Wed May 14 11:10:38 2014 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 4853496.45 </TD> <TD align="right"> 4853496.45 </TD> <TD align="right"> 0.19 </TD> <TD align="right"> 0.6614 </TD> </TR>
+  <TR> <TD> HomType   </TD> <TD align="right"> 1 </TD> <TD align="right"> 12823397.06 </TD> <TD align="right"> 12823397.06 </TD> <TD align="right"> 0.51 </TD> <TD align="right"> 0.4769 </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 90025073.96 </TD> <TD align="right"> 90025073.96 </TD> <TD align="right"> 3.59 </TD> <TD align="right"> 0.0619 </TD> </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 80 </TD> <TD align="right"> 2008699426.87 </TD> <TD align="right"> 25108742.84 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS              </TD> <TD align="right"> 2 </TD> <TD align="right"> 38663066.69 </TD> <TD align="right"> 19331533.34 </TD> <TD align="right"> 18.26 </TD> <TD align="right"> 0.0000 </TD> </TR>
+  <TR> <TD> HomType           </TD> <TD align="right"> 1 </TD> <TD align="right"> 5594529.45 </TD> <TD align="right"> 5594529.45 </TD> <TD align="right"> 5.28 </TD> <TD align="right"> 0.0218 </TD> </TR>
+  <TR> <TD> REPS              </TD> <TD align="right"> 1 </TD> <TD align="right"> 482447.51 </TD> <TD align="right"> 482447.51 </TD> <TD align="right"> 0.46 </TD> <TD align="right"> 0.4998 </TD> </TR>
+  <TR> <TD> BIAS:HomType      </TD> <TD align="right"> 2 </TD> <TD align="right"> 7350351.61 </TD> <TD align="right"> 3675175.81 </TD> <TD align="right"> 3.47 </TD> <TD align="right"> 0.0315 </TD> </TR>
+  <TR> <TD> BIAS:REPS         </TD> <TD align="right"> 2 </TD> <TD align="right"> 674669.51 </TD> <TD align="right"> 337334.75 </TD> <TD align="right"> 0.32 </TD> <TD align="right"> 0.7272 </TD> </TR>
+  <TR> <TD> HomType:REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 518789.63 </TD> <TD align="right"> 518789.63 </TD> <TD align="right"> 0.49 </TD> <TD align="right"> 0.4841 </TD> </TR>
+  <TR> <TD> BIAS:HomType:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 5567072.26 </TD> <TD align="right"> 2783536.13 </TD> <TD align="right"> 2.63 </TD> <TD align="right"> 0.0727 </TD> </TR>
+  <TR> <TD> Residuals         </TD> <TD align="right"> 908 </TD> <TD align="right"> 961391831.98 </TD> <TD align="right"> 1058801.58 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+<p>Then trimming based on standard deviations:</p>
+
+<pre><code class="r">stdev.aov &lt;- aov(STDEV ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.stdev)
+</code></pre>
+
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+
+<!-- Wed May 14 11:10:38 2014 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 7873612.05 </TD> <TD align="right"> 7873612.05 </TD> <TD align="right"> 0.38 </TD> <TD align="right"> 0.5374 </TD> </TR>
+  <TR> <TD> HomType   </TD> <TD align="right"> 1 </TD> <TD align="right"> 11262294.84 </TD> <TD align="right"> 11262294.84 </TD> <TD align="right"> 0.55 </TD> <TD align="right"> 0.4610 </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 96854068.86 </TD> <TD align="right"> 96854068.86 </TD> <TD align="right"> 4.72 </TD> <TD align="right"> 0.0328 </TD> </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 80 </TD> <TD align="right"> 1641606933.76 </TD> <TD align="right"> 20520086.67 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS              </TD> <TD align="right"> 2 </TD> <TD align="right"> 25243306.61 </TD> <TD align="right"> 12621653.30 </TD> <TD align="right"> 22.25 </TD> <TD align="right"> 0.0000 </TD> </TR>
+  <TR> <TD> HomType           </TD> <TD align="right"> 1 </TD> <TD align="right"> 1094335.32 </TD> <TD align="right"> 1094335.32 </TD> <TD align="right"> 1.93 </TD> <TD align="right"> 0.1652 </TD> </TR>
+  <TR> <TD> REPS              </TD> <TD align="right"> 1 </TD> <TD align="right"> 2040907.80 </TD> <TD align="right"> 2040907.80 </TD> <TD align="right"> 3.60 </TD> <TD align="right"> 0.0582 </TD> </TR>
+  <TR> <TD> BIAS:HomType      </TD> <TD align="right"> 2 </TD> <TD align="right"> 418252.47 </TD> <TD align="right"> 209126.24 </TD> <TD align="right"> 0.37 </TD> <TD align="right"> 0.6918 </TD> </TR>
+  <TR> <TD> BIAS:REPS         </TD> <TD align="right"> 2 </TD> <TD align="right"> 767006.70 </TD> <TD align="right"> 383503.35 </TD> <TD align="right"> 0.68 </TD> <TD align="right"> 0.5089 </TD> </TR>
+  <TR> <TD> HomType:REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 821331.90 </TD> <TD align="right"> 821331.90 </TD> <TD align="right"> 1.45 </TD> <TD align="right"> 0.2292 </TD> </TR>
+  <TR> <TD> BIAS:HomType:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 3666420.60 </TD> <TD align="right"> 1833210.30 </TD> <TD align="right"> 3.23 </TD> <TD align="right"> 0.0400 </TD> </TR>
+  <TR> <TD> Residuals         </TD> <TD align="right"> 908 </TD> <TD align="right"> 515093667.40 </TD> <TD align="right"> 567283.77 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+<p>And finally based on interquatrile range:</p>
+
+<pre><code class="r">iqr.aov &lt;- aov(IQR ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.IQR)
+</code></pre>
+
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+
+<!-- Wed May 14 11:10:38 2014 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 2 </TD> <TD align="right"> 45028697.46 </TD> <TD align="right"> 22514348.73 </TD> <TD align="right"> 2.12 </TD> <TD align="right"> 0.1265 </TD> </TR>
+  <TR> <TD> HomType   </TD> <TD align="right"> 1 </TD> <TD align="right"> 14608488.81 </TD> <TD align="right"> 14608488.81 </TD> <TD align="right"> 1.38 </TD> <TD align="right"> 0.2441 </TD> </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 80 </TD> <TD align="right"> 848850768.72 </TD> <TD align="right"> 10610634.61 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS              </TD> <TD align="right"> 2 </TD> <TD align="right"> 17773069.82 </TD> <TD align="right"> 8886534.91 </TD> <TD align="right"> 34.93 </TD> <TD align="right"> 0.0000 </TD> </TR>
+  <TR> <TD> HomType           </TD> <TD align="right"> 1 </TD> <TD align="right"> 1034003.46 </TD> <TD align="right"> 1034003.46 </TD> <TD align="right"> 4.06 </TD> <TD align="right"> 0.0441 </TD> </TR>
+  <TR> <TD> REPS              </TD> <TD align="right"> 1 </TD> <TD align="right"> 3136651.91 </TD> <TD align="right"> 3136651.91 </TD> <TD align="right"> 12.33 </TD> <TD align="right"> 0.0005 </TD> </TR>
+  <TR> <TD> BIAS:HomType      </TD> <TD align="right"> 2 </TD> <TD align="right"> 935814.03 </TD> <TD align="right"> 467907.02 </TD> <TD align="right"> 1.84 </TD> <TD align="right"> 0.1595 </TD> </TR>
+  <TR> <TD> BIAS:REPS         </TD> <TD align="right"> 2 </TD> <TD align="right"> 342143.48 </TD> <TD align="right"> 171071.74 </TD> <TD align="right"> 0.67 </TD> <TD align="right"> 0.5107 </TD> </TR>
+  <TR> <TD> HomType:REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 199345.74 </TD> <TD align="right"> 199345.74 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 0.3763 </TD> </TR>
+  <TR> <TD> BIAS:HomType:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 9811.62 </TD> <TD align="right"> 4905.81 </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.9809 </TD> </TR>
+  <TR> <TD> Residuals         </TD> <TD align="right"> 906 </TD> <TD align="right"> 230500108.53 </TD> <TD align="right"> 254415.13 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+</body>
+
+</html>
+
