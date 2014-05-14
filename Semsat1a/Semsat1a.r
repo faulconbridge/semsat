@@ -1,5 +1,5 @@
 # Makes a copy of our data
-raw <- Semsat1_compiled
+raw <- Semsat1a_compiled
 
 # treats our within subjects variables as factors
 # renames a couple of ugly variables
