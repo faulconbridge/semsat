@@ -110,4 +110,4 @@ summary(l2)
 
 Or, more compactly:
 
-<img src="figure/Tukey.png" />
+<img src="https://raw.githubusercontent.com/faulconbridge/semsat/master/Semsat2/figure/Tukey.png" />
