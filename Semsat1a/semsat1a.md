@@ -66,7 +66,7 @@ iqr.aov <- with(raw.mean.iqr, aov(IQR ~ BIAS * RELATEDNESS * REPS + Error(PID)))
 
 ### ANOVA of the untrimmed data ###
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 10:45:09 2014 -->
+<!-- Wed May 14 15:24:53 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 366970847.13 </TD> <TD align="right"> 5645705.34 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
@@ -83,7 +83,7 @@ iqr.aov <- with(raw.mean.iqr, aov(IQR ~ BIAS * RELATEDNESS * REPS + Error(PID)))
 
 ### ANOVA of the stdev-trimmed data ###
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 10:45:09 2014 -->
+<!-- Wed May 14 15:24:53 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 285615571.80 </TD> <TD align="right"> 4394085.72 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
@@ -100,7 +100,7 @@ iqr.aov <- with(raw.mean.iqr, aov(IQR ~ BIAS * RELATEDNESS * REPS + Error(PID)))
 
 ### ANOVA of the IQR-trimmed data ###
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 10:45:09 2014 -->
+<!-- Wed May 14 15:24:53 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 190366606.85 </TD> <TD align="right"> 2928717.03 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>

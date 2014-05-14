@@ -6,7 +6,7 @@ Acquiring the Data
 
 We will first (1) download the raw CSV from github; (2) convert the relevant variables---meaning bias, repetitions, relatedness, and participant ID---to factors; and (3) create three subsets of the data: one using the full dataset, one using a dataset with outliers $\pm$ 3 standard deviations removed, and a third with outliers more than 1.5 times the IQR above Q3 or below Q1 removed. We will then drop any null values from the dependent variable (MS response time) column.
 
-```{r, cache=TRUE}
+```{r}
 download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1a/Semsat1a_compiled.csv", "semsat1a.csv", "wget", extra="--no-check-certificate")
 semsat1a <- read.csv("semsat1a.csv",header=TRUE,sep=",")
 
