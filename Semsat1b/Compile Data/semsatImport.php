@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
     header('Content-Disposition: attachment; filename="semsat3_out.csv"');
     header("Content-type: text/csv");
@@ -162,5 +161,4 @@
         }
         fclose($out);
     }
->>>>>>> 0b11987ac2d7bc3424907f4d5fc90a3ae48e33b5
 ?>
