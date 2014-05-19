@@ -66,7 +66,7 @@ iqr.aov <- with(raw.mean.iqr, aov(IQR ~ BIAS * RELATEDNESS * REPS + Error(PID)))
 
 ### ANOVA of the untrimmed data ###
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 15:24:53 2014 -->
+<!-- Mon May 19 14:33:33 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 366970847.13 </TD> <TD align="right"> 5645705.34 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
@@ -83,7 +83,7 @@ iqr.aov <- with(raw.mean.iqr, aov(IQR ~ BIAS * RELATEDNESS * REPS + Error(PID)))
 
 ### ANOVA of the stdev-trimmed data ###
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 15:24:53 2014 -->
+<!-- Mon May 19 14:33:33 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 285615571.80 </TD> <TD align="right"> 4394085.72 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
@@ -100,7 +100,7 @@ iqr.aov <- with(raw.mean.iqr, aov(IQR ~ BIAS * RELATEDNESS * REPS + Error(PID)))
 
 ### ANOVA of the IQR-trimmed data ###
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May 14 15:24:53 2014 -->
+<!-- Mon May 19 14:33:33 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
   <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 190366606.85 </TD> <TD align="right"> 2928717.03 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
@@ -117,6 +117,72 @@ iqr.aov <- with(raw.mean.iqr, aov(IQR ~ BIAS * RELATEDNESS * REPS + Error(PID)))
 
 We can visualize these differences as:
 ![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
+
+
+Some descriptive statistics for the main effects:
+
+```r
+bias <- aggregate(raw.stdev$STDEV, by = list(raw.stdev$PID, raw.stdev$BIAS), 
+    mean)
+describeBy(bias$x, group = bias$Group.2)
+```
+
+```
+## group: dominant
+##   vars  n mean    sd median trimmed   mad min  max range skew kurtosis
+## 1    1 66 1748 754.8   1536    1633 493.3 846 4227  3381 1.42     1.62
+##     se
+## 1 92.9
+## -------------------------------------------------------- 
+## group: filler
+## NULL
+## -------------------------------------------------------- 
+## group: subordinate
+##   vars  n mean    sd median trimmed   mad   min  max range skew kurtosis
+## 1    1 66 1811 735.2   1670    1707 581.2 792.3 4606  3813 1.45     2.48
+##      se
+## 1 90.49
+```
+
+```r
+
+relatedness <- aggregate(raw.stdev$STDEV, by = list(raw.stdev$PID, raw.stdev$RELATEDNESS), 
+    mean)
+describeBy(relatedness$x, group = relatedness$Group.2)
+```
+
+```
+## group: related
+##   vars  n mean    sd median trimmed   mad   min  max range skew kurtosis
+## 1    1 66 1675 748.2   1446    1554 513.4 820.9 4064  3244 1.48     1.83
+##     se
+## 1 92.1
+## -------------------------------------------------------- 
+## group: unrelated
+##   vars  n mean    sd median trimmed mad   min  max range skew kurtosis  se
+## 1    1 66 1887 812.7   1708    1763 606 833.2 4779  3945 1.62     2.83 100
+```
+
+```r
+
+reps <- aggregate(raw.stdev$STDEV, by = list(raw.stdev$PID, raw.stdev$REPS), 
+    mean)
+describeBy(reps$x, group = reps$Group.2)
+```
+
+```
+## group: long
+##   vars  n mean  sd median trimmed   mad   min  max range skew kurtosis
+## 1    1 66 1836 799   1597    1717 527.5 807.3 4554  3747 1.45     1.82
+##      se
+## 1 98.36
+## -------------------------------------------------------- 
+## group: short
+##   vars  n mean    sd median trimmed   mad   min  max range skew kurtosis
+## 1    1 66 1722 707.5   1578    1624 611.2 850.6 4193  3343 1.33     1.66
+##      se
+## 1 87.08
+```
 
 
 And we can more formally conduct follow-up tests where appropriate. First, we will look at the bias by relatedness interaction:

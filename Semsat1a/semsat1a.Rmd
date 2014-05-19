@@ -90,6 +90,7 @@ print(xt2, type="html")
 ### ANOVA of the IQR-trimmed data ###
 ```{r,echo=FALSE,results='asis'}
 print(xt3, type="html")
+library(psych)
 ```
 
 We can visualize these differences as:
@@ -101,6 +102,18 @@ with(raw.stdev, interaction.plot(REPS,BIAS,STDEV,
                                  trace.label=deparse(substitute(trace.factor))))
 with(raw.stdev, interaction.plot(RELATEDNESS,BIAS,STDEV,
                                  trace.label=deparse(substitute(trace.factor))))
+```
+
+Some descriptive statistics for the main effects:
+```{r}
+bias <- aggregate(raw.stdev$STDEV,by=list(raw.stdev$PID,raw.stdev$BIAS),mean)
+describeBy(bias$x, group=bias$Group.2)
+
+relatedness <- aggregate(raw.stdev$STDEV,by=list(raw.stdev$PID,raw.stdev$RELATEDNESS),mean)
+describeBy(relatedness$x, group=relatedness$Group.2)
+
+reps <- aggregate(raw.stdev$STDEV,by=list(raw.stdev$PID,raw.stdev$REPS),mean)
+describeBy(reps$x, group=reps$Group.2)
 ```
 
 And we can more formally conduct follow-up tests where appropriate. First, we will look at the bias by relatedness interaction:
