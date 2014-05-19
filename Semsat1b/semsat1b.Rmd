@@ -8,12 +8,15 @@ We will first download the raw CSV from github and do a bit of preprocessing on 
 
 ```{r}
 download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1b/Semsat1b_compiled.csv", "semsat1b.csv", "wget", extra="--no-check-certificate")
-  semsat1b <- read.csv("semsat1b.csv",header=TRUE,sep=",")
+semsat1b <- read.csv("semsat1b.csv",header=TRUE,sep=",")
 
 # Subset the data to remove all filler and incorrectly-answered items
 raw <- subset(semsat1b, ((BIAS=="dominant" | BIAS=="subordinate")
               & ANSWER=="M") | (BIAS=="unrelated" & ANSWER=="C"),select=c(
                 PID,BIAS,REPS,Elapsed,MS,STDEV,IQR))
+
+# Remove participants who encountered errors
+raw <- subset(raw, PID!=7 & PID != 20, select=c(PID:IQR))
 
 # Identify which variables should be treated as factors
 raw <- within(raw, {
@@ -30,16 +33,17 @@ raw.MS <- na.omit(raw.MS)
 # with outliers (more than 3sd deviation) removed
 raw.stdev <- subset(raw, select=c(PID:Elapsed,STDEV))
 raw.stdev <- na.omit(raw.stdev)
-View(raw.stdev)
 ```
 
 We can now fit a linear mixed-effects model to our data:
 ```{r, echo=FALSE}
 library(lattice)
 library(nlme)
-library(xtable)
+library(multcomp)
 ```
-```{r,echo=c(1)}
+```{r}
+raw.stdev$REPS <- factor(raw.stdev$REPS)
+
 time.linear <- lme(STDEV ~ BIAS * REPS * Elapsed,
   random = list(PID = pdDiag(~ Elapsed)), na.action=na.omit, data = raw.stdev)
 ```
@@ -47,9 +51,14 @@ This model gives:
 ```{r,echo=FALSE}
 summary(time.linear)
 ```
-```{r,echo=FALSE,results='asis'}
-xt2<-xtable(anova(time.linear))
-print(xt2, type="html")
+```{r,echo=FALSE}
+anova(time.linear)
+```
+
+We can perform post-hoc tests on item bias:
+```{r}
+l2 <- glht(time.linear, linfct = mcp(BIAS = "Tukey"))
+summary(l2)
 ```
 
 Finally, we can visualize these two main effects (i.e., those of meaning bias and of time elapsed between study and test phases). Unrelated items are illustrated in blue; subordinate in red; and dominant in green.

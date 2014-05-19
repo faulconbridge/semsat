@@ -7,10 +7,21 @@ Acquiring the Data
 We will first download the raw CSV from github and do a bit of preprocessing on it:
 
 ```{r}
+library(nlme)
+library(multcomp)
+
 download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat2/Semsat2_compiled.csv", "semsat2.csv", "wget", extra="--no-check-certificate")
   semsat2 <- read.csv("semsat2.csv",header=TRUE,sep=",")
 
 raw <- semsat2
+
+# Strip out all filler and incorrectly-answered items
+raw <- subset(raw, (BIAS=="dominant" & ANSWER=="M") |
+                (BIAS=="subordinate" & ANSWER=="M") |
+                (BIAS=="unrelated" & (HomType=="NV" | HomType=="NN")
+                 & ANSWER=="C"),
+              select=c(PID,BIAS,HomType,REPS,
+                       ANSWER,MS,MS.3.STDEV,MS.IQR))
 
 # Specify which variables should be treated as factors
 raw <- within(raw, {
@@ -22,16 +33,8 @@ raw <- within(raw, {
   IQR <- MS.IQR
 })
 
-# Strip out all filler and incorrectly-answered items
-raw <- subset(raw, (BIAS=="dominant" & ANSWER=="M") |
-                (BIAS=="subordinate" & ANSWER=="M") |
-                (BIAS=="unrelated" & (HomType=="NV" | HomType=="NN")
-                 & ANSWER=="C"),
-              select=c(PID,BIAS,HomType,REPS,
-                       ANSWER,MS,STDEV,IQR))
-
 # Strip out participants who encountered bugs during the experiment
-raw <- subset(raw, PID!=57 | PID!=42 | PID!=14,
+raw <- subset(raw, PID!=57 & PID!=42 & PID!=14,
               select=c(PID,BIAS,HomType,REPS,
                        ANSWER,MS,STDEV,IQR))
 
@@ -73,41 +76,29 @@ colnames(raw.mean.IQR) <- c("PID","BIAS","HomType","REPS","IQR")
 Performing the Analyses
 -----------------------
 First we can look at the untrimmed data:
-```{r,echo=1,results='asis'}
+```{r,echo=1}
 raw.aov <- aov(MS ~ BIAS*HomType*REPS+Error(PID),
                data=raw.mean.MS)
-library(xtable)
-library(nlme)
-library(multcomp)
-print(xtable(summary(raw.aov)),type="html")
+summary(raw.aov)
 ```
 
 Then trimming based on standard deviations:
-```{r,echo=1,results='asis'}
+```{r,echo=1}
 stdev.aov <- aov(STDEV ~ BIAS*HomType*REPS+Error(PID),
                      data=raw.mean.stdev)
-print(xtable(summary(stdev.aov)),type="html")
+summary(stdev.aov)
 ```
 
 And finally based on interquatrile range:
-```{r,echo=1,results='asis'}
+```{r,echo=1}
 iqr.aov <- aov(IQR ~ BIAS*HomType*REPS+Error(PID),
                      data=raw.mean.IQR)
-print(xtable(summary(iqr.aov)),type="html")
+summary(iqr.aov)
 ```
 
-Now we will perform a test on the three-way BIAS x HomType x REPS interaction:
+Now we can perform a follow-up test looking at our three levels of bias:
 ```{r}
-raw.mean.stdev$BHR <- with(raw.mean.stdev,interaction(BIAS,HomType,REPS,sep="x"))
-
-raw.mean.stdev$BHR <- factor(raw.mean.stdev$BHR)
-
-stdev.lme <- lme(STDEV~BHR, random=~1|PID, data=raw.mean.stdev)
-
-l2 <- glht(stdev.lme,linfct = mcp(BHR = "Tukey"))
+stdev.lme <- lme(STDEV~BIAS*HomType*REPS, random=~1|PID, data=raw.mean.stdev)
+l2 <- glht(stdev.lme, linfct = mcp(BIAS = "Tukey"))
 summary(l2)
 ```
-
-Or, more compactly:
-
-<img src="https://raw.githubusercontent.com/faulconbridge/semsat/master/Semsat2/figure/Tukey.png" />
