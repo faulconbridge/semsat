@@ -65,15 +65,6 @@ raw.stdev <- na.omit(raw.stdev)
 raw.mean.stdev <- aggregate(raw.stdev$STDEV, by = list(raw.stdev$PID, raw.stdev$BIAS, 
     raw.stdev$HomType, raw.stdev$REPS), FUN = "mean")
 colnames(raw.mean.stdev) <- c("PID", "BIAS", "HomType", "REPS", "STDEV")
-
-# Subset the data to remove outliers 1.5x IQR beyond Q1 or Q3
-raw.IQR <- subset(raw, select = c(PID, BIAS, HomType, REPS, IQR))
-raw.IQR <- na.omit(raw.IQR)
-
-# Take the participant average RTs for each condition
-raw.mean.IQR <- aggregate(raw.IQR$IQR, by = list(raw.IQR$PID, raw.IQR$BIAS, 
-    raw.IQR$HomType, raw.IQR$REPS), FUN = "mean")
-colnames(raw.mean.IQR) <- c("PID", "BIAS", "HomType", "REPS", "IQR")
 ```
 
 
@@ -82,7 +73,8 @@ Performing the Analyses
 First we can look at the untrimmed data:
 
 ```r
-raw.aov <- aov(MS ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.MS)
+raw.aov <- aov(MS ~ BIAS * HomType * REPS + Error(PID/(BIAS * HomType * REPS)), 
+    data = raw.mean.MS)
 ```
 
 ```
@@ -91,25 +83,54 @@ raw.aov <- aov(MS ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.MS)
 ##           Df   Sum Sq  Mean Sq F value Pr(>F)
 ## Residuals 80 2.01e+09 25108743               
 ## 
-## Error: Within
-##                    Df   Sum Sq  Mean Sq F value  Pr(>F)    
-## BIAS                2 3.87e+07 19328179   19.79 3.9e-09 ***
-## HomType             1 2.83e+06  2832038    2.90  0.0889 .  
-## REPS                1 2.07e+05   206746    0.21  0.6455    
-## BIAS:HomType        2 9.97e+06  4986733    5.11  0.0062 ** 
-## BIAS:REPS           2 1.75e+05    87741    0.09  0.9141    
-## HomType:REPS        1 5.12e+05   512203    0.52  0.4691    
-## BIAS:HomType:REPS   2 3.66e+06  1828797    1.87  0.1543    
-## Residuals         880 8.59e+08   976420                    
+## Error: PID:BIAS
+##            Df   Sum Sq  Mean Sq F value Pr(>F)    
+## BIAS        2 3.87e+07 19328179    22.3  3e-09 ***
+## Residuals 160 1.39e+08   868428                   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Error: PID:HomType
+##           Df   Sum Sq Mean Sq F value Pr(>F)  
+## HomType    1  2832038 2832038    4.88   0.03 *
+## Residuals 80 46386699  579834                 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Error: PID:REPS
+##           Df   Sum Sq Mean Sq F value Pr(>F)
+## REPS       1 2.07e+05  206746    0.13   0.72
+## Residuals 80 1.31e+08 1633679               
+## 
+## Error: PID:BIAS:HomType
+##               Df   Sum Sq Mean Sq F value Pr(>F)   
+## BIAS:HomType   2 9.97e+06 4986733    6.31 0.0023 **
+## Residuals    160 1.26e+08  790145                  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Error: PID:BIAS:REPS
+##            Df   Sum Sq Mean Sq F value Pr(>F)
+## BIAS:REPS   2 1.75e+05   87741    0.07   0.93
+## Residuals 160 1.92e+08 1199874               
+## 
+## Error: PID:HomType:REPS
+##              Df   Sum Sq Mean Sq F value Pr(>F)
+## HomType:REPS  1   512203  512203    0.76   0.39
+## Residuals    80 54098299  676229               
+## 
+## Error: PID:BIAS:HomType:REPS
+##                    Df   Sum Sq Mean Sq F value Pr(>F)
+## BIAS:HomType:REPS   2 3.66e+06 1828797    1.71   0.18
+## Residuals         160 1.71e+08 1066993
 ```
 
 
 Then trimming based on standard deviations:
 
 ```r
-stdev.aov <- aov(STDEV ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.stdev)
+stdev.aov <- aov(STDEV ~ BIAS * HomType * REPS + Error(PID/(BIAS * HomType * 
+    REPS)), data = raw.mean.stdev)
 ```
 
 ```
@@ -118,45 +139,42 @@ stdev.aov <- aov(STDEV ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.std
 ##           Df   Sum Sq  Mean Sq F value Pr(>F)
 ## Residuals 80 1.64e+09 20520087               
 ## 
-## Error: Within
-##                    Df   Sum Sq  Mean Sq F value  Pr(>F)    
-## BIAS                2 2.50e+07 12494157   26.59 6.1e-12 ***
-## HomType             1 1.16e+05   116433    0.25    0.62    
-## REPS                1 1.44e+06  1442910    3.07    0.08 .  
-## BIAS:HomType        2 1.18e+06   591808    1.26    0.28    
-## BIAS:REPS           2 1.50e+05    75039    0.16    0.85    
-## HomType:REPS        1 7.75e+05   774896    1.65    0.20    
-## BIAS:HomType:REPS   2 2.11e+06  1055090    2.25    0.11    
-## Residuals         880 4.13e+08   469861                    
+## Error: PID:BIAS
+##            Df   Sum Sq  Mean Sq F value Pr(>F)    
+## BIAS        2 24988314 12494157    22.8  2e-09 ***
+## Residuals 160 87854303   549089                   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-```
-
-
-And finally based on interquatrile range:
-
-```r
-iqr.aov <- aov(IQR ~ BIAS * HomType * REPS + Error(PID), data = raw.mean.IQR)
-```
-
-```
 ## 
-## Error: PID
-##           Df   Sum Sq  Mean Sq F value Pr(>F)
-## Residuals 80 8.49e+08 10610635               
+## Error: PID:HomType
+##           Df   Sum Sq Mean Sq F value Pr(>F)
+## HomType    1   116433  116433    0.29   0.59
+## Residuals 80 31860688  398259               
 ## 
-## Error: Within
-##                    Df   Sum Sq Mean Sq F value  Pr(>F)    
-## BIAS                2 1.96e+07 9790762   43.32 < 2e-16 ***
-## HomType             1 7.77e+05  777430    3.44 0.06396 .  
-## REPS                1 2.85e+06 2847595   12.60 0.00041 ***
-## BIAS:HomType        2 1.67e+06  833181    3.69 0.02544 *  
-## BIAS:REPS           2 1.13e+05   56654    0.25 0.77831    
-## HomType:REPS        1 2.72e+05  272331    1.21 0.27261    
-## BIAS:HomType:REPS   2 3.03e+04   15167    0.07 0.93509    
-## Residuals         880 1.99e+08  225985                    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: PID:REPS
+##           Df   Sum Sq Mean Sq F value Pr(>F)
+## REPS       1  1442910 1442910    2.29   0.13
+## Residuals 80 50515361  631442               
+## 
+## Error: PID:BIAS:HomType
+##               Df   Sum Sq Mean Sq F value Pr(>F)
+## BIAS:HomType   2  1183615  591808    1.37   0.26
+## Residuals    160 68884595  430529               
+## 
+## Error: PID:BIAS:REPS
+##            Df   Sum Sq Mean Sq F value Pr(>F)
+## BIAS:REPS   2   150078   75039     0.2   0.82
+## Residuals 160 61366067  383538               
+## 
+## Error: PID:HomType:REPS
+##              Df   Sum Sq Mean Sq F value Pr(>F)
+## HomType:REPS  1   774896  774896    1.53   0.22
+## Residuals    80 40642642  508033               
+## 
+## Error: PID:BIAS:HomType:REPS
+##                    Df   Sum Sq Mean Sq F value Pr(>F)
+## BIAS:HomType:REPS   2  2110180 1055090    2.33    0.1
+## Residuals         160 72354271  452214
 ```
 
 

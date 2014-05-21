@@ -10,6 +10,8 @@ We will first (1) download the raw CSV from github; (2) convert the relevant var
 download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1a/Semsat1a_compiled.csv", "semsat1a.csv", "wget", extra="--no-check-certificate")
 semsat1a <- read.csv("semsat1a.csv",header=TRUE,sep=",")
 
+library(nlme)
+
 # Makes a copy of our data
 raw <- semsat1a
 
@@ -41,56 +43,32 @@ colnames(raw.mean) <- c("PID","BIAS","RELATEDNESS","REPS","MS")
 raw.stdev <- subset(raw,select=c(PID,BIAS,RELATEDNESS,
                                  REPS,ANSWER,STDEV))
 raw.stdev <- na.omit(raw.stdev)
+
+raw.stdev <- within(raw.stdev, {
+  BIAS <- factor(BIAS)
+  RELATEDNESS <- factor(RELATEDNESS)
+  REPS <- factor(REPS)
+  PID <- factor(PID)
+})
+
 raw.mean.stdev <- aggregate(raw.stdev$STDEV,
                             by=list(raw.stdev$PID,raw.stdev$BIAS,
                                     raw.stdev$RELATEDNESS,raw.stdev$REPS),
                             FUN='mean')
 colnames(raw.mean.stdev) <- c("PID","BIAS","RELATEDNESS","REPS","STDEV")
-
-# same thing trimming at +- 1.5 times the IQR
-raw.iqr <- subset(raw,select=c(PID,BIAS,RELATEDNESS,
-                                 REPS,ANSWER,IQR))
-raw.iqr <- na.omit(raw.iqr)
-raw.mean.iqr <- aggregate(raw.iqr$IQR,
-                          by=list(raw.iqr$PID,raw.iqr$BIAS,
-                                  raw.iqr$RELATEDNESS,raw.iqr$REPS),
-                          FUN='mean')
-colnames(raw.mean.iqr) <- c("PID","BIAS","RELATEDNESS","REPS","IQR")
 ```
 
 Performing the Analyses
 -----------------------
 
-```{r,echo=c(1:5),results='asis'}
+```{r}
 raw.aov <- with(raw.mean, aov(MS~BIAS*RELATEDNESS*REPS+
-                             Error(PID)))
+                             Error(PID/(BIAS*RELATEDNESS*REPS))))
+summary(raw.aov)
 
 stdev.aov <- with(raw.mean.stdev, aov(STDEV~BIAS*RELATEDNESS*REPS+
-                                   Error(PID)))
-
-iqr.aov <- with(raw.mean.iqr, aov(IQR~BIAS*RELATEDNESS*REPS+
-                               Error(PID)))
-
-library(xtable)
-xt <- xtable(summary(raw.aov))
-xt2 <- xtable(summary(stdev.aov))
-xt3 <- xtable(summary(iqr.aov))
-```
-
-### ANOVA of the untrimmed data ###
-```{r,echo=FALSE,results='asis'}
-print(xt, type="html")
-```
-
-### ANOVA of the stdev-trimmed data ###
-```{r,echo=FALSE,results='asis'}
-print(xt2, type="html")
-```
-
-### ANOVA of the IQR-trimmed data ###
-```{r,echo=FALSE,results='asis'}
-print(xt3, type="html")
-library(psych)
+                                         Error(PID/(BIAS*RELATEDNESS*REPS))))
+summary(stdev.aov)
 ```
 
 We can visualize these differences as:

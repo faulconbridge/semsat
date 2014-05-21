@@ -60,40 +60,22 @@ raw.mean.stdev <- aggregate(raw.stdev$STDEV,
                               raw.stdev$HomType,raw.stdev$REPS),
                       FUN='mean')
 colnames(raw.mean.stdev) <- c("PID","BIAS","HomType","REPS","STDEV")
-
-# Subset the data to remove outliers 1.5x IQR beyond Q1 or Q3
-raw.IQR <- subset(raw, select=c(PID,BIAS,HomType,REPS,IQR))
-raw.IQR <- na.omit(raw.IQR)
-
-# Take the participant average RTs for each condition
-raw.mean.IQR <- aggregate(raw.IQR$IQR,
-                      by=list(raw.IQR$PID,raw.IQR$BIAS,
-                              raw.IQR$HomType,raw.IQR$REPS),
-                      FUN='mean')
-colnames(raw.mean.IQR) <- c("PID","BIAS","HomType","REPS","IQR")
 ```
 
 Performing the Analyses
 -----------------------
 First we can look at the untrimmed data:
 ```{r,echo=1}
-raw.aov <- aov(MS ~ BIAS*HomType*REPS+Error(PID),
+raw.aov <- aov(MS ~ BIAS*HomType*REPS+Error(PID/(BIAS*HomType*REPS)),
                data=raw.mean.MS)
 summary(raw.aov)
 ```
 
 Then trimming based on standard deviations:
 ```{r,echo=1}
-stdev.aov <- aov(STDEV ~ BIAS*HomType*REPS+Error(PID),
+stdev.aov <- aov(STDEV ~ BIAS*HomType*REPS+Error(PID/(BIAS*HomType*REPS)),
                      data=raw.mean.stdev)
 summary(stdev.aov)
-```
-
-And finally based on interquatrile range:
-```{r,echo=1}
-iqr.aov <- aov(IQR ~ BIAS*HomType*REPS+Error(PID),
-                     data=raw.mean.IQR)
-summary(iqr.aov)
 ```
 
 Now we can perform a follow-up test looking at our three levels of bias:

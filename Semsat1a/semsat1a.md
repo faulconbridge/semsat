@@ -12,6 +12,8 @@ download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1a/Semsa
     "semsat1a.csv", "wget", extra = "--no-check-certificate")
 semsat1a <- read.csv("semsat1a.csv", header = TRUE, sep = ",")
 
+library(nlme)
+
 # Makes a copy of our data
 raw <- semsat1a
 
@@ -38,16 +40,17 @@ colnames(raw.mean) <- c("PID", "BIAS", "RELATEDNESS", "REPS", "MS")
 # standard deviations
 raw.stdev <- subset(raw, select = c(PID, BIAS, RELATEDNESS, REPS, ANSWER, STDEV))
 raw.stdev <- na.omit(raw.stdev)
+
+raw.stdev <- within(raw.stdev, {
+    BIAS <- factor(BIAS)
+    RELATEDNESS <- factor(RELATEDNESS)
+    REPS <- factor(REPS)
+    PID <- factor(PID)
+})
+
 raw.mean.stdev <- aggregate(raw.stdev$STDEV, by = list(raw.stdev$PID, raw.stdev$BIAS, 
     raw.stdev$RELATEDNESS, raw.stdev$REPS), FUN = "mean")
 colnames(raw.mean.stdev) <- c("PID", "BIAS", "RELATEDNESS", "REPS", "STDEV")
-
-# same thing trimming at +- 1.5 times the IQR
-raw.iqr <- subset(raw, select = c(PID, BIAS, RELATEDNESS, REPS, ANSWER, IQR))
-raw.iqr <- na.omit(raw.iqr)
-raw.mean.iqr <- aggregate(raw.iqr$IQR, by = list(raw.iqr$PID, raw.iqr$BIAS, 
-    raw.iqr$RELATEDNESS, raw.iqr$REPS), FUN = "mean")
-colnames(raw.mean.iqr) <- c("PID", "BIAS", "RELATEDNESS", "REPS", "IQR")
 ```
 
 
@@ -56,67 +59,119 @@ Performing the Analyses
 
 
 ```r
-raw.aov <- with(raw.mean, aov(MS ~ BIAS * RELATEDNESS * REPS + Error(PID)))
-
-stdev.aov <- with(raw.mean.stdev, aov(STDEV ~ BIAS * RELATEDNESS * REPS + Error(PID)))
-
-iqr.aov <- with(raw.mean.iqr, aov(IQR ~ BIAS * RELATEDNESS * REPS + Error(PID)))
+raw.aov <- with(raw.mean, aov(MS ~ BIAS * RELATEDNESS * REPS + Error(PID/(BIAS * 
+    RELATEDNESS * REPS))))
+summary(raw.aov)
 ```
 
 
-### ANOVA of the untrimmed data ###
-<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Mon May 19 14:33:33 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
-  <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 366970847.13 </TD> <TD align="right"> 5645705.34 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
-  <TR> <TD> BIAS                  </TD> <TD align="right"> 1 </TD> <TD align="right"> 81756.28 </TD> <TD align="right"> 81756.28 </TD> <TD align="right"> 0.21 </TD> <TD align="right"> 0.6487 </TD> </TR>
-  <TR> <TD> RELATEDNESS           </TD> <TD align="right"> 1 </TD> <TD align="right"> 8309870.23 </TD> <TD align="right"> 8309870.23 </TD> <TD align="right"> 21.12 </TD> <TD align="right"> 0.0000 </TD> </TR>
-  <TR> <TD> REPS                  </TD> <TD align="right"> 1 </TD> <TD align="right"> 1352698.96 </TD> <TD align="right"> 1352698.96 </TD> <TD align="right"> 3.44 </TD> <TD align="right"> 0.0643 </TD> </TR>
-  <TR> <TD> BIAS:RELATEDNESS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 1946779.07 </TD> <TD align="right"> 1946779.07 </TD> <TD align="right"> 4.95 </TD> <TD align="right"> 0.0266 </TD> </TR>
-  <TR> <TD> BIAS:REPS             </TD> <TD align="right"> 1 </TD> <TD align="right"> 22454.54 </TD> <TD align="right"> 22454.54 </TD> <TD align="right"> 0.06 </TD> <TD align="right"> 0.8113 </TD> </TR>
-  <TR> <TD> RELATEDNESS:REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 1733961.92 </TD> <TD align="right"> 1733961.92 </TD> <TD align="right"> 4.41 </TD> <TD align="right"> 0.0363 </TD> </TR>
-  <TR> <TD> BIAS:RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 43912.58 </TD> <TD align="right"> 43912.58 </TD> <TD align="right"> 0.11 </TD> <TD align="right"> 0.7384 </TD> </TR>
-  <TR> <TD> Residuals             </TD> <TD align="right"> 455 </TD> <TD align="right"> 178985423.37 </TD> <TD align="right"> 393374.56 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
-   </TABLE>
+Error: PID
+          Df   Sum Sq Mean Sq F value Pr(>F)
+Residuals 65 3.67e+08 5645705               
+
+Error: PID:BIAS
+          Df   Sum Sq Mean Sq F value Pr(>F)
+BIAS       1    81756   81756    0.25   0.62
+Residuals 65 21605285  332389               
+
+Error: PID:RELATEDNESS
+            Df   Sum Sq Mean Sq F value Pr(>F)   
+RELATEDNESS  1  8309870 8309870    10.6 0.0018 **
+Residuals   65 50872746  782658                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: PID:REPS
+          Df   Sum Sq Mean Sq F value Pr(>F)  
+REPS       1  1352699 1352699    3.86  0.054 .
+Residuals 65 22768745  350288                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: PID:BIAS:RELATEDNESS
+                 Df   Sum Sq Mean Sq F value Pr(>F)   
+BIAS:RELATEDNESS  1  1946779 1946779    10.7 0.0018 **
+Residuals        65 11882474  182807                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: PID:BIAS:REPS
+          Df   Sum Sq Mean Sq F value Pr(>F)
+BIAS:REPS  1    22455   22455    0.04   0.83
+Residuals 65 32826351  505021               
+
+Error: PID:RELATEDNESS:REPS
+                 Df   Sum Sq Mean Sq F value Pr(>F)  
+RELATEDNESS:REPS  1  1733962 1733962    4.98  0.029 *
+Residuals        65 22629905  348152                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: PID:BIAS:RELATEDNESS:REPS
+                      Df   Sum Sq Mean Sq F value Pr(>F)
+BIAS:RELATEDNESS:REPS  1    43913   43913    0.17   0.68
+Residuals             65 16399919  252306               
+
+```r
+
+stdev.aov <- with(raw.mean.stdev, aov(STDEV ~ BIAS * RELATEDNESS * REPS + Error(PID/(BIAS * 
+    RELATEDNESS * REPS))))
+summary(stdev.aov)
+```
 
 
-### ANOVA of the stdev-trimmed data ###
-<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Mon May 19 14:33:33 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
-  <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 285615571.80 </TD> <TD align="right"> 4394085.72 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
-  <TR> <TD> BIAS                  </TD> <TD align="right"> 1 </TD> <TD align="right"> 567168.62 </TD> <TD align="right"> 567168.62 </TD> <TD align="right"> 2.84 </TD> <TD align="right"> 0.0927 </TD> </TR>
-  <TR> <TD> RELATEDNESS           </TD> <TD align="right"> 1 </TD> <TD align="right"> 5118593.07 </TD> <TD align="right"> 5118593.07 </TD> <TD align="right"> 25.63 </TD> <TD align="right"> 0.0000 </TD> </TR>
-  <TR> <TD> REPS                  </TD> <TD align="right"> 1 </TD> <TD align="right"> 1831338.64 </TD> <TD align="right"> 1831338.64 </TD> <TD align="right"> 9.17 </TD> <TD align="right"> 0.0026 </TD> </TR>
-  <TR> <TD> BIAS:RELATEDNESS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 583934.56 </TD> <TD align="right"> 583934.56 </TD> <TD align="right"> 2.92 </TD> <TD align="right"> 0.0880 </TD> </TR>
-  <TR> <TD> BIAS:REPS             </TD> <TD align="right"> 1 </TD> <TD align="right"> 103489.31 </TD> <TD align="right"> 103489.31 </TD> <TD align="right"> 0.52 </TD> <TD align="right"> 0.4720 </TD> </TR>
-  <TR> <TD> RELATEDNESS:REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 531985.40 </TD> <TD align="right"> 531985.40 </TD> <TD align="right"> 2.66 </TD> <TD align="right"> 0.1034 </TD> </TR>
-  <TR> <TD> BIAS:RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 20396.32 </TD> <TD align="right"> 20396.32 </TD> <TD align="right"> 0.10 </TD> <TD align="right"> 0.7495 </TD> </TR>
-  <TR> <TD> Residuals             </TD> <TD align="right"> 455 </TD> <TD align="right"> 90885057.97 </TD> <TD align="right"> 199747.38 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
-   </TABLE>
+Error: PID
+          Df   Sum Sq Mean Sq F value Pr(>F)
+Residuals 65 2.86e+08 4394086               
 
+Error: PID:BIAS
+          Df  Sum Sq Mean Sq F value Pr(>F)  
+BIAS       1  567169  567169    3.79  0.056 .
+Residuals 65 9719440  149530                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-### ANOVA of the IQR-trimmed data ###
-<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Mon May 19 14:33:33 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
-  <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 190366606.85 </TD> <TD align="right"> 2928717.03 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
-  <TR> <TD> BIAS                  </TD> <TD align="right"> 1 </TD> <TD align="right"> 481774.90 </TD> <TD align="right"> 481774.90 </TD> <TD align="right"> 5.00 </TD> <TD align="right"> 0.0259 </TD> </TR>
-  <TR> <TD> RELATEDNESS           </TD> <TD align="right"> 1 </TD> <TD align="right"> 4463016.99 </TD> <TD align="right"> 4463016.99 </TD> <TD align="right"> 46.29 </TD> <TD align="right"> 0.0000 </TD> </TR>
-  <TR> <TD> REPS                  </TD> <TD align="right"> 1 </TD> <TD align="right"> 1525242.72 </TD> <TD align="right"> 1525242.72 </TD> <TD align="right"> 15.82 </TD> <TD align="right"> 0.0001 </TD> </TR>
-  <TR> <TD> BIAS:RELATEDNESS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 79408.92 </TD> <TD align="right"> 79408.92 </TD> <TD align="right"> 0.82 </TD> <TD align="right"> 0.3646 </TD> </TR>
-  <TR> <TD> BIAS:REPS             </TD> <TD align="right"> 1 </TD> <TD align="right"> 122594.00 </TD> <TD align="right"> 122594.00 </TD> <TD align="right"> 1.27 </TD> <TD align="right"> 0.2601 </TD> </TR>
-  <TR> <TD> RELATEDNESS:REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 93444.32 </TD> <TD align="right"> 93444.32 </TD> <TD align="right"> 0.97 </TD> <TD align="right"> 0.3254 </TD> </TR>
-  <TR> <TD> BIAS:RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 13795.82 </TD> <TD align="right"> 13795.82 </TD> <TD align="right"> 0.14 </TD> <TD align="right"> 0.7054 </TD> </TR>
-  <TR> <TD> Residuals             </TD> <TD align="right"> 455 </TD> <TD align="right"> 43864187.74 </TD> <TD align="right"> 96404.81 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
-   </TABLE>
+Error: PID:RELATEDNESS
+            Df   Sum Sq Mean Sq F value Pr(>F)   
+RELATEDNESS  1  5118593 5118593    10.7 0.0017 **
+Residuals   65 31121335  478790                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: PID:REPS
+          Df   Sum Sq Mean Sq F value Pr(>F)   
+REPS       1  1831339 1831339    8.26 0.0055 **
+Residuals 65 14406208  221634                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: PID:BIAS:RELATEDNESS
+                 Df  Sum Sq Mean Sq F value Pr(>F)  
+BIAS:RELATEDNESS  1  583935  583935    5.14  0.027 *
+Residuals        65 7385115  113617                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: PID:BIAS:REPS
+          Df   Sum Sq Mean Sq F value Pr(>F)
+BIAS:REPS  1   103489  103489     0.5   0.48
+Residuals 65 13528234  208127               
+
+Error: PID:RELATEDNESS:REPS
+                 Df   Sum Sq Mean Sq F value Pr(>F)  
+RELATEDNESS:REPS  1   531985  531985    3.27  0.075 .
+Residuals        65 10563487  162515                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: PID:BIAS:RELATEDNESS:REPS
+                      Df  Sum Sq Mean Sq F value Pr(>F)
+BIAS:RELATEDNESS:REPS  1   20396   20396    0.32   0.57
+Residuals             65 4161239   64019               
 
 
 We can visualize these differences as:
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
 
 
 Some descriptive statistics for the main effects:
@@ -128,20 +183,7 @@ describeBy(bias$x, group = bias$Group.2)
 ```
 
 ```
-## group: dominant
-##   vars  n mean    sd median trimmed   mad min  max range skew kurtosis
-## 1    1 66 1748 754.8   1536    1633 493.3 846 4227  3381 1.42     1.62
-##     se
-## 1 92.9
-## -------------------------------------------------------- 
-## group: filler
-## NULL
-## -------------------------------------------------------- 
-## group: subordinate
-##   vars  n mean    sd median trimmed   mad   min  max range skew kurtosis
-## 1    1 66 1811 735.2   1670    1707 581.2 792.3 4606  3813 1.45     2.48
-##      se
-## 1 90.49
+## Error: could not find function "describeBy"
 ```
 
 ```r
@@ -152,15 +194,7 @@ describeBy(relatedness$x, group = relatedness$Group.2)
 ```
 
 ```
-## group: related
-##   vars  n mean    sd median trimmed   mad   min  max range skew kurtosis
-## 1    1 66 1675 748.2   1446    1554 513.4 820.9 4064  3244 1.48     1.83
-##     se
-## 1 92.1
-## -------------------------------------------------------- 
-## group: unrelated
-##   vars  n mean    sd median trimmed mad   min  max range skew kurtosis  se
-## 1    1 66 1887 812.7   1708    1763 606 833.2 4779  3945 1.62     2.83 100
+## Error: could not find function "describeBy"
 ```
 
 ```r
@@ -171,17 +205,7 @@ describeBy(reps$x, group = reps$Group.2)
 ```
 
 ```
-## group: long
-##   vars  n mean  sd median trimmed   mad   min  max range skew kurtosis
-## 1    1 66 1836 799   1597    1717 527.5 807.3 4554  3747 1.45     1.82
-##      se
-## 1 98.36
-## -------------------------------------------------------- 
-## group: short
-##   vars  n mean    sd median trimmed   mad   min  max range skew kurtosis
-## 1    1 66 1722 707.5   1578    1624 611.2 850.6 4193  3343 1.33     1.66
-##      se
-## 1 87.08
+## Error: could not find function "describeBy"
 ```
 
 
