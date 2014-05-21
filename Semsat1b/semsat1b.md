@@ -8,7 +8,7 @@ We will first download the raw CSV from github and do a bit of preprocessing on 
 
 
 ```r
-download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1b/Semsat1b_compiled.csv", 
+download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1b/Semsat1b.csv", 
     "semsat1b.csv", "wget", extra = "--no-check-certificate")
 semsat1b <- read.csv("semsat1b.csv", header = TRUE, sep = ",")
 
@@ -170,9 +170,9 @@ summary(l2)
 ## 
 ## Linear Hypotheses:
 ##                              Estimate Std. Error z value Pr(>|z|)    
-## subordinate - dominant == 0       118        138    0.85    0.670    
-## unrelated - dominant == 0         562        131    4.30   <0.001 ***
-## unrelated - subordinate == 0      444        138    3.21    0.004 ** 
+## subordinate - dominant == 0       118        138    0.85   0.6700    
+## unrelated - dominant == 0         562        131    4.30   <1e-04 ***
+## unrelated - subordinate == 0      444        138    3.21   0.0037 ** 
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)

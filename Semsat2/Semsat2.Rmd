@@ -10,7 +10,7 @@ We will first download the raw CSV from github and do a bit of preprocessing on 
 library(nlme)
 library(multcomp)
 
-download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat2/Semsat2_compiled.csv", "semsat2.csv", "wget", extra="--no-check-certificate")
+download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat2/semsat2.csv", "semsat2.csv", "wget", extra="--no-check-certificate")
 semsat2 <- read.csv("semsat2.csv",header=TRUE,sep=",")
 
 raw <- semsat2

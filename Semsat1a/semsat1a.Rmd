@@ -7,7 +7,7 @@ Acquiring the Data
 We will first (1) download the raw CSV from github; (2) convert the relevant variables---meaning bias, repetitions, relatedness, and participant ID---to factors; and (3) create three subsets of the data: one using the full dataset, one using a dataset with outliers $\pm$ 3 standard deviations removed, and a third with outliers more than 1.5 times the IQR above Q3 or below Q1 removed. We will then drop any null values from the dependent variable (MS response time) column.
 
 ```{r}
-download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1a/Semsat1a_compiled.csv", "semsat1a.csv", "wget", extra="--no-check-certificate")
+download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1a/semsat1a.csv", "semsat1a.csv", "wget", extra="--no-check-certificate")
 semsat1a <- read.csv("semsat1a.csv",header=TRUE,sep=",")
 
 library(nlme)
@@ -82,6 +82,9 @@ with(raw.stdev, interaction.plot(RELATEDNESS,BIAS,STDEV,
                                  trace.label=deparse(substitute(trace.factor))))
 ```
 
+```{r,echo=FALSE,results='hide'}
+library(psych)
+```
 Some descriptive statistics for the main effects:
 ```{r}
 bias <- aggregate(raw.stdev$STDEV,by=list(raw.stdev$PID,raw.stdev$BIAS),mean)
@@ -96,12 +99,12 @@ describeBy(reps$x, group=reps$Group.2)
 
 And we can more formally conduct follow-up tests where appropriate. First, we will look at the bias by relatedness interaction:
 ```{r,echo=FALSE}
-domrel <- subset(raw.mean.stdev, RELATEDNESS=="related" & BIAS=="dominant",select=c(STDEV))
-domunrel <- subset(raw.mean.stdev, RELATEDNESS=="unrelated" & BIAS=="dominant",
+domrel <- subset(raw.stdev, RELATEDNESS=="related" & BIAS=="dominant",select=c(STDEV))
+domunrel <- subset(raw.stdev, RELATEDNESS=="unrelated" & BIAS=="dominant",
                  select=c(STDEV))
-subrel <- subset(raw.mean.stdev, RELATEDNESS=="related" & BIAS=="subordinate",
+subrel <- subset(raw.stdev, RELATEDNESS=="related" & BIAS=="subordinate",
                  select=c(STDEV))
-subunrel <- subset(raw.mean.stdev, RELATEDNESS=="unrelated" & BIAS=="subordinate",
+subunrel <- subset(raw.stdev, RELATEDNESS=="unrelated" & BIAS=="subordinate",
                    select=c(STDEV))
 
 t.test(domrel,domunrel)

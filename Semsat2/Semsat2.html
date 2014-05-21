@@ -196,7 +196,7 @@ library(multcomp)
 </code></pre>
 
 <pre><code class="r">
-download.file(&quot;https://github.com/faulconbridge/semsat/raw/master/Semsat2/Semsat2_compiled.csv&quot;, 
+download.file(&quot;https://github.com/faulconbridge/semsat/raw/master/Semsat2/semsat2.csv&quot;, 
     &quot;semsat2.csv&quot;, &quot;wget&quot;, extra = &quot;--no-check-certificate&quot;)
 semsat2 &lt;- read.csv(&quot;semsat2.csv&quot;, header = TRUE, sep = &quot;,&quot;)
 
@@ -371,7 +371,7 @@ l2 &lt;- glht(stdev.lme, linfct = mcp(BIAS = &quot;Tukey&quot;))
 ## Linear Hypotheses:
 ##                              Estimate Std. Error z value Pr(&gt;|z|)    
 ## subordinate - dominant == 0       301        108    2.79    0.014 *  
-## unrelated - dominant == 0         481        108    4.46   &lt;0.001 ***
+## unrelated - dominant == 0         481        108    4.46   &lt;1e-04 ***
 ## unrelated - subordinate == 0      180        108    1.67    0.217    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1

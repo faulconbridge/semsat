@@ -21,7 +21,7 @@ library(multcomp)
 
 ```r
 
-download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat2/Semsat2_compiled.csv", 
+download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat2/semsat2.csv", 
     "semsat2.csv", "wget", extra = "--no-check-certificate")
 semsat2 <- read.csv("semsat2.csv", header = TRUE, sep = ",")
 
@@ -207,7 +207,7 @@ summary(l2)
 ## Linear Hypotheses:
 ##                              Estimate Std. Error z value Pr(>|z|)    
 ## subordinate - dominant == 0       301        108    2.79    0.014 *  
-## unrelated - dominant == 0         481        108    4.46   <0.001 ***
+## unrelated - dominant == 0         481        108    4.46   <1e-04 ***
 ## unrelated - subordinate == 0      180        108    1.67    0.217    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

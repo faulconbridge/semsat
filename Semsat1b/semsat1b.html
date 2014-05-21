@@ -185,7 +185,7 @@ hljs.initHighlightingOnLoad();
 
 <p>We will first download the raw CSV from github and do a bit of preprocessing on it:</p>
 
-<pre><code class="r">download.file(&quot;https://github.com/faulconbridge/semsat/raw/master/Semsat1b/Semsat1b_compiled.csv&quot;, 
+<pre><code class="r">download.file(&quot;https://github.com/faulconbridge/semsat/raw/master/Semsat1b/Semsat1b.csv&quot;, 
     &quot;semsat1b.csv&quot;, &quot;wget&quot;, extra = &quot;--no-check-certificate&quot;)
 semsat1b &lt;- read.csv(&quot;semsat1b.csv&quot;, header = TRUE, sep = &quot;,&quot;)
 
@@ -335,9 +335,9 @@ time.linear &lt;- lme(STDEV ~ BIAS * REPS * Elapsed, random = list(PID = pdDiag(
 ## 
 ## Linear Hypotheses:
 ##                              Estimate Std. Error z value Pr(&gt;|z|)    
-## subordinate - dominant == 0       118        138    0.85    0.670    
-## unrelated - dominant == 0         562        131    4.30   &lt;0.001 ***
-## unrelated - subordinate == 0      444        138    3.21    0.004 ** 
+## subordinate - dominant == 0       118        138    0.85   0.6700    
+## unrelated - dominant == 0         562        131    4.30   &lt;1e-04 ***
+## unrelated - subordinate == 0      444        138    3.21   0.0037 ** 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
