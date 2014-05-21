@@ -78,9 +78,31 @@ stdev.aov <- aov(STDEV ~ BIAS*HomType*REPS+Error(PID/(BIAS*HomType*REPS)),
 summary(stdev.aov)
 ```
 
-Now we can perform a follow-up test looking at our three levels of bias:
+Now we can run two 3x2 ANOVAs on the NN/NV data separately:
 ```{r}
-stdev.lme <- lme(STDEV~BIAS*HomType*REPS, random=~1|PID, data=raw.mean.stdev)
-l2 <- glht(stdev.lme, linfct = mcp(BIAS = "Tukey"))
-summary(l2)
+NN <- subset(raw.mean.stdev, HomType=="NN", select=c(PID:STDEV))
+nn.aov <- aov(STDEV ~ BIAS*REPS+Error(PID/(BIAS*REPS)),
+                     data=NN)
+summary(nn.aov)
+
+NV <- subset(raw.mean.stdev, HomType=="NV", select=c(PID:STDEV))
+nv.aov <- aov(STDEV ~ BIAS*REPS+Error(PID/(BIAS*REPS)),
+                     data=NV)
+summary(nv.aov)
+```
+
+And some t-tests to look at the ambiguity effect:
+```{r}
+dom <- subset(raw.mean.stdev, BIAS=="dominant", select=c(STDEV))
+sub <- subset(raw.mean.stdev, BIAS=="subordinate", select=c(STDEV))
+unrel <- subset(raw.mean.stdev, BIAS=="unrelated", select=c(STDEV))
+
+NVsub3 <- subset(raw.mean.stdev, BIAS=="subordinate" & HomType=="NV" & REPS=="short",select=c(STDEV))
+NVsub30 <- subset(raw.mean.stdev, BIAS=="subordinate" & HomType=="NV" & REPS=="long",select=c(STDEV))
+NVunrel3 <- subset(raw.mean.stdev, BIAS=="unrelated" & HomType=="NV" & REPS=="short",select=c(STDEV))
+NVunrel30 <- subset(raw.mean.stdev, BIAS=="unrelated" & HomType=="NV" & REPS=="long",select=c(STDEV))
+
+t.test(dom$STDEV,sub$STDEV)
+t.test(NVsub3$STDEV,NVunrel3$STDEV)
+t.test(NVsub30,NVunrel30)
 ```

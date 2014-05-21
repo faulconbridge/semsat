@@ -178,39 +178,138 @@ stdev.aov <- aov(STDEV ~ BIAS * HomType * REPS + Error(PID/(BIAS * HomType *
 ```
 
 
-Now we can perform a follow-up test looking at our three levels of bias:
+Now we can run two 3x2 ANOVAs on the NN/NV data separately:
 
 ```r
-stdev.lme <- lme(STDEV ~ BIAS * HomType * REPS, random = ~1 | PID, data = raw.mean.stdev)
-l2 <- glht(stdev.lme, linfct = mcp(BIAS = "Tukey"))
-```
-
-```
-## Warning: covariate interactions found -- default contrast might be
-## inappropriate
-```
-
-```r
-summary(l2)
+NN <- subset(raw.mean.stdev, HomType == "NN", select = c(PID:STDEV))
+nn.aov <- aov(STDEV ~ BIAS * REPS + Error(PID/(BIAS * REPS)), data = NN)
+summary(nn.aov)
 ```
 
 ```
 ## 
-## 	 Simultaneous Tests for General Linear Hypotheses
+## Error: PID
+##           Df   Sum Sq  Mean Sq F value Pr(>F)
+## Residuals 80 8.52e+08 10655556               
 ## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = STDEV ~ BIAS * HomType * REPS, data = raw.mean.stdev, 
-##     random = ~1 | PID)
-## 
-## Linear Hypotheses:
-##                              Estimate Std. Error z value Pr(>|z|)    
-## subordinate - dominant == 0       301        108    2.79    0.014 *  
-## unrelated - dominant == 0         481        108    4.46   <1e-04 ***
-## unrelated - subordinate == 0      180        108    1.67    0.217    
+## Error: PID:BIAS
+##            Df   Sum Sq Mean Sq F value  Pr(>F)    
+## BIAS        2 12323290 6161645      13 5.8e-06 ***
+## Residuals 160 75722977  473269                    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## 
+## Error: PID:REPS
+##           Df   Sum Sq Mean Sq F value Pr(>F)
+## REPS       1    51498   51498    0.07   0.79
+## Residuals 80 59910336  748879               
+## 
+## Error: PID:BIAS:REPS
+##            Df   Sum Sq Mean Sq F value Pr(>F)
+## BIAS:REPS   2   922466  461233    1.14   0.32
+## Residuals 160 64990966  406194
+```
+
+```r
+
+NV <- subset(raw.mean.stdev, HomType == "NV", select = c(PID:STDEV))
+nv.aov <- aov(STDEV ~ BIAS * REPS + Error(PID/(BIAS * REPS)), data = NV)
+summary(nv.aov)
+```
+
+```
+## 
+## Error: PID
+##           Df   Sum Sq  Mean Sq F value Pr(>F)
+## Residuals 80 8.21e+08 10262790               
+## 
+## Error: PID:BIAS
+##            Df   Sum Sq Mean Sq F value  Pr(>F)    
+## BIAS        2 13848640 6924320    13.7 3.3e-06 ***
+## Residuals 160 81015920  506350                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Error: PID:REPS
+##           Df   Sum Sq Mean Sq F value Pr(>F)  
+## REPS       1  2166308 2166308    5.55  0.021 *
+## Residuals 80 31247666  390596                 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Error: PID:BIAS:REPS
+##            Df   Sum Sq Mean Sq F value Pr(>F)
+## BIAS:REPS   2  1337792  668896    1.56   0.21
+## Residuals 160 68729372  429559
+```
+
+
+And some t-tests to look at the ambiguity effect:
+
+```r
+dom <- subset(raw.mean.stdev, BIAS == "dominant", select = c(STDEV))
+sub <- subset(raw.mean.stdev, BIAS == "subordinate", select = c(STDEV))
+unrel <- subset(raw.mean.stdev, BIAS == "unrelated", select = c(STDEV))
+
+NVsub3 <- subset(raw.mean.stdev, BIAS == "subordinate" & HomType == "NV" & REPS == 
+    "short", select = c(STDEV))
+NVsub30 <- subset(raw.mean.stdev, BIAS == "subordinate" & HomType == "NV" & 
+    REPS == "long", select = c(STDEV))
+NVunrel3 <- subset(raw.mean.stdev, BIAS == "unrelated" & HomType == "NV" & REPS == 
+    "short", select = c(STDEV))
+NVunrel30 <- subset(raw.mean.stdev, BIAS == "unrelated" & HomType == "NV" & 
+    REPS == "long", select = c(STDEV))
+
+t.test(dom$STDEV, sub$STDEV)
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  dom$STDEV and sub$STDEV
+## t = -2.388, df = 628.9, p-value = 0.01726
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -502.42  -48.93
+## sample estimates:
+## mean of x mean of y 
+##      2043      2319
+```
+
+```r
+t.test(NVsub3$STDEV, NVunrel3$STDEV)
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  NVsub3$STDEV and NVunrel3$STDEV
+## t = -0.3524, df = 158, p-value = 0.725
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -550.5  383.8
+## sample estimates:
+## mean of x mean of y 
+##      2317      2400
+```
+
+```r
+t.test(NVsub30, NVunrel30)
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  NVsub30 and NVunrel30
+## t = 0.137, df = 151.1, p-value = 0.8912
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -420.1  482.7
+## sample estimates:
+## mean of x mean of y 
+##      2441      2410
 ```
 
