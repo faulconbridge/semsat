@@ -7,7 +7,7 @@ Datasets, test programs, and documentation for ongoing research of semantic sati
 
 Cite as: Christopher Wetherill (2014). Semantic satiation among ambiguous words datasets. ZENODO. [10.5281/zenodo.10148](10.5281/zenodo.10148)
 
-![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.10148.png)
+<a href="http://dx.doi.org/10.5281/zenodo.10148" target="_blank"><img src="https://zenodo.org/badge/doi/10.5281/zenodo.10148.png" /></a>
 
 ----
 
