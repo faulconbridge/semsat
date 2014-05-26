@@ -1,7 +1,8 @@
 Semantic Satiation
 ======
 
-----
+Cite me!
+--------
 
 Datasets, test programs, and documentation for ongoing research of semantic satiation. This research is a collaboration between Christopher Wetherill and Angela C. Jones, John Carroll University.
 
@@ -9,7 +10,8 @@ Cite as: Christopher Wetherill (2014). Semantic satiation among ambiguous words 
 
 <a href="http://dx.doi.org/10.5281/zenodo.10148" target="_blank"><img src="https://zenodo.org/badge/doi/10.5281/zenodo.10148.png" /></a>
 
-----
+What is this?
+-------------
 
 Semantic satiation refers to the increase in response time in relatedness judgments following the repeated and frequentitive access of a word and its meaning. E.g., if you see the word GIRAFFE repeated 30 times, this theory predicts that you'll probably take longer to figure out whether GIRAFFE and EVEN-TOED UNGULATE are related than if you've only seen GIRAFFE 3 times. Although how familiar you are with even-toed ungulates is a totally different matter... (Or, a less-silly explanation: with a few number of repetitions, priming is facilitatory; with increased repetitions, fatigue onsets and the prime becomes inhibitory.)
 
@@ -25,10 +27,11 @@ We also seek to determine the duration for the inhibitory effect previously desc
 
 To the second point, we've got a meta-analysis to conduct! All prior attempts to assess whether the effect actually exists or not have been narrative reviews of the literature. Although good overviews of an entire field of literature, this type of review does not provide rigorous and empirical methodologies for assessing the evidence for and against a particular effect with, perhaps, a small effect size and small to moderate sample sizes
 
-----
-All data, test programs, analyses, data clean-up procedures, etc. will be included for all experiments. Because reproducability is a really dandy thing that researchers don't typically pay enough attention to. So please, download the data if you're researching semantic satiation. Play with them; analyze them; critique my own methods; confirm or refute my results.
 
------
+What's included here?
+---------------------
+
+All data, test programs, analyses, data clean-up procedures, etc. will be included for all experiments. Because reproducability is a really dandy thing that researchers don't typically pay enough attention to. So please, download the data if you're researching semantic satiation. Play with them; analyze them; critique my own methods; confirm or refute my results.
 
 Waiver of Copyright
 ======
