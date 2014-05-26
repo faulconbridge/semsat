@@ -5,6 +5,10 @@ Semantic Satiation
 
 Datasets, test programs, and documentation for ongoing research of semantic satiation. This research is a collaboration between Christopher Wetherill and Angela C. Jones, John Carroll University.
 
+Cite as: Christopher Wetherill (2014). Semantic satiation among ambiguous words datasets. ZENODO. [10.5281/zenodo.10148](10.5281/zenodo.10148)
+
+![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.10148.png)
+
 ----
 
 Semantic satiation refers to the increase in response time in relatedness judgments following the repeated and frequentitive access of a word and its meaning. E.g., if you see the word GIRAFFE repeated 30 times, this theory predicts that you'll probably take longer to figure out whether GIRAFFE and EVEN-TOED UNGULATE are related than if you've only seen GIRAFFE 3 times. Although how familiar you are with even-toed ungulates is a totally different matter... (Or, a less-silly explanation: with a few number of repetitions, priming is facilitatory; with increased repetitions, fatigue onsets and the prime becomes inhibitory.)
