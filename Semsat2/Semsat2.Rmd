@@ -6,10 +6,12 @@ Acquiring the Data
 
 We will first download the raw CSV from github and do a bit of preprocessing on it:
 
-```{r}
+```{r, echo=FALSE, results='hide'}
 library(nlme)
 library(multcomp)
+```
 
+```{r}
 download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat2/semsat2.csv", "semsat2.csv", "wget", extra="--no-check-certificate")
 semsat2 <- read.csv("semsat2.csv",header=TRUE,sep=",")
 

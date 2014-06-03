@@ -6,6 +6,12 @@ Acquiring the Data
 
 We will first download the raw CSV from github and do a bit of preprocessing on it:
 
+```{r, echo=FALSE,results='hide'}
+library(lattice)
+library(nlme)
+library(multcomp)
+```
+
 ```{r}
 download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1b/Semsat1b.csv", "semsat1b.csv", "wget", extra="--no-check-certificate")
 semsat1b <- read.csv("semsat1b.csv",header=TRUE,sep=",")
@@ -36,22 +42,16 @@ raw.stdev <- na.omit(raw.stdev)
 ```
 
 We can now fit a linear mixed-effects model to our data:
-```{r, echo=FALSE,results='hide'}
-library(lattice)
-library(nlme)
-library(multcomp)
-```
 ```{r}
 raw.stdev$REPS <- factor(raw.stdev$REPS)
 
 time.linear <- lme(STDEV ~ BIAS * REPS * Elapsed,
   random = list(PID = pdDiag(~ Elapsed)), na.action=na.omit, data = raw.stdev)
 ```
+
 This model gives:
 ```{r,echo=FALSE}
 summary(time.linear)
-```
-```{r,echo=FALSE}
 anova(time.linear)
 ```
 

@@ -6,11 +6,14 @@ Acquiring the Data
 
 We will first (1) download the raw CSV from github; (2) convert the relevant variables---meaning bias, repetitions, relatedness, and participant ID---to factors; and (3) create three subsets of the data: one using the full dataset, one using a dataset with outliers $\pm$ 3 standard deviations removed, and a third with outliers more than 1.5 times the IQR above Q3 or below Q1 removed. We will then drop any null values from the dependent variable (MS response time) column.
 
+```{r,echo=FALSE,results='hide'}
+library(nlme)
+library(psch)
+```
+
 ```{r}
 download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1a/semsat1a.csv", "semsat1a.csv", "wget", extra="--no-check-certificate")
 semsat1a <- read.csv("semsat1a.csv",header=TRUE,sep=",")
-
-library(nlme)
 
 # Makes a copy of our data
 raw <- semsat1a
@@ -82,9 +85,6 @@ with(raw.stdev, interaction.plot(RELATEDNESS,BIAS,STDEV,
                                  trace.label=deparse(substitute(trace.factor))))
 ```
 
-```{r,echo=FALSE,results='hide'}
-library(psych)
-```
 Some descriptive statistics for the main effects:
 ```{r}
 bias <- aggregate(raw.stdev$STDEV,by=list(raw.stdev$PID,raw.stdev$BIAS),mean)
