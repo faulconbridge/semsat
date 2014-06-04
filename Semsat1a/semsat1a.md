@@ -7,12 +7,13 @@ Acquiring the Data
 We will first (1) download the raw CSV from github; (2) convert the relevant variables---meaning bias, repetitions, relatedness, and participant ID---to factors; and (3) create three subsets of the data: one using the full dataset, one using a dataset with outliers $\pm$ 3 standard deviations removed, and a third with outliers more than 1.5 times the IQR above Q3 or below Q1 removed. We will then drop any null values from the dependent variable (MS response time) column.
 
 
+
+
+
 ```r
 download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1a/semsat1a.csv", 
     "semsat1a.csv", "wget", extra = "--no-check-certificate")
 semsat1a <- read.csv("semsat1a.csv", header = TRUE, sep = ",")
-
-library(nlme)
 
 # Makes a copy of our data
 raw <- semsat1a
@@ -175,9 +176,7 @@ summary(stdev.aov)
 
 
 We can visualize these differences as:
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
-
-
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
 
 
 Some descriptive statistics for the main effects:
@@ -309,13 +308,13 @@ Next, the relatedness by repetition interaction:
 ## 	Welch Two Sample t-test
 ## 
 ## data:  relshort and rellong
-## t = -1.754, df = 257.1, p-value = 0.08069
+## t = -3.372, df = 1933, p-value = 0.0007611
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -384.83   22.29
+##  -300.04  -79.37
 ## sample estimates:
 ## mean of x mean of y 
-##      1599      1780
+##      1586      1776
 ```
 
 ```
@@ -323,13 +322,13 @@ Next, the relatedness by repetition interaction:
 ## 	Welch Two Sample t-test
 ## 
 ## data:  relshort and unrelshort
-## t = -2.581, df = 259.6, p-value = 0.01041
+## t = -5.007, df = 2078, p-value = 5.989e-07
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -459.10  -61.71
+##  -360.4 -157.5
 ## sample estimates:
 ## mean of x mean of y 
-##      1599      1860
+##      1586      1845
 ```
 
 ```
@@ -337,13 +336,13 @@ Next, the relatedness by repetition interaction:
 ## 	Welch Two Sample t-test
 ## 
 ## data:  rellong and unrellong
-## t = -1.236, df = 261.5, p-value = 0.2178
+## t = -2.205, df = 1998, p-value = 0.02757
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -346.11   79.23
+##  -235.18  -13.76
 ## sample estimates:
 ## mean of x mean of y 
-##      1780      1914
+##      1776      1900
 ```
 
 ```
@@ -351,12 +350,12 @@ Next, the relatedness by repetition interaction:
 ## 	Welch Two Sample t-test
 ## 
 ## data:  unrelshort and unrellong
-## t = -0.514, df = 262, p-value = 0.6077
+## t = -1.064, df = 2175, p-value = 0.2876
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -262.3  153.7
+##  -157.06   46.59
 ## sample estimates:
 ## mean of x mean of y 
-##      1860      1914
+##      1845      1900
 ```
 

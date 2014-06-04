@@ -8,7 +8,7 @@ We will first (1) download the raw CSV from github; (2) convert the relevant var
 
 ```{r,echo=FALSE,results='hide'}
 library(nlme)
-library(psch)
+library(psych)
 ```
 
 ```{r}
@@ -115,13 +115,13 @@ t.test(domunrel,subunrel)
 
 Next, the relatedness by repetition interaction:
 ```{r,echo=FALSE}
-relshort <- subset(raw.mean.stdev, RELATEDNESS=="related" & REPS=="short",
+relshort <- subset(raw.stdev, RELATEDNESS=="related" & REPS=="short",
                    select=c(STDEV))
-rellong <- subset(raw.mean.stdev, RELATEDNESS=="related" & REPS=="long",
+rellong <- subset(raw.stdev, RELATEDNESS=="related" & REPS=="long",
                    select=c(STDEV))
-unrelshort <- subset(raw.mean.stdev, RELATEDNESS=="unrelated" & REPS=="short",
+unrelshort <- subset(raw.stdev, RELATEDNESS=="unrelated" & REPS=="short",
                    select=c(STDEV))
-unrellong <- subset(raw.mean.stdev, RELATEDNESS=="unrelated" & REPS=="long",
+unrellong <- subset(raw.stdev, RELATEDNESS=="unrelated" & REPS=="long",
                   select=c(STDEV))
 
 t.test(relshort,rellong)
