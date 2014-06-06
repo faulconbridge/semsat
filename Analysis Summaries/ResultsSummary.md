@@ -1,0 +1,244 @@
+Analysis of E1a and E2 data with various cutoffs
+================================================
+
+Experiment 1a
+-------------
+
+
+
+
+First, our analyses with no data removed. (I.e., all incorrect responses, RTs < 200ms, and high RTs are included):
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed Jun  4 12:16:31 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 419073657.83 </TD> <TD align="right"> 6447287.04 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 429552.27 </TD> <TD align="right"> 429552.27 </TD> <TD align="right"> 1.99 </TD> <TD align="right"> 0.1628 </TD> </TR>
+  <TR> <TD> Residuals1 </TD> <TD align="right"> 65 </TD> <TD align="right"> 14012360.10 </TD> <TD align="right"> 215574.77 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> RELATEDNESS </TD> <TD align="right"> 1 </TD> <TD align="right"> 5816580.92 </TD> <TD align="right"> 5816580.92 </TD> <TD align="right"> 8.48 </TD> <TD align="right"> 0.0049 </TD> </TR>
+  <TR> <TD> Residuals   </TD> <TD align="right"> 65 </TD> <TD align="right"> 44562107.85 </TD> <TD align="right"> 685570.89 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 1275449.05 </TD> <TD align="right"> 1275449.05 </TD> <TD align="right"> 3.29 </TD> <TD align="right"> 0.0743 </TD> </TR>
+  <TR> <TD> Residuals2 </TD> <TD align="right"> 65 </TD> <TD align="right"> 25201572.25 </TD> <TD align="right"> 387716.50 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:RELATEDNESS </TD> <TD align="right"> 1 </TD> <TD align="right"> 1881197.47 </TD> <TD align="right"> 1881197.47 </TD> <TD align="right"> 11.54 </TD> <TD align="right"> 0.0012 </TD> </TR>
+  <TR> <TD> Residuals        </TD> <TD align="right"> 65 </TD> <TD align="right"> 10592704.63 </TD> <TD align="right"> 162964.69 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 32301.26 </TD> <TD align="right"> 32301.26 </TD> <TD align="right"> 0.08 </TD> <TD align="right"> 0.7783 </TD> </TR>
+  <TR> <TD> Residuals3 </TD> <TD align="right"> 65 </TD> <TD align="right"> 26275111.24 </TD> <TD align="right"> 404232.48 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 2741858.02 </TD> <TD align="right"> 2741858.02 </TD> <TD align="right"> 4.87 </TD> <TD align="right"> 0.0309 </TD> </TR>
+  <TR> <TD> Residuals       1 </TD> <TD align="right"> 65 </TD> <TD align="right"> 36607462.53 </TD> <TD align="right"> 563191.73 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 100173.64 </TD> <TD align="right"> 100173.64 </TD> <TD align="right"> 0.36 </TD> <TD align="right"> 0.5483 </TD> </TR>
+  <TR> <TD> Residuals             </TD> <TD align="right"> 65 </TD> <TD align="right"> 17878162.27 </TD> <TD align="right"> 275048.65 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+
+Now with only correct responses:
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed Jun  4 12:16:31 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 366970847.13 </TD> <TD align="right"> 5645705.34 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 81756.28 </TD> <TD align="right"> 81756.28 </TD> <TD align="right"> 0.25 </TD> <TD align="right"> 0.6216 </TD> </TR>
+  <TR> <TD> Residuals1 </TD> <TD align="right"> 65 </TD> <TD align="right"> 21605285.35 </TD> <TD align="right"> 332389.01 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> RELATEDNESS </TD> <TD align="right"> 1 </TD> <TD align="right"> 8309870.23 </TD> <TD align="right"> 8309870.23 </TD> <TD align="right"> 10.62 </TD> <TD align="right"> 0.0018 </TD> </TR>
+  <TR> <TD> Residuals   </TD> <TD align="right"> 65 </TD> <TD align="right"> 50872745.73 </TD> <TD align="right"> 782657.63 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 1352698.96 </TD> <TD align="right"> 1352698.96 </TD> <TD align="right"> 3.86 </TD> <TD align="right"> 0.0537 </TD> </TR>
+  <TR> <TD> Residuals2 </TD> <TD align="right"> 65 </TD> <TD align="right"> 22768744.81 </TD> <TD align="right"> 350288.38 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:RELATEDNESS </TD> <TD align="right"> 1 </TD> <TD align="right"> 1946779.07 </TD> <TD align="right"> 1946779.07 </TD> <TD align="right"> 10.65 </TD> <TD align="right"> 0.0018 </TD> </TR>
+  <TR> <TD> Residuals        </TD> <TD align="right"> 65 </TD> <TD align="right"> 11882473.66 </TD> <TD align="right"> 182807.29 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 22454.54 </TD> <TD align="right"> 22454.54 </TD> <TD align="right"> 0.04 </TD> <TD align="right"> 0.8337 </TD> </TR>
+  <TR> <TD> Residuals3 </TD> <TD align="right"> 65 </TD> <TD align="right"> 32826350.61 </TD> <TD align="right"> 505020.78 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 1733961.92 </TD> <TD align="right"> 1733961.92 </TD> <TD align="right"> 4.98 </TD> <TD align="right"> 0.0291 </TD> </TR>
+  <TR> <TD> Residuals       1 </TD> <TD align="right"> 65 </TD> <TD align="right"> 22629904.52 </TD> <TD align="right"> 348152.38 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 43912.58 </TD> <TD align="right"> 43912.58 </TD> <TD align="right"> 0.17 </TD> <TD align="right"> 0.6779 </TD> </TR>
+  <TR> <TD> Residuals             </TD> <TD align="right"> 65 </TD> <TD align="right"> 16399918.70 </TD> <TD align="right"> 252306.44 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+
+Now with the errant <200ms RTs removed:
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed Jun  4 12:16:31 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 366064180.80 </TD> <TD align="right"> 5631756.63 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 79567.67 </TD> <TD align="right"> 79567.67 </TD> <TD align="right"> 0.24 </TD> <TD align="right"> 0.6266 </TD> </TR>
+  <TR> <TD> Residuals1 </TD> <TD align="right"> 65 </TD> <TD align="right"> 21643741.42 </TD> <TD align="right"> 332980.64 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> RELATEDNESS </TD> <TD align="right"> 1 </TD> <TD align="right"> 8091808.04 </TD> <TD align="right"> 8091808.04 </TD> <TD align="right"> 10.43 </TD> <TD align="right"> 0.0019 </TD> </TR>
+  <TR> <TD> Residuals   </TD> <TD align="right"> 65 </TD> <TD align="right"> 50448248.84 </TD> <TD align="right"> 776126.91 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 1508501.58 </TD> <TD align="right"> 1508501.58 </TD> <TD align="right"> 4.39 </TD> <TD align="right"> 0.0402 </TD> </TR>
+  <TR> <TD> Residuals2 </TD> <TD align="right"> 65 </TD> <TD align="right"> 22358796.84 </TD> <TD align="right"> 343981.49 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:RELATEDNESS </TD> <TD align="right"> 1 </TD> <TD align="right"> 1943663.96 </TD> <TD align="right"> 1943663.96 </TD> <TD align="right"> 10.65 </TD> <TD align="right"> 0.0018 </TD> </TR>
+  <TR> <TD> Residuals        </TD> <TD align="right"> 65 </TD> <TD align="right"> 11866960.58 </TD> <TD align="right"> 182568.62 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 23624.15 </TD> <TD align="right"> 23624.15 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.8294 </TD> </TR>
+  <TR> <TD> Residuals3 </TD> <TD align="right"> 65 </TD> <TD align="right"> 32793279.49 </TD> <TD align="right"> 504511.99 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 1835683.77 </TD> <TD align="right"> 1835683.77 </TD> <TD align="right"> 5.31 </TD> <TD align="right"> 0.0245 </TD> </TR>
+  <TR> <TD> Residuals       1 </TD> <TD align="right"> 65 </TD> <TD align="right"> 22490387.68 </TD> <TD align="right"> 346005.96 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 44381.87 </TD> <TD align="right"> 44381.87 </TD> <TD align="right"> 0.18 </TD> <TD align="right"> 0.6751 </TD> </TR>
+  <TR> <TD> Residuals             </TD> <TD align="right"> 65 </TD> <TD align="right"> 16270914.39 </TD> <TD align="right"> 250321.76 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+
+Next we will trim the data to $\pm$3sd:
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed Jun  4 12:16:32 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 285615571.80 </TD> <TD align="right"> 4394085.72 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 567168.62 </TD> <TD align="right"> 567168.62 </TD> <TD align="right"> 3.79 </TD> <TD align="right"> 0.0558 </TD> </TR>
+  <TR> <TD> Residuals1 </TD> <TD align="right"> 65 </TD> <TD align="right"> 9719439.67 </TD> <TD align="right"> 149529.84 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> RELATEDNESS </TD> <TD align="right"> 1 </TD> <TD align="right"> 5118593.07 </TD> <TD align="right"> 5118593.07 </TD> <TD align="right"> 10.69 </TD> <TD align="right"> 0.0017 </TD> </TR>
+  <TR> <TD> Residuals   </TD> <TD align="right"> 65 </TD> <TD align="right"> 31121335.36 </TD> <TD align="right"> 478789.77 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 1831338.64 </TD> <TD align="right"> 1831338.64 </TD> <TD align="right"> 8.26 </TD> <TD align="right"> 0.0055 </TD> </TR>
+  <TR> <TD> Residuals2 </TD> <TD align="right"> 65 </TD> <TD align="right"> 14406208.28 </TD> <TD align="right"> 221633.97 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:RELATEDNESS </TD> <TD align="right"> 1 </TD> <TD align="right"> 583934.56 </TD> <TD align="right"> 583934.56 </TD> <TD align="right"> 5.14 </TD> <TD align="right"> 0.0267 </TD> </TR>
+  <TR> <TD> Residuals        </TD> <TD align="right"> 65 </TD> <TD align="right"> 7385115.35 </TD> <TD align="right"> 113617.16 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 103489.31 </TD> <TD align="right"> 103489.31 </TD> <TD align="right"> 0.50 </TD> <TD align="right"> 0.4832 </TD> </TR>
+  <TR> <TD> Residuals3 </TD> <TD align="right"> 65 </TD> <TD align="right"> 13528233.95 </TD> <TD align="right"> 208126.68 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 531985.40 </TD> <TD align="right"> 531985.40 </TD> <TD align="right"> 3.27 </TD> <TD align="right"> 0.0750 </TD> </TR>
+  <TR> <TD> Residuals       1 </TD> <TD align="right"> 65 </TD> <TD align="right"> 10563486.78 </TD> <TD align="right"> 162515.18 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 20396.32 </TD> <TD align="right"> 20396.32 </TD> <TD align="right"> 0.32 </TD> <TD align="right"> 0.5744 </TD> </TR>
+  <TR> <TD> Residuals             </TD> <TD align="right"> 65 </TD> <TD align="right"> 4161238.57 </TD> <TD align="right"> 64019.05 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+
+Finally, we can use the alternate IQR cutoff:
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed Jun  4 12:16:32 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 65 </TD> <TD align="right"> 190366606.85 </TD> <TD align="right"> 2928717.03 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 481774.90 </TD> <TD align="right"> 481774.90 </TD> <TD align="right"> 8.65 </TD> <TD align="right"> 0.0045 </TD> </TR>
+  <TR> <TD> Residuals1 </TD> <TD align="right"> 65 </TD> <TD align="right"> 3619115.60 </TD> <TD align="right"> 55678.70 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> RELATEDNESS </TD> <TD align="right"> 1 </TD> <TD align="right"> 4463016.99 </TD> <TD align="right"> 4463016.99 </TD> <TD align="right"> 13.87 </TD> <TD align="right"> 0.0004 </TD> </TR>
+  <TR> <TD> Residuals   </TD> <TD align="right"> 65 </TD> <TD align="right"> 20911465.10 </TD> <TD align="right"> 321714.85 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 1525242.72 </TD> <TD align="right"> 1525242.72 </TD> <TD align="right"> 18.56 </TD> <TD align="right"> 0.0001 </TD> </TR>
+  <TR> <TD> Residuals2 </TD> <TD align="right"> 65 </TD> <TD align="right"> 5342965.06 </TD> <TD align="right"> 82199.46 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:RELATEDNESS </TD> <TD align="right"> 1 </TD> <TD align="right"> 79408.92 </TD> <TD align="right"> 79408.92 </TD> <TD align="right"> 1.70 </TD> <TD align="right"> 0.1969 </TD> </TR>
+  <TR> <TD> Residuals        </TD> <TD align="right"> 65 </TD> <TD align="right"> 3035965.23 </TD> <TD align="right"> 46707.16 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 122594.00 </TD> <TD align="right"> 122594.00 </TD> <TD align="right"> 2.00 </TD> <TD align="right"> 0.1625 </TD> </TR>
+  <TR> <TD> Residuals3 </TD> <TD align="right"> 65 </TD> <TD align="right"> 3992880.35 </TD> <TD align="right"> 61428.93 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 93444.32 </TD> <TD align="right"> 93444.32 </TD> <TD align="right"> 1.27 </TD> <TD align="right"> 0.2641 </TD> </TR>
+  <TR> <TD> Residuals       1 </TD> <TD align="right"> 65 </TD> <TD align="right"> 4786205.33 </TD> <TD align="right"> 73633.93 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:RELATEDNESS:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 13795.82 </TD> <TD align="right"> 13795.82 </TD> <TD align="right"> 0.41 </TD> <TD align="right"> 0.5231 </TD> </TR>
+  <TR> <TD> Residuals             </TD> <TD align="right"> 65 </TD> <TD align="right"> 2175591.07 </TD> <TD align="right"> 33470.63 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+
+Experiment 2 Analyses
+---------------------
+
+
+
+
+First, our analyses with no data removed. (I.e., all incorrect responses, RTs < 200ms, and high RTs are included):
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed Jun  4 12:16:33 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 80 </TD> <TD align="right"> 1985775207.08 </TD> <TD align="right"> 24822190.09 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 2 </TD> <TD align="right"> 37690652.22 </TD> <TD align="right"> 18845326.11 </TD> <TD align="right"> 24.63 </TD> <TD align="right"> 0.0000 </TD> </TR>
+  <TR> <TD> Residuals1 </TD> <TD align="right"> 160 </TD> <TD align="right"> 122420719.49 </TD> <TD align="right"> 765129.50 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> HomType   </TD> <TD align="right"> 1 </TD> <TD align="right"> 727046.48 </TD> <TD align="right"> 727046.48 </TD> <TD align="right"> 1.30 </TD> <TD align="right"> 0.2581 </TD> </TR>
+  <TR> <TD> Residuals2 </TD> <TD align="right"> 80 </TD> <TD align="right"> 44842368.94 </TD> <TD align="right"> 560529.61 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 73354.91 </TD> <TD align="right"> 73354.91 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.8316 </TD> </TR>
+  <TR> <TD> Residuals3 </TD> <TD align="right"> 80 </TD> <TD align="right"> 128956168.37 </TD> <TD align="right"> 1611952.10 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:HomType </TD> <TD align="right"> 2 </TD> <TD align="right"> 1776977.15 </TD> <TD align="right"> 888488.58 </TD> <TD align="right"> 2.06 </TD> <TD align="right"> 0.1308 </TD> </TR>
+  <TR> <TD> Residuals    </TD> <TD align="right"> 160 </TD> <TD align="right"> 69012591.69 </TD> <TD align="right"> 431328.70 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 412835.06 </TD> <TD align="right"> 206417.53 </TD> <TD align="right"> 0.19 </TD> <TD align="right"> 0.8284 </TD> </TR>
+  <TR> <TD> Residuals4 </TD> <TD align="right"> 160 </TD> <TD align="right"> 175197005.36 </TD> <TD align="right"> 1094981.28 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> HomType:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 318739.09 </TD> <TD align="right"> 318739.09 </TD> <TD align="right"> 0.58 </TD> <TD align="right"> 0.4504 </TD> </TR>
+  <TR> <TD> Residuals   1 </TD> <TD align="right"> 80 </TD> <TD align="right"> 44325225.24 </TD> <TD align="right"> 554065.32 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:HomType:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 3588469.63 </TD> <TD align="right"> 1794234.82 </TD> <TD align="right"> 2.64 </TD> <TD align="right"> 0.0747 </TD> </TR>
+  <TR> <TD> Residuals         </TD> <TD align="right"> 160 </TD> <TD align="right"> 108873830.00 </TD> <TD align="right"> 680461.44 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+
+Now with only correct responses:
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed Jun  4 12:16:34 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 80 </TD> <TD align="right"> 2008699426.87 </TD> <TD align="right"> 25108742.84 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 2 </TD> <TD align="right"> 38656358.67 </TD> <TD align="right"> 19328179.34 </TD> <TD align="right"> 22.26 </TD> <TD align="right"> 0.0000 </TD> </TR>
+  <TR> <TD> Residuals1 </TD> <TD align="right"> 160 </TD> <TD align="right"> 138948547.04 </TD> <TD align="right"> 868428.42 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> HomType   </TD> <TD align="right"> 1 </TD> <TD align="right"> 2832037.54 </TD> <TD align="right"> 2832037.54 </TD> <TD align="right"> 4.88 </TD> <TD align="right"> 0.0300 </TD> </TR>
+  <TR> <TD> Residuals2 </TD> <TD align="right"> 80 </TD> <TD align="right"> 46386699.39 </TD> <TD align="right"> 579833.74 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 206746.36 </TD> <TD align="right"> 206746.36 </TD> <TD align="right"> 0.13 </TD> <TD align="right"> 0.7230 </TD> </TR>
+  <TR> <TD> Residuals3 </TD> <TD align="right"> 80 </TD> <TD align="right"> 130694312.73 </TD> <TD align="right"> 1633678.91 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:HomType </TD> <TD align="right"> 2 </TD> <TD align="right"> 9973466.35 </TD> <TD align="right"> 4986733.18 </TD> <TD align="right"> 6.31 </TD> <TD align="right"> 0.0023 </TD> </TR>
+  <TR> <TD> Residuals    </TD> <TD align="right"> 160 </TD> <TD align="right"> 126423154.04 </TD> <TD align="right"> 790144.71 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 175482.81 </TD> <TD align="right"> 87741.41 </TD> <TD align="right"> 0.07 </TD> <TD align="right"> 0.9295 </TD> </TR>
+  <TR> <TD> Residuals4 </TD> <TD align="right"> 160 </TD> <TD align="right"> 191979833.56 </TD> <TD align="right"> 1199873.96 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> HomType:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 512202.77 </TD> <TD align="right"> 512202.77 </TD> <TD align="right"> 0.76 </TD> <TD align="right"> 0.3867 </TD> </TR>
+  <TR> <TD> Residuals   1 </TD> <TD align="right"> 80 </TD> <TD align="right"> 54098298.86 </TD> <TD align="right"> 676228.74 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:HomType:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 3657594.14 </TD> <TD align="right"> 1828797.07 </TD> <TD align="right"> 1.71 </TD> <TD align="right"> 0.1834 </TD> </TR>
+  <TR> <TD> Residuals         </TD> <TD align="right"> 160 </TD> <TD align="right"> 170718806.09 </TD> <TD align="right"> 1066992.54 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+
+Now with the errant <200ms RTs removed:
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed Jun  4 12:16:35 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 80 </TD> <TD align="right"> 2019271781.91 </TD> <TD align="right"> 25240897.27 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 2 </TD> <TD align="right"> 39035313.21 </TD> <TD align="right"> 19517656.61 </TD> <TD align="right"> 22.99 </TD> <TD align="right"> 0.0000 </TD> </TR>
+  <TR> <TD> Residuals1 </TD> <TD align="right"> 160 </TD> <TD align="right"> 135806183.14 </TD> <TD align="right"> 848788.64 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> HomType   </TD> <TD align="right"> 1 </TD> <TD align="right"> 2635376.41 </TD> <TD align="right"> 2635376.41 </TD> <TD align="right"> 4.63 </TD> <TD align="right"> 0.0344 </TD> </TR>
+  <TR> <TD> Residuals2 </TD> <TD align="right"> 80 </TD> <TD align="right"> 45543964.12 </TD> <TD align="right"> 569299.55 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 490486.18 </TD> <TD align="right"> 490486.18 </TD> <TD align="right"> 0.31 </TD> <TD align="right"> 0.5799 </TD> </TR>
+  <TR> <TD> Residuals3 </TD> <TD align="right"> 80 </TD> <TD align="right"> 127026588.29 </TD> <TD align="right"> 1587832.35 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:HomType </TD> <TD align="right"> 2 </TD> <TD align="right"> 10034458.40 </TD> <TD align="right"> 5017229.20 </TD> <TD align="right"> 6.33 </TD> <TD align="right"> 0.0023 </TD> </TR>
+  <TR> <TD> Residuals    </TD> <TD align="right"> 160 </TD> <TD align="right"> 126814923.93 </TD> <TD align="right"> 792593.27 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 131977.05 </TD> <TD align="right"> 65988.53 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.9465 </TD> </TR>
+  <TR> <TD> Residuals4 </TD> <TD align="right"> 160 </TD> <TD align="right"> 192069396.52 </TD> <TD align="right"> 1200433.73 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> HomType:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 510828.93 </TD> <TD align="right"> 510828.93 </TD> <TD align="right"> 0.78 </TD> <TD align="right"> 0.3800 </TD> </TR>
+  <TR> <TD> Residuals   1 </TD> <TD align="right"> 80 </TD> <TD align="right"> 52446462.29 </TD> <TD align="right"> 655580.78 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:HomType:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 3541796.45 </TD> <TD align="right"> 1770898.23 </TD> <TD align="right"> 1.64 </TD> <TD align="right"> 0.1966 </TD> </TR>
+  <TR> <TD> Residuals         </TD> <TD align="right"> 160 </TD> <TD align="right"> 172445053.25 </TD> <TD align="right"> 1077781.58 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+
+Next we will trim the data to $\pm$3sd:
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed Jun  4 12:16:35 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 80 </TD> <TD align="right"> 1641606933.76 </TD> <TD align="right"> 20520086.67 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 2 </TD> <TD align="right"> 24988314.39 </TD> <TD align="right"> 12494157.20 </TD> <TD align="right"> 22.75 </TD> <TD align="right"> 0.0000 </TD> </TR>
+  <TR> <TD> Residuals1 </TD> <TD align="right"> 160 </TD> <TD align="right"> 87854302.67 </TD> <TD align="right"> 549089.39 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> HomType   </TD> <TD align="right"> 1 </TD> <TD align="right"> 116432.97 </TD> <TD align="right"> 116432.97 </TD> <TD align="right"> 0.29 </TD> <TD align="right"> 0.5902 </TD> </TR>
+  <TR> <TD> Residuals2 </TD> <TD align="right"> 80 </TD> <TD align="right"> 31860687.67 </TD> <TD align="right"> 398258.60 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 1442909.77 </TD> <TD align="right"> 1442909.77 </TD> <TD align="right"> 2.29 </TD> <TD align="right"> 0.1346 </TD> </TR>
+  <TR> <TD> Residuals3 </TD> <TD align="right"> 80 </TD> <TD align="right"> 50515360.65 </TD> <TD align="right"> 631442.01 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:HomType </TD> <TD align="right"> 2 </TD> <TD align="right"> 1183615.50 </TD> <TD align="right"> 591807.75 </TD> <TD align="right"> 1.37 </TD> <TD align="right"> 0.2559 </TD> </TR>
+  <TR> <TD> Residuals    </TD> <TD align="right"> 160 </TD> <TD align="right"> 68884594.64 </TD> <TD align="right"> 430528.72 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 150077.93 </TD> <TD align="right"> 75038.97 </TD> <TD align="right"> 0.20 </TD> <TD align="right"> 0.8225 </TD> </TR>
+  <TR> <TD> Residuals4 </TD> <TD align="right"> 160 </TD> <TD align="right"> 61366067.41 </TD> <TD align="right"> 383537.92 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> HomType:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 774896.30 </TD> <TD align="right"> 774896.30 </TD> <TD align="right"> 1.53 </TD> <TD align="right"> 0.2204 </TD> </TR>
+  <TR> <TD> Residuals   1 </TD> <TD align="right"> 80 </TD> <TD align="right"> 40642642.05 </TD> <TD align="right"> 508033.03 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:HomType:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 2110180.12 </TD> <TD align="right"> 1055090.06 </TD> <TD align="right"> 2.33 </TD> <TD align="right"> 0.1003 </TD> </TR>
+  <TR> <TD> Residuals         </TD> <TD align="right"> 160 </TD> <TD align="right"> 72354271.13 </TD> <TD align="right"> 452214.19 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+
+
+Finally, we can use the alternate IQR cutoff:
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed Jun  4 12:16:36 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Df </TH> <TH> Sum Sq </TH> <TH> Mean Sq </TH> <TH> F value </TH> <TH> Pr(&gt;F) </TH>  </TR>
+  <TR> <TD> Residuals </TD> <TD align="right"> 80 </TD> <TD align="right"> 848850768.72 </TD> <TD align="right"> 10610634.61 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS      </TD> <TD align="right"> 2 </TD> <TD align="right"> 19581523.13 </TD> <TD align="right"> 9790761.56 </TD> <TD align="right"> 44.01 </TD> <TD align="right"> 0.0000 </TD> </TR>
+  <TR> <TD> Residuals1 </TD> <TD align="right"> 160 </TD> <TD align="right"> 35594665.66 </TD> <TD align="right"> 222466.66 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> HomType   </TD> <TD align="right"> 1 </TD> <TD align="right"> 777429.58 </TD> <TD align="right"> 777429.58 </TD> <TD align="right"> 3.00 </TD> <TD align="right"> 0.0873 </TD> </TR>
+  <TR> <TD> Residuals2 </TD> <TD align="right"> 80 </TD> <TD align="right"> 20759815.94 </TD> <TD align="right"> 259497.70 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> REPS      </TD> <TD align="right"> 1 </TD> <TD align="right"> 2847594.73 </TD> <TD align="right"> 2847594.73 </TD> <TD align="right"> 6.65 </TD> <TD align="right"> 0.0117 </TD> </TR>
+  <TR> <TD> Residuals3 </TD> <TD align="right"> 80 </TD> <TD align="right"> 34238901.69 </TD> <TD align="right"> 427986.27 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:HomType </TD> <TD align="right"> 2 </TD> <TD align="right"> 1666361.50 </TD> <TD align="right"> 833180.75 </TD> <TD align="right"> 4.46 </TD> <TD align="right"> 0.0130 </TD> </TR>
+  <TR> <TD> Residuals    </TD> <TD align="right"> 160 </TD> <TD align="right"> 29869926.46 </TD> <TD align="right"> 186687.04 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 113308.63 </TD> <TD align="right"> 56654.32 </TD> <TD align="right"> 0.48 </TD> <TD align="right"> 0.6222 </TD> </TR>
+  <TR> <TD> Residuals4 </TD> <TD align="right"> 160 </TD> <TD align="right"> 19047932.02 </TD> <TD align="right"> 119049.58 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> HomType:REPS </TD> <TD align="right"> 1 </TD> <TD align="right"> 272330.60 </TD> <TD align="right"> 272330.60 </TD> <TD align="right"> 1.11 </TD> <TD align="right"> 0.2955 </TD> </TR>
+  <TR> <TD> Residuals   1 </TD> <TD align="right"> 80 </TD> <TD align="right"> 19646910.43 </TD> <TD align="right"> 245586.38 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+  <TR> <TD> BIAS:HomType:REPS </TD> <TD align="right"> 2 </TD> <TD align="right"> 30333.86 </TD> <TD align="right"> 15166.93 </TD> <TD align="right"> 0.06 </TD> <TD align="right"> 0.9407 </TD> </TR>
+  <TR> <TD> Residuals         </TD> <TD align="right"> 160 </TD> <TD align="right"> 39708254.44 </TD> <TD align="right"> 248176.59 </TD> <TD align="right">  </TD> <TD align="right">  </TD> </TR>
+   </TABLE>
+

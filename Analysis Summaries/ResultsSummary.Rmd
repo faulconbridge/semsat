@@ -1,0 +1,199 @@
+Analysis of E1a and E2 data with various cutoffs
+================================================
+
+Experiment 1a
+-------------
+
+```{r,imports, echo=FALSE, results="hide"}
+library(nlme)
+library(psych)
+library(xtable)
+
+download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat1a/semsat1a.csv", "semsat1a.csv", "wget", extra="--no-check-certificate")
+semsat1a <- read.csv("semsat1a.csv",header=TRUE,sep=",")
+
+# Makes a copy of our data
+raw <- semsat1a
+
+# treats our within subjects variables as factors
+# renames a couple of ugly variables
+raw <- within(raw, {
+  BIAS <- factor(BIAS)
+  RELATEDNESS <- factor(RELATEDNESS)
+  REPS <- factor(REPS)
+  PID <- factor(PID)
+  STDEV <- MS.3.STDEV
+})
+
+raw <- subset(raw, BIAS!="filler", select=c(PID,BIAS,RELATEDNESS,REPS,
+                       ANSWER,MS,STDEV,IQR))
+```
+
+First, our analyses with no data removed. (I.e., all incorrect responses, RTs < 200ms, and high RTs are included):
+```{r,untrimmed, echo=FALSE, results="asis"}
+untrimmed.mean <- aggregate(raw$MS,
+                      by=list(raw$PID,raw$BIAS,
+                              raw$RELATEDNESS,raw$REPS),
+                      FUN='mean')
+colnames(untrimmed.mean) <- c("PID","BIAS","RELATEDNESS","REPS","MS")
+
+untrimmed.aov <- with(untrimmed.mean,aov(MS ~ BIAS*RELATEDNESS*REPS + Error(PID / (BIAS*RELATEDNESS*REPS))))
+print(xtable(summary(untrimmed.aov)),type="html")
+```
+
+Now with only correct responses:
+```{r,correct,echo=FALSE,results="asis"}
+correct <- subset(raw, (BIAS=="dominant" | BIAS=="subordinate") & 
+                ((RELATEDNESS=="related" & ANSWER=="M") |
+                (RELATEDNESS=="unrelated" & ANSWER=="C")),
+              select=c(PID,BIAS,RELATEDNESS,REPS,
+                       ANSWER,MS,STDEV,IQR))
+
+correct.mean <- aggregate(correct$MS,
+                      by=list(correct$PID,correct$BIAS,
+                              correct$RELATEDNESS,correct$REPS),
+                      FUN='mean')
+colnames(correct.mean) <- c("PID","BIAS","RELATEDNESS","REPS","MS")
+
+correct.aov <- with(correct.mean,aov(MS ~ BIAS*RELATEDNESS*REPS + Error(PID / (BIAS*RELATEDNESS*REPS))))
+print(xtable(summary(correct.aov)),type="html")
+```
+
+Now with the errant <200ms RTs removed:
+```{r,low-RT, echo=FALSE, results="asis"}
+lowtrim <- subset(correct, MS>200, select=PID:IQR)
+lowtrim.mean <- aggregate(lowtrim$MS,
+                      by=list(lowtrim$PID,lowtrim$BIAS,
+                              lowtrim$RELATEDNESS,lowtrim$REPS),
+                      FUN='mean')
+colnames(lowtrim.mean) <- c("PID","BIAS","RELATEDNESS","REPS","MS")
+
+lowtrim.aov <- with(lowtrim.mean,aov(MS ~ BIAS*RELATEDNESS*REPS + Error(PID / (BIAS*RELATEDNESS*REPS))))
+print(xtable(summary(lowtrim.aov)),type="html")
+```
+
+Next we will trim the data to $\pm$3sd:
+```{r,sd,echo=FALSE,results="asis"}
+stdev <- subset(lowtrim, select=c(PID:REPS,STDEV))
+stdev <- na.omit(stdev)
+stdev.mean <- aggregate(stdev$STDEV,
+                      by=list(stdev$PID,stdev$BIAS,
+                              stdev$RELATEDNESS,stdev$REPS),
+                      FUN='mean')
+colnames(stdev.mean) <- c("PID","BIAS","RELATEDNESS","REPS","MS")
+
+stdev.aov <- with(stdev.mean,aov(MS ~ BIAS*RELATEDNESS*REPS + Error(PID / (BIAS*RELATEDNESS*REPS))))
+print(xtable(summary(stdev.aov)),type="html")
+```
+
+Finally, we can use the alternate IQR cutoff:
+```{r,iqr,echo=FALSE,results="asis"}
+IQR <- subset(lowtrim, select=c(PID:REPS,IQR))
+IQR <- na.omit(IQR)
+IQR.mean <- aggregate(IQR$IQR,
+                      by=list(IQR$PID,IQR$BIAS,
+                              IQR$RELATEDNESS,IQR$REPS),
+                      FUN='mean')
+colnames(IQR.mean) <- c("PID","BIAS","RELATEDNESS","REPS","MS")
+
+IQR.aov <- with(IQR.mean,aov(MS ~ BIAS*RELATEDNESS*REPS + Error(PID / (BIAS*RELATEDNESS*REPS))))
+print(xtable(summary(IQR.aov)),type="html")
+```
+
+Experiment 2 Analyses
+---------------------
+
+```{r,imports2, echo=FALSE, results="hide"}
+download.file("https://github.com/faulconbridge/semsat/raw/master/Semsat2/semsat2.csv", "semsat2.csv", "wget", extra="--no-check-certificate")
+semsat2 <- read.csv("semsat2.csv",header=TRUE,sep=",")
+
+raw <- semsat2
+
+# Strip out participants who encountered bugs during the experiment
+# and all filler items
+raw <- subset(raw, PID!=57 & PID!=42 & PID!=14 &
+                BIAS!="RELATED FILLER" & BIAS!="UNRELATED FILLER",
+                select=c(PID,BIAS,REPS,HomType,ANSWER,MS,MS.3.STDEV,MS.IQR))
+
+# Specify which variables should be treated as factors
+raw <- within(raw, {
+  BIAS <- factor(BIAS)
+  HomType <- factor(HomType)
+  REPS <- factor(REPS)
+  PID <- factor(PID)
+  STDEV <- MS.3.STDEV
+  IQR <- MS.IQR
+})
+
+```
+
+First, our analyses with no data removed. (I.e., all incorrect responses, RTs < 200ms, and high RTs are included):
+```{r,untrimmed2, echo=FALSE, results="asis"}
+untrimmed.mean <- aggregate(raw$MS,
+                      by=list(raw$PID,raw$BIAS,
+                              raw$HomType,raw$REPS),
+                      FUN='mean')
+colnames(untrimmed.mean) <- c("PID","BIAS","HomType","REPS","MS")
+
+untrimmed.aov <- with(untrimmed.mean,aov(MS ~ BIAS*HomType*REPS + Error(PID / (BIAS*HomType*REPS))))
+print(xtable(summary(untrimmed.aov)),type="html")
+```
+
+Now with only correct responses:
+```{r,correct2,echo=FALSE,results="asis"}
+correct <- subset(raw, (BIAS=="dominant" & ANSWER=="M") |
+                (BIAS=="subordinate" & ANSWER=="M") |
+                (BIAS=="unrelated" & ANSWER=="C"),
+              select=c(PID,BIAS,HomType,REPS,
+                       ANSWER,MS,STDEV,IQR))
+
+correct.mean <- aggregate(correct$MS,
+                      by=list(correct$PID,correct$BIAS,
+                              correct$HomType,correct$REPS),
+                      FUN='mean')
+colnames(correct.mean) <- c("PID","BIAS","HomType","REPS","MS")
+
+correct.aov <- with(correct.mean,aov(MS ~ BIAS*HomType*REPS + Error(PID / (BIAS*HomType*REPS))))
+print(xtable(summary(correct.aov)),type="html")
+```
+
+Now with the errant <200ms RTs removed:
+```{r,low-RT2, echo=FALSE, results="asis"}
+lowtrim <- subset(correct, MS>200, select=PID:IQR)
+lowtrim.mean <- aggregate(lowtrim$MS,
+                      by=list(lowtrim$PID,lowtrim$BIAS,
+                              lowtrim$HomType,lowtrim$REPS),
+                      FUN='mean')
+colnames(lowtrim.mean) <- c("PID","BIAS","HomType","REPS","MS")
+
+lowtrim.aov <- with(lowtrim.mean,aov(MS ~ BIAS*HomType*REPS + Error(PID / (BIAS*HomType*REPS))))
+print(xtable(summary(lowtrim.aov)),type="html")
+```
+
+Next we will trim the data to $\pm$3sd:
+```{r,sd2,echo=FALSE,results="asis"}
+stdev <- subset(lowtrim, select=c(PID:REPS,STDEV))
+stdev <- na.omit(stdev)
+stdev.mean <- aggregate(stdev$STDEV,
+                      by=list(stdev$PID,stdev$BIAS,
+                              stdev$HomType,stdev$REPS),
+                      FUN='mean')
+colnames(stdev.mean) <- c("PID","BIAS","HomType","REPS","MS")
+
+stdev.aov <- with(stdev.mean,aov(MS ~ BIAS*HomType*REPS + Error(PID / (BIAS*HomType*REPS))))
+print(xtable(summary(stdev.aov)),type="html")
+```
+
+Finally, we can use the alternate IQR cutoff:
+```{r,iqr2,echo=FALSE,results="asis"}
+IQR <- subset(lowtrim, select=c(PID:REPS,IQR))
+IQR <- na.omit(IQR)
+IQR.mean <- aggregate(IQR$IQR,
+                      by=list(IQR$PID,IQR$BIAS,
+                              IQR$HomType,IQR$REPS),
+                      FUN='mean')
+colnames(IQR.mean) <- c("PID","BIAS","HomType","REPS","MS")
+
+IQR.aov <- with(IQR.mean,aov(MS ~ BIAS*HomType*REPS + Error(PID / (BIAS*HomType*REPS))))
+print(xtable(summary(IQR.aov)),type="html")
+```
