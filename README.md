@@ -1,15 +1,6 @@
 Semantic Satiation
 ======
 
-Cite me!
---------
-
-Datasets, test programs, and documentation for ongoing research of semantic satiation. This research is a collaboration between Christopher Wetherill and Angela C. Jones, John Carroll University.
-
-Cite as: Christopher Wetherill (2014). Semantic satiation among ambiguous words datasets. ZENODO. [10.5281/zenodo.10148](10.5281/zenodo.10148)
-
-<a href="http://dx.doi.org/10.5281/zenodo.10148" target="_blank"><img src="https://zenodo.org/badge/doi/10.5281/zenodo.10148.png" /></a>
-
 What is this?
 -------------
 
