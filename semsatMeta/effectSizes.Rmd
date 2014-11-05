@@ -1,0 +1,60 @@
+Meta-Analysis of Semantic Satiation
+========================================================
+
+Or: Flailing Around in the Dark
+-------------------------------
+
+```{r,echo=FALSE,results='hide'}
+library(meta)
+```
+
+Let's start easy and do a proof-of-concept meta-analysis of my own semsat1a and semsat2 studies:
+```{r}
+# meta <- matrix(c(263,1847.21,54.06,264,1729.43,50.99,
+#                  243,2261.24,94.44,243,2240.65,95.98,
+#                  243,2339.60,96.55,243,2206.07,89.30),
+#                nrow=3, ncol=6, byrow=TRUE,
+#                dimnames=list(c("semsat1","semsat2NN","semsat2NV"),
+#                              c("Exp.n","Exp.m","Exp.se",
+#                                "Ctrl.n","Ctrl.m","Ctrl.se")))
+
+# meta <- matrix(c(66,1766.40,104.89,66,1586.85,89.17,
+#                  81,2141.39,142.54,81,2163.05,158.47,
+#                  81,2267.05,169.95,81,2063.75,128.80),
+#                nrow=3, ncol=6, byrow=TRUE,
+#                dimnames=list(c("semsat1","semsat2NN","semsat2NV"),
+#                              c("Exp.n","Exp.m","Exp.se",
+#                                "Ctrl.n","Ctrl.m","Ctrl.se")))
+
+meta <- matrix(c(66,1835.638,98.35674,66,1721.851,87.08236,
+                 81,2289.796,147.9446,81,2216.461,144.8187),
+               nrow=2,ncol=6,byrow=TRUE,
+               dimnames=list(c("semsat1a","semsat2"),
+                             c("Exp.n","Exp.m","Exp.se",
+                                "Ctrl.n","Ctrl.m","Ctrl.se")))
+
+meta <- data.frame(meta)
+meta1 <- metacont(Exp.n,Exp.m,Exp.se,Ctrl.n,Ctrl.m,Ctrl.se,
+                     studlab=list("semsat1a","semsat2"),data=meta,
+                   comb.fixed=TRUE,prediction=TRUE, sm="MD")
+meta1
+
+metacum(meta1)
+forest(meta1)
+```
+
+Let's start by loading in and preprocessing our data:
+```{r}
+download.file("https://raw.githubusercontent.com/faulconbridge/semsatMeta/master/effectSizes.csv", "effectSizes.csv", "wget", extra="--no-check-certificate")
+effectSizes <- read.csv("effectSizes.csv",header=TRUE,sep=",")
+
+repetitions <- effectSizes[!is.na(effectSizes$s.e),]
+View(repetitions)
+
+meta <- metacont(n.e,m.e,s.e,n.c,m.c,s.c,
+                 studlab=c(paste(repetitions$Article,repetitions$Experiment)),
+                 data=repetitions,comb.random=TRUE,prediction=TRUE,sm="MD")
+metacum(meta,pooled="fixed")
+metacum(meta,pooled="random")
+forest(metacum(meta,pooled="random"))
+```
